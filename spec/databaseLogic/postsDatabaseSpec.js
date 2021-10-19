@@ -1,14 +1,16 @@
 describe('postDatabase', () => {
   const postsDatabase = require('../../model/databaseLogic/postsDatabase');
-  require('./databasehelpers');
+  const { setupTests } = require('./databasehelpers');
   let postsData;
   let newPost;
+
+  beforeEach(setupTests);
 
   describe('#all', () => {
     beforeEach(async () => {
       postsData = await postsDatabase.all();
     });
-    it('returns array of correct length', () => {
+    it('returns array of correct length', async () => {
       expect(postsData.length).toEqual(1);
     });
 
@@ -60,7 +62,7 @@ describe('postDatabase', () => {
     it('returns correct values in object', async () => {
       newPost = await postsDatabase.newPost('second test post', 1);
       expect(newPost[0].text).toEqual('second test post');
-      expect(newPost[0].id).toEqual(1);
+      expect(newPost[0].id).toEqual(2);
       expect(newPost[0].user_id).toEqual(1);
     });
   });

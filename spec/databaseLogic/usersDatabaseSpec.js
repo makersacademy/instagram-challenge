@@ -1,7 +1,9 @@
 describe('usersDatabase', () => {
   const usersDatabase = require('../../model/databaseLogic/usersDatabase');
-  require('./databasehelpers');
+  const { setupTests } = require('./databasehelpers');
   let userData;
+
+  beforeEach(setupTests);
 
   describe('#findByUsername', () => {
     beforeEach(async () => {

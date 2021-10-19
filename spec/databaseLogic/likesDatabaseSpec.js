@@ -1,8 +1,10 @@
 describe('likesDatabase', () => {
   const likesDatabase = require('../../model/databaseLogic/likesDatabase');
-  require('./databasehelpers');
+  const { setupTests } = require('./databasehelpers');
   let likesData;
   let newLike;
+
+  beforeEach(setupTests);
 
   describe('#findLikesbyPostId', () => {
     beforeEach(async () => {

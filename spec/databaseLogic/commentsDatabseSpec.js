@@ -1,8 +1,10 @@
 describe('commentsDatabase', () => {
   const commentsDatabase = require('../../model/databaseLogic/commentsDatabase');
-  require('./databasehelpers');
+  const { setupTests } = require('./databasehelpers');
   let commentsData;
   let newComment;
+
+  beforeEach(setupTests);
 
   describe('#getComments', () => {
     beforeEach(async () => {
