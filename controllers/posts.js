@@ -36,11 +36,15 @@ const PostsController = {
   },
   async New(req, res) {
     try {
-      const { userId } = req.session.user;
-      const { newPostText } = req.body;
-      const post = new Post();
-      await post.addPost(newPostText, userId);
-      res.redirect('/posts');
+      if (req.session.authenticated) {
+        const { userId } = req.session.user;
+        const { newPostText } = req.body;
+        const post = new Post();
+        await post.addPost(newPostText, userId);
+        res.redirect('/posts');
+      } else {
+        res.redirect('/login');
+      }
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
