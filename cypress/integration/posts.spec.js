@@ -2,7 +2,7 @@
 
 describe('The Home Page', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/');
+    cy.visit('http://localhost:3000/login');
     cy.get('#username').type('test');
     cy.get('#password').type('test');
     cy.get('#loginUser').submit();

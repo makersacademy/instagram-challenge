@@ -11,12 +11,12 @@ describe('The Home Page', () => {
 
   it('shows home page', () => {
     cy.visit('http://localhost:3000');
-    cy.contains('Hello home route');
+    cy.contains('Posts');
     // change URL to match your dev URL
   });
 
   it('contains sign up form', () => {
-    cy.visit('http://localhost:3000/');
+    cy.visit('http://localhost:3000/login');
     cy.get('#username').type('test');
     cy.get('#password').type('test');
     cy.get('#loginUser').submit();
