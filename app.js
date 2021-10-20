@@ -8,6 +8,7 @@ const app = express();
 const port = 3000;
 
 const loginRouter = require('./routes/login');
+const logoutRouter = require('./routes/logout');
 const postsRouter = require('./routes/posts');
 const signUpRouter = require('./routes/signup');
 
@@ -28,6 +29,7 @@ app.use(
 
 // routes
 app.use('/login', loginRouter);
+app.use('/logout', logoutRouter);
 app.use('/posts', postsRouter);
 app.use('/signup', signUpRouter);
 

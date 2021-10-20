@@ -28,7 +28,7 @@ const HomeController = {
   },
   Logout(req, res) {
     req.session.destroy();
-    res.redirect('/');
+    res.redirect('/posts');
   },
 };
 
