@@ -2,7 +2,7 @@ const User = require('../model/user');
 
 const LoginController = {
   async Index(req, res) {
-    res.render('home/index');
+    res.render('login/index');
   },
   async Login(req, res) {
     try {

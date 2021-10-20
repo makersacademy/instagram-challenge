@@ -11,6 +11,7 @@ const loginRouter = require('./routes/login');
 const logoutRouter = require('./routes/logout');
 const postsRouter = require('./routes/posts');
 const signUpRouter = require('./routes/signup');
+const homeRouter = require('./routes/home');
 
 // views engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,8 +31,9 @@ app.use(
 // routes
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
-app.use('/posts', postsRouter);
 app.use('/signup', signUpRouter);
+app.use('/posts', postsRouter);
+app.use('/', homeRouter);
 
 app.listen(process.env.PORT || port, () => {
   console.log(`App running on port ${process.env.PORT || port}.`);
