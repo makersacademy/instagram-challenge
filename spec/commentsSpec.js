@@ -45,7 +45,7 @@ describe('Comment', () => {
       ]);
     });
   });
-  fdescribe('#getCommentsByPostId', () => {
+  describe('#getCommentsByPostId', () => {
     it('should call correct method in CommentsDb with correct argument', async () => {
       await commentInstance.getCommentsByPostId(1);
       expect(commentsDatabaseMock.getComments).toHaveBeenCalledWith(1);

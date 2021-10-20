@@ -4,7 +4,7 @@ describe('Like', () => {
   beforeEach(async () => {
     likesDatabaseMock = jasmine.createSpyObj('likesDatabase', [
       'addLike',
-      'getLikesByPostId',
+      'findLikesbyPostId',
     ]);
     mockLikesData = [
       {
@@ -14,6 +14,7 @@ describe('Like', () => {
       },
     ];
     likesDatabaseMock.addLike.and.callFake(() => mockLikesData);
+    likesDatabaseMock.findLikesbyPostId.and.callFake(() => mockLikesData);
     likeInstance = new Like(likesDatabaseMock);
   });
 
@@ -34,5 +35,14 @@ describe('Like', () => {
       ]);
     });
   });
-  // Add tests for 'getLikesByPostId'
+  describe('#getLikesByPostId', () => {
+    it('should call correct method in CommentsDb with correct argument', async () => {
+      await likeInstance.getLikesByPostId(1);
+      expect(likesDatabaseMock.findLikesbyPostId).toHaveBeenCalledWith(1);
+    });
+    it('should return array with length 1 based on calling findLikesbyPostId method in likesDatabase', async () => {
+      const likes = await likeInstance.getLikesByPostId(1);
+      expect(likes).toEqual(1);
+    });
+  });
 });
