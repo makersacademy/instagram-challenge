@@ -4,7 +4,7 @@ describe('Comment', () => {
   beforeEach(async () => {
     commentsDatabaseMock = jasmine.createSpyObj('commentsDatabase', [
       'addComment',
-      'getCommentsByPostId',
+      'getComments',
     ]);
     mockCommentsData = [
       {
@@ -15,6 +15,7 @@ describe('Comment', () => {
       },
     ];
     commentsDatabaseMock.addComment.and.callFake(() => mockCommentsData);
+    commentsDatabaseMock.getComments.and.callFake(() => mockCommentsData);
     commentInstance = new Comment(commentsDatabaseMock);
   });
 
@@ -44,6 +45,21 @@ describe('Comment', () => {
       ]);
     });
   });
-
-  // Add tests for 'getCommentsByPostId'
+  fdescribe('#getCommentsByPostId', () => {
+    it('should call correct method in CommentsDb with correct argument', async () => {
+      await commentInstance.getCommentsByPostId(1);
+      expect(commentsDatabaseMock.getComments).toHaveBeenCalledWith(1);
+    });
+    it('should return array with length 1 based on calling getComments method in commentsDatabase', async () => {
+      const comments = await commentInstance.getCommentsByPostId(1);
+      expect(comments).toEqual([
+        {
+          id: 1,
+          text: 'this is a test comment',
+          userID: 1,
+          postID: 1,
+        },
+      ]);
+    });
+  });
 });

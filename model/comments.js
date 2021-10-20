@@ -20,7 +20,7 @@ class Comment {
       id: element.id,
       text: element.text,
       userID: element.user_id,
-      createdAt: element.created_at,
+      postID: element.post_id,
     }));
   }
 }
