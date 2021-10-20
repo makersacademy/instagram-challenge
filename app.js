@@ -7,7 +7,7 @@ const session = require('express-session');
 const app = express();
 const port = 3000;
 
-const homeRouter = require('./routes/home');
+const loginRouter = require('./routes/login');
 const postsRouter = require('./routes/posts');
 const signUpRouter = require('./routes/signup');
 
@@ -27,7 +27,7 @@ app.use(
 );
 
 // routes
-app.use('/', homeRouter);
+app.use('/login', loginRouter);
 app.use('/posts', postsRouter);
 app.use('/signup', signUpRouter);
 

@@ -1,6 +1,6 @@
 const User = require('../model/user');
 
-const HomeController = {
+const LoginController = {
   async Index(req, res) {
     res.render('home/index');
   },
