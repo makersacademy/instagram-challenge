@@ -6,8 +6,14 @@
     <script src="../../public/javascripts/posts.js"></script>
   </head>
   <body>
+    <% if(session.authenticated){ %>
     <a href="/logout" class="nav-item nav-link">Logout</a>
-    <h1>Hello, <%= username %></h1>
+    <h1>Hello, <%= session.user.username %>!</h1>
+    <% } else{ %>
+    <a href="/login" class="nav-item nav-link">Login</a>
+    <a href="/signup" class="nav-item nav-link">Sign up</a>
+    <% } %>
+
     <h1>Posts</h1>
     <form id="newPost" action="/posts/new" method="POST">
       <input type="text" id="newPostText" name="newPostText" />
