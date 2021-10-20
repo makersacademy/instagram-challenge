@@ -37,6 +37,7 @@ const seedLikeData = async (userId, postId) => {
 const setupTests = async () => {
   await databaseTearDown();
   await seedUserData('test', 'test', 'test@test');
+  await seedUserData('test2', 'test2', 'test2@test');
   await seedPostData('test post', 1);
   await seedCommentData('test comment', 1, 1);
   await seedLikeData(1, 1);
