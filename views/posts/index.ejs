@@ -2,17 +2,19 @@
   <head>
     <meta charset="utf-8" />
     <title>Instaclone</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="../../public/javascripts/posts.js"></script>
+    <link rel="stylesheet" href="../../public/style.css" />
   </head>
   <body>
-    <% if(session.authenticated){ %>
-    <a href="/logout" class="nav-item nav-link">Logout</a>
-    <h1>Hello, <%= session.user.username %>!</h1>
-    <% } else{ %>
-    <a href="/login" class="nav-item nav-link">Login</a>
-    <a href="/signup" class="nav-item nav-link">Sign up</a>
-    <% } %>
+    <div class="topnav">
+      <a class="active" href="/posts">Posts</a>
+      <% if(session.authenticated){ %>
+      <a href="/logout">Logout</a>
+      <h1>Hello, <%= session.user.username %>!</h1>
+      <% } else{ %>
+      <a href="/login">Login</a>
+      <a href="/signup">Sign up</a>
+      <% } %>
+    </div>
 
     <h1>Posts</h1>
     <form id="newPost" action="/posts/new" method="POST">
