@@ -9,12 +9,16 @@
       <a href="/posts">Posts</a>
       <% if(session.authenticated){ %>
       <a href="/logout" class="nav-item nav-link">Logout</a>
-      <h1>Hello, <%= session.user.username %>!</h1>
       <% } else{ %>
       <a href="/" class="nav-item nav-link">Login</a>
       <a href="/signup" class="nav-item nav-link">Sign up</a>
       <% } %>
     </div>
+    <% if(session.authenticated){ %>
+    <h1>Hello, <%= session.user.username %>!</h1>
+    <% } else{ %>
+    <h1>Hello!</h1>
+    <% } %>
     <li><%= selectedPost.text %></li>
     <li><%= selectedPost.createdDate %></li>
     <li><%= numberOfLikes %> Likes</li>
