@@ -9,13 +9,16 @@
       <a class="active" href="/posts">Posts</a>
       <% if(session.authenticated){ %>
       <a href="/logout">Logout</a>
-      <h1>Hello, <%= session.user.username %>!</h1>
       <% } else{ %>
       <a href="/login">Login</a>
       <a href="/signup">Sign up</a>
       <% } %>
     </div>
-
+    <% if(session.authenticated){ %>
+    <h1>Hello, <%= session.user.username %>!</h1>
+    <% } else{ %>
+    <h1>Hello!</h1>
+    <% } %>
     <h1>Posts</h1>
     <form id="newPost" action="/posts/new" method="POST">
       <input type="text" id="newPostText" name="newPostText" />
