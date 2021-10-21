@@ -10,6 +10,9 @@ const LikesController = {
         await like.addLike(userId, postId);
         res.redirect(`/posts/${postId}`);
       } else {
+        const postId = req.params.id;
+        // store user's current page
+        req.session.returnTo = `/posts/${postId}`;
         res.redirect('/login');
       }
     } catch (error) {

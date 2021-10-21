@@ -12,16 +12,16 @@ const LoginController = {
       const isUserAuthenticated = await user.authenticate(username, password);
       const userId = isUserAuthenticated.id;
       if (isUserAuthenticated === false) {
-        return res.redirect('/');
+        return res.redirect('/login');
       }
-      // Add your authenticated property below:
       req.session.authenticated = true;
-      // Add the user object below:
       req.session.user = {
         username,
         userId,
       };
-      res.redirect('/posts');
+      // return to user's previous page
+      res.redirect(req.session.returnTo || '/posts');
+      delete req.session.returnTo;
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
