@@ -38,6 +38,7 @@ describe('Post', () => {
 
   describe('#getPosts', () => {
     it('should call correct method in postsDb', async () => {
+      spyOn(window, 'convertDateToUKFormat').and.returnValues();
       await postInstance.getPosts();
       expect(postsDatabaseMock.all).toHaveBeenCalled;
     });
