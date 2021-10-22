@@ -1,6 +1,8 @@
 describe('Post', () => {
   const Post = require('../model/posts');
+  const util = require('../model/Util');
   let postsDatabaseMock;
+  let dateConverterSpy;
   beforeEach(async () => {
     postsDatabaseMock = jasmine.createSpyObj('postsDatabase', [
       'newPost',
@@ -15,6 +17,8 @@ describe('Post', () => {
         username: 'test',
       },
     ];
+    dateConverterSpy = spyOn(util, 'convertDateToUKFormat');
+    util.convertDateToUKFormat.and.callFake(() => '12/12/2020');
     postsDatabaseMock.newPost.and.callFake(() => mockPostsData.splice(-1));
     postsDatabaseMock.all.and.callFake(() => mockPostsData);
     postsDatabaseMock.findById.and.callFake(() => mockPostsData);
@@ -38,11 +42,12 @@ describe('Post', () => {
   });
 
   describe('#getPosts', () => {
-    it('should call correct method in postsDb', async () => {
+    it('should call correct methods in postsDb', async () => {
       await postInstance.getPosts();
+      expect(dateConverterSpy).toHaveBeenCalled();
       expect(postsDatabaseMock.all).toHaveBeenCalled;
     });
-    it('should return array based on calling .all methd in postsDatabase', async () => {
+    it('should return array based on calling .all method in postsDatabase', async () => {
       const allPosts = await postInstance.getPosts();
       expect(allPosts).toEqual([
         {
@@ -50,6 +55,7 @@ describe('Post', () => {
           text: 'bbc',
           userID: 2,
           username: 'test',
+          createdDate: '12/12/2020',
         },
       ]);
     });
@@ -67,6 +73,7 @@ describe('Post', () => {
         text: 'bbc',
         userID: 2,
         username: 'test',
+        createdDate: '12/12/2020',
       });
     });
   });
