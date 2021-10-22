@@ -11,14 +11,14 @@ class postsDatabase {
 
   static async all() {
     const allPosts = await connection.pool.query(
-      'SELECT * FROM posts ORDER BY id ASC'
+      'SELECT posts.id, posts.text, posts.created_at, posts.user_id, users.username FROM posts INNER JOIN users ON posts.user_id=users.id ORDER BY id ASC'
     );
     return allPosts.rows;
   }
 
   static async findById(id) {
     const matchingPost = await connection.pool.query(
-      'SELECT * FROM posts WHERE id = $1;',
+      'SELECT posts.id, posts.text, posts.created_at, posts.user_id, users.username FROM posts INNER JOIN users ON posts.user_id=users.id WHERE posts.id = $1;',
       [id]
     );
     return matchingPost.rows;

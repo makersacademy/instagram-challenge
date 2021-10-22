@@ -23,6 +23,7 @@ class Post {
         text: element.text,
         userID: element.user_id,
         createdDate: convertDateToUKFormat(element.created_at),
+        username: element.username,
       }))
       .reverse();
   }
@@ -34,6 +35,7 @@ class Post {
       text: post[0].text,
       userID: post[0].user_id,
       createdDate: convertDateToUKFormat(post[0].created_at),
+      username: post[0].username,
     };
   }
 }

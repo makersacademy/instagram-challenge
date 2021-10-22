@@ -19,11 +19,13 @@ describe('postDatabase', () => {
       expect(Object.keys(postsData[0])).toContain('text');
       expect(Object.keys(postsData[0])).toContain('created_at');
       expect(Object.keys(postsData[0])).toContain('user_id');
+      expect(Object.keys(postsData[0])).toContain('username');
     });
     it('returns correct values in object', () => {
       expect(postsData[0].text).toEqual('test post');
       expect(postsData[0].id).toEqual(1);
       expect(postsData[0].user_id).toEqual(1);
+      expect(postsData[0].username).toEqual('test');
     });
   });
 
@@ -39,12 +41,14 @@ describe('postDatabase', () => {
       expect(Object.keys(postsData[0])).toContain('text');
       expect(Object.keys(postsData[0])).toContain('created_at');
       expect(Object.keys(postsData[0])).toContain('user_id');
+      expect(Object.keys(postsData[0])).toContain('username');
     });
 
     it('returns correct values in object', () => {
       expect(postsData[0].text).toEqual('test post');
       expect(postsData[0].id).toEqual(1);
       expect(postsData[0].user_id).toEqual(1);
+      expect(postsData[0].username).toEqual('test');
     });
   });
   describe('#newPost', () => {

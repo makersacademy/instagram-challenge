@@ -12,9 +12,10 @@ describe('Post', () => {
         id: 103,
         text: 'bbc',
         user_id: 2,
+        username: 'test',
       },
     ];
-    postsDatabaseMock.newPost.and.callFake(() => mockPostsData);
+    postsDatabaseMock.newPost.and.callFake(() => mockPostsData.splice(-1));
     postsDatabaseMock.all.and.callFake(() => mockPostsData);
     postsDatabaseMock.findById.and.callFake(() => mockPostsData);
     postInstance = new Post(postsDatabaseMock);
@@ -38,7 +39,6 @@ describe('Post', () => {
 
   describe('#getPosts', () => {
     it('should call correct method in postsDb', async () => {
-      spyOn(window, 'convertDateToUKFormat').and.returnValues();
       await postInstance.getPosts();
       expect(postsDatabaseMock.all).toHaveBeenCalled;
     });
@@ -49,6 +49,7 @@ describe('Post', () => {
           id: 103,
           text: 'bbc',
           userID: 2,
+          username: 'test',
         },
       ]);
     });
@@ -65,6 +66,7 @@ describe('Post', () => {
         id: 103,
         text: 'bbc',
         userID: 2,
+        username: 'test',
       });
     });
   });
