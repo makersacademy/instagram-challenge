@@ -1,5 +1,5 @@
-const postsDatabase = require('./databaseLogic/postsDatabase');
-const util = require('./Util');
+const postsDatabase = require("./databaseLogic/postsDatabase");
+const util = require("./Util");
 
 class Post {
   constructor(postsDatabaseClass = postsDatabase) {

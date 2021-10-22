@@ -1,8 +1,8 @@
-const User = require('../model/user');
+const User = require("../model/user");
 
 const signUpController = {
   async Index(req, res) {
-    res.render('signup/index');
+    res.render("signup/index");
   },
   async NewUser(req, res) {
     try {
@@ -19,7 +19,7 @@ const signUpController = {
         username,
         userId,
       };
-      res.redirect('/posts');
+      res.redirect("/posts");
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }

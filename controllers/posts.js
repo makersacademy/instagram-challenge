@@ -1,6 +1,6 @@
-const Post = require('../model/posts');
-const Like = require('../model/likes');
-const Comment = require('../model/comments');
+const Post = require("../model/posts");
+const Like = require("../model/likes");
+const Comment = require("../model/comments");
 
 const PostsController = {
   async Index(req, res) {
@@ -8,7 +8,7 @@ const PostsController = {
       const { session } = req;
       const post = new Post();
       const posts = await post.getPosts();
-      res.render('posts/index', { posts, session });
+      res.render("posts/index", { posts, session });
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
@@ -24,7 +24,7 @@ const PostsController = {
       const selectedPost = await post.getPostById(postId);
       const numberOfLikes = await like.getLikesByPostId(postId);
       const comments = await comment.getCommentsByPostId(postId);
-      res.render('posts/show', {
+      res.render("posts/show", {
         selectedPost,
         session,
         numberOfLikes,
@@ -41,9 +41,9 @@ const PostsController = {
         const { newPostText } = req.body;
         const post = new Post();
         await post.addPost(newPostText, userId);
-        res.redirect('/posts');
+        res.redirect("/posts");
       } else {
-        res.redirect('/login');
+        res.redirect("/login");
       }
     } catch (error) {
       return res.status(500).json({ error: error.message });

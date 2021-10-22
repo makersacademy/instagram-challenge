@@ -1,4 +1,4 @@
-const commentsDatabase = require('./databaseLogic/commentsDatabase');
+const commentsDatabase = require("./databaseLogic/commentsDatabase");
 
 class Comment {
   constructor(commentsDatabaseClass = commentsDatabase) {

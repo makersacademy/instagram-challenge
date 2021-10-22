@@ -1,17 +1,17 @@
-describe('Comment on post', () => {
+describe("Comment on post", () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/login');
-    cy.get('#username').type('test');
-    cy.get('#password').type('test');
-    cy.get('#loginUser').submit();
-    cy.get('#newPostText').type('this is a feature test post');
-    cy.get('#newPost').submit();
-    cy.contains('View').click();
-    cy.get('#newCommentText').type('this is a feature test comment');
-    cy.get('#newComment').submit();
+    cy.visit("http://localhost:3000/login");
+    cy.get("#username").type("test");
+    cy.get("#password").type("test");
+    cy.get("#loginUser").submit();
+    cy.get("#newPostText").type("this is a feature test post");
+    cy.get("#newPost").submit();
+    cy.contains("View").click();
+    cy.get("#newCommentText").type("this is a feature test comment");
+    cy.get("#newComment").submit();
   });
 
-  it('shows comment', () => {
-    cy.contains('this is a feature test comment');
+  it("shows comment", () => {
+    cy.contains("this is a feature test comment");
   });
 });

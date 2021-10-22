@@ -1,5 +1,5 @@
-require('dotenv').config();
-const { Pool } = require('pg');
+require("dotenv").config();
+const { Pool } = require("pg");
 
 let pool;
 
@@ -19,7 +19,7 @@ const devDb = {
   port: process.env.DB_PORT,
 };
 
-if (process.env.NODE_ENV === 'PRODUCTION') {
+if (process.env.NODE_ENV === "PRODUCTION") {
   pool = new Pool({
     // DATABASE_URL from Heroku
     connectionString: process.env.DATABASE_URL,
@@ -27,7 +27,7 @@ if (process.env.NODE_ENV === 'PRODUCTION') {
       rejectUnauthorized: false,
     },
   });
-} else if (process.env.NODE_ENV === 'test') {
+} else if (process.env.NODE_ENV === "test") {
   pool = new Pool(testDb);
 } else {
   pool = new Pool(devDb);

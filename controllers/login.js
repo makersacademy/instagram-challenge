@@ -1,8 +1,8 @@
-const User = require('../model/user');
+const User = require("../model/user");
 
 const LoginController = {
   async Index(req, res) {
-    res.render('login/index');
+    res.render("login/index");
   },
   async Login(req, res) {
     try {
@@ -12,7 +12,7 @@ const LoginController = {
       const isUserAuthenticated = await user.authenticate(username, password);
       const userId = isUserAuthenticated.id;
       if (isUserAuthenticated === false) {
-        return res.redirect('/login');
+        return res.redirect("/login");
       }
       req.session.authenticated = true;
       req.session.user = {
@@ -20,7 +20,7 @@ const LoginController = {
         userId,
       };
       // return to user's previous page
-      res.redirect(req.session.returnTo || '/posts');
+      res.redirect(req.session.returnTo || "/posts");
       delete req.session.returnTo;
     } catch (error) {
       return res.status(500).json({ error: error.message });

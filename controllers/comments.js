@@ -1,4 +1,4 @@
-const Comment = require('../model/comments');
+const Comment = require("../model/comments");
 
 const CommentsController = {
   async NewComment(req, res) {
@@ -14,7 +14,7 @@ const CommentsController = {
         const postId = req.params.id;
         // store user's current page
         req.session.returnTo = `/posts/${postId}`;
-        res.redirect('/login');
+        res.redirect("/login");
       }
     } catch (error) {
       console.log(error.message);

@@ -1,4 +1,4 @@
-const likesDatabase = require('./databaseLogic/likesDatabase');
+const likesDatabase = require("./databaseLogic/likesDatabase");
 
 class Like {
   constructor(likesDatabaseClass = likesDatabase) {

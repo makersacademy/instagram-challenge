@@ -1,4 +1,4 @@
-const Like = require('../model/likes');
+const Like = require("../model/likes");
 
 const LikesController = {
   async NewLike(req, res) {
@@ -13,7 +13,7 @@ const LikesController = {
         const postId = req.params.id;
         // store user's current page
         req.session.returnTo = `/posts/${postId}`;
-        res.redirect('/login');
+        res.redirect("/login");
       }
     } catch (error) {
       console.log(error.message);

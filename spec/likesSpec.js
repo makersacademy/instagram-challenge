@@ -1,10 +1,10 @@
-describe('Like', () => {
-  const Like = require('../model/likes');
+describe("Like", () => {
+  const Like = require("../model/likes");
   let likesDatabaseMock;
   beforeEach(async () => {
-    likesDatabaseMock = jasmine.createSpyObj('likesDatabase', [
-      'addLike',
-      'findLikesbyPostId',
+    likesDatabaseMock = jasmine.createSpyObj("likesDatabase", [
+      "addLike",
+      "findLikesbyPostId",
     ]);
     mockLikesData = [
       {
@@ -18,13 +18,13 @@ describe('Like', () => {
     likeInstance = new Like(likesDatabaseMock);
   });
 
-  describe('#addLike', () => {
-    it('should call correct method in likesDb with correct arguments', async () => {
+  describe("#addLike", () => {
+    it("should call correct method in likesDb with correct arguments", async () => {
       await likeInstance.addLike(1, 1);
       expect(likesDatabaseMock.addLike).toHaveBeenCalledWith(1, 1);
     });
 
-    it('should return array with length 1 based on calling addLike method in likesDatabase', async () => {
+    it("should return array with length 1 based on calling addLike method in likesDatabase", async () => {
       const newLike = await likeInstance.addLike(1, 1);
       expect(newLike).toEqual([
         {
@@ -35,12 +35,12 @@ describe('Like', () => {
       ]);
     });
   });
-  describe('#getLikesByPostId', () => {
-    it('should call correct method in CommentsDb with correct argument', async () => {
+  describe("#getLikesByPostId", () => {
+    it("should call correct method in CommentsDb with correct argument", async () => {
       await likeInstance.getLikesByPostId(1);
       expect(likesDatabaseMock.findLikesbyPostId).toHaveBeenCalledWith(1);
     });
-    it('should return array with length 1 based on calling findLikesbyPostId method in likesDatabase', async () => {
+    it("should return array with length 1 based on calling findLikesbyPostId method in likesDatabase", async () => {
       const likes = await likeInstance.getLikesByPostId(1);
       expect(likes).toEqual(1);
     });

@@ -1,15 +1,15 @@
-describe('Comment', () => {
-  const Comment = require('../model/comments');
+describe("Comment", () => {
+  const Comment = require("../model/comments");
   let commentsDatabaseMock;
   beforeEach(async () => {
-    commentsDatabaseMock = jasmine.createSpyObj('commentsDatabase', [
-      'addComment',
-      'getComments',
+    commentsDatabaseMock = jasmine.createSpyObj("commentsDatabase", [
+      "addComment",
+      "getComments",
     ]);
     mockCommentsData = [
       {
         id: 1,
-        text: 'this is a test comment',
+        text: "this is a test comment",
         post_id: 1,
         user_id: 1,
       },
@@ -19,43 +19,43 @@ describe('Comment', () => {
     commentInstance = new Comment(commentsDatabaseMock);
   });
 
-  describe('#addComment', () => {
-    it('should call correct method in commentsDb with correct arguments', async () => {
-      await commentInstance.addComment('new comment', 1, 1);
+  describe("#addComment", () => {
+    it("should call correct method in commentsDb with correct arguments", async () => {
+      await commentInstance.addComment("new comment", 1, 1);
       expect(commentsDatabaseMock.addComment).toHaveBeenCalledWith(
-        'new comment',
+        "new comment",
         1,
         1
       );
     });
 
-    it('should return array with length 1 based on calling addComment methd in commentsDatabase', async () => {
+    it("should return array with length 1 based on calling addComment methd in commentsDatabase", async () => {
       const newComment = await commentInstance.addComment(
-        'this is a test comment',
+        "this is a test comment",
         1,
         1
       );
       expect(newComment).toEqual([
         {
           id: 1,
-          text: 'this is a test comment',
+          text: "this is a test comment",
           post_id: 1,
           user_id: 1,
         },
       ]);
     });
   });
-  describe('#getCommentsByPostId', () => {
-    it('should call correct method in CommentsDb with correct argument', async () => {
+  describe("#getCommentsByPostId", () => {
+    it("should call correct method in CommentsDb with correct argument", async () => {
       await commentInstance.getCommentsByPostId(1);
       expect(commentsDatabaseMock.getComments).toHaveBeenCalledWith(1);
     });
-    it('should return array with length 1 based on calling getComments method in commentsDatabase', async () => {
+    it("should return array with length 1 based on calling getComments method in commentsDatabase", async () => {
       const comments = await commentInstance.getCommentsByPostId(1);
       expect(comments).toEqual([
         {
           id: 1,
-          text: 'this is a test comment',
+          text: "this is a test comment",
           userID: 1,
           postID: 1,
         },

@@ -1,4 +1,4 @@
-const usersDatabase = require('./databaseLogic/usersDatabase');
+const usersDatabase = require("./databaseLogic/usersDatabase");
 
 class User {
   constructor(usersDatabaseClass = usersDatabase) {
