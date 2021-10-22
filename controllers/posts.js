@@ -24,6 +24,8 @@ const PostsController = {
       const selectedPost = await post.getPostById(postId);
       const numberOfLikes = await like.getLikesByPostId(postId);
       const comments = await comment.getCommentsByPostId(postId);
+      // store user's current page
+      req.session.returnTo = `/posts/${postId}`;
       return res.render("posts/show", {
         selectedPost,
         session,

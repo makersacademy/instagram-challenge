@@ -12,14 +12,15 @@ const signUpController = {
       const user = new User();
       const newUser = await user.addUser(username, password, email);
       const userId = newUser.id;
-      // Add your authenticated property below:
       req.session.authenticated = true;
       // Add the user object below:
       req.session.user = {
         username,
         userId,
       };
-      return res.redirect("/posts");
+      // return to user's previous page
+      res.redirect(req.session.returnTo || "/posts");
+      delete req.session.returnTo;
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
