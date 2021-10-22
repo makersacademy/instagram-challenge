@@ -19,7 +19,7 @@ const signUpController = {
         username,
         userId,
       };
-      res.redirect("/posts");
+      return res.redirect("/posts");
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }

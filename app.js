@@ -38,5 +38,6 @@ app.use("/posts", postsRouter);
 app.use("/", homeRouter);
 
 app.listen(process.env.PORT || port, () => {
+  // eslint-disable-next-line no-console
   console.log(`App running on port ${process.env.PORT || port}.`);
 });

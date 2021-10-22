@@ -3,6 +3,8 @@ describe("Post", () => {
   const util = require("../model/Util");
   let postsDatabaseMock;
   let dateConverterSpy;
+  let mockPostsData;
+  let postInstance;
   beforeEach(async () => {
     postsDatabaseMock = jasmine.createSpyObj("postsDatabase", [
       "newPost",

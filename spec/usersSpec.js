@@ -2,12 +2,12 @@ describe("User", () => {
   const User = require("../model/user");
   let usersDatabaseMock;
   let userInstance;
+  let mockUsersData;
 
   beforeEach(() => {
     usersDatabaseMock = jasmine.createSpyObj("usersDatabase", [
       "findByUsername",
       "addUser",
-      ,
     ]);
     mockUsersData = [
       {
@@ -41,7 +41,7 @@ describe("User", () => {
       usersDatabaseMock.findByUsername.and.callFake(() => []);
       const authenticatedUser = await userInstance.authenticate(
         "wrongusername",
-        "test",
+        "test"
       );
       expect(authenticatedUser).toEqual(false);
     });
@@ -49,7 +49,7 @@ describe("User", () => {
     it("should return false for incorrect passoword", async () => {
       const authenticatedUser = await userInstance.authenticate(
         "test",
-        "wrong password",
+        "wrong password"
       );
       expect(authenticatedUser).toEqual(false);
     });
@@ -61,7 +61,7 @@ describe("User", () => {
       expect(usersDatabaseMock.addUser).toHaveBeenCalledWith(
         "test",
         "test",
-        "test@test",
+        "test@test"
       );
     });
   });

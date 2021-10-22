@@ -8,7 +8,7 @@ const PostsController = {
       const { session } = req;
       const post = new Post();
       const posts = await post.getPosts();
-      res.render("posts/index", { posts, session });
+      return res.render("posts/index", { posts, session });
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
@@ -24,7 +24,7 @@ const PostsController = {
       const selectedPost = await post.getPostById(postId);
       const numberOfLikes = await like.getLikesByPostId(postId);
       const comments = await comment.getCommentsByPostId(postId);
-      res.render("posts/show", {
+      return res.render("posts/show", {
         selectedPost,
         session,
         numberOfLikes,
@@ -41,10 +41,9 @@ const PostsController = {
         const { newPostText } = req.body;
         const post = new Post();
         await post.addPost(newPostText, userId);
-        res.redirect("/posts");
-      } else {
-        res.redirect("/login");
+        return res.redirect("/posts");
       }
+      return res.redirect("/login");
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }

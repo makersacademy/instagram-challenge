@@ -1,6 +1,8 @@
 describe("Comment", () => {
   const Comment = require("../model/comments");
   let commentsDatabaseMock;
+  let mockCommentsData;
+  let commentInstance;
   beforeEach(async () => {
     commentsDatabaseMock = jasmine.createSpyObj("commentsDatabase", [
       "addComment",

@@ -1,6 +1,6 @@
 const HomeController = {
   Index(req, res) {
-    res.redirect("/posts");
+    return res.redirect("/posts");
   },
 };
 
