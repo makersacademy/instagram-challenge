@@ -17,6 +17,7 @@ describe('The Home Page', () => {
     cy.get('#newPostText').type('this is a test post');
     cy.get('#newPost').submit();
     cy.contains('this is a test post');
+    cy.contains('test');
   });
 
   it('shows individual post', () => {
@@ -24,6 +25,6 @@ describe('The Home Page', () => {
     cy.get('#newPost').submit();
     cy.contains('View').click();
     cy.contains('this is a feature test post');
-    cy.contains('Hello show posts route');
+    cy.contains('test');
   });
 });
