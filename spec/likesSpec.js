@@ -1,5 +1,6 @@
+const Like = require("../model/likes");
+
 describe("Like", () => {
-  const Like = require("../model/likes");
   let likesDatabaseMock;
   let mockLikesData;
   let likeInstance;

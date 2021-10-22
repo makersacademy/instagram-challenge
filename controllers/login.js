@@ -4,6 +4,7 @@ const LoginController = {
   async Index(req, res) {
     res.render("login/index");
   },
+  // eslint-disable-next-line consistent-return
   async Login(req, res) {
     try {
       const { username } = req.body;

@@ -4,6 +4,7 @@ const signUpController = {
   async Index(req, res) {
     res.render("signup/index");
   },
+  // eslint-disable-next-line consistent-return
   async NewUser(req, res) {
     try {
       const { username } = req.body;

@@ -1,6 +1,7 @@
+const likesDatabase = require("../../model/databaseLogic/likesDatabase");
+const { setupTests } = require("./databasehelpers");
+
 describe("likesDatabase", () => {
-  const likesDatabase = require("../../model/databaseLogic/likesDatabase");
-  const { setupTests } = require("./databasehelpers");
   let likesData;
   let newLike;
 

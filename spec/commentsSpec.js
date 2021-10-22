@@ -1,5 +1,6 @@
+const Comment = require("../model/comments");
+
 describe("Comment", () => {
-  const Comment = require("../model/comments");
   let commentsDatabaseMock;
   let mockCommentsData;
   let commentInstance;

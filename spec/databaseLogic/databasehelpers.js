@@ -2,7 +2,7 @@ const connection = require("../../database/connection");
 
 const databaseTearDown = async () => {
   await connection.pool.query(
-    "TRUNCATE TABLE users, posts, comments, likes RESTART IDENTITY",
+    "TRUNCATE TABLE users, posts, comments, likes RESTART IDENTITY"
   );
 };
 

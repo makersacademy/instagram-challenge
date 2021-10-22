@@ -1,6 +1,7 @@
+const commentsDatabase = require("../../model/databaseLogic/commentsDatabase");
+const { setupTests } = require("./databasehelpers");
+
 describe("commentsDatabase", () => {
-  const commentsDatabase = require("../../model/databaseLogic/commentsDatabase");
-  const { setupTests } = require("./databasehelpers");
   let commentsData;
   let newComment;
 

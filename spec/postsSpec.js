@@ -1,6 +1,7 @@
+const Post = require("../model/posts");
+const util = require("../model/Util");
+
 describe("Post", () => {
-  const Post = require("../model/posts");
-  const util = require("../model/Util");
   let postsDatabaseMock;
   let dateConverterSpy;
   let mockPostsData;
@@ -47,7 +48,7 @@ describe("Post", () => {
     it("should call correct methods in postsDb", async () => {
       await postInstance.getPosts();
       expect(dateConverterSpy).toHaveBeenCalled();
-      expect(postsDatabaseMock.all).toHaveBeenCalled;
+      expect(postsDatabaseMock.all).toHaveBeenCalled();
     });
     it("should return array based on calling .all method in postsDatabase", async () => {
       const allPosts = await postInstance.getPosts();

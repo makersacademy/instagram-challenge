@@ -1,5 +1,6 @@
+const User = require("../model/user");
+
 describe("User", () => {
-  const User = require("../model/user");
   let usersDatabaseMock;
   let userInstance;
   let mockUsersData;

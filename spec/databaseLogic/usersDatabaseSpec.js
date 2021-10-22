@@ -1,6 +1,7 @@
+const usersDatabase = require("../../model/databaseLogic/usersDatabase");
+const { setupTests } = require("./databasehelpers");
+
 describe("usersDatabase", () => {
-  const usersDatabase = require("../../model/databaseLogic/usersDatabase");
-  const { setupTests } = require("./databasehelpers");
   let userData;
 
   beforeEach(setupTests);
@@ -33,7 +34,7 @@ describe("usersDatabase", () => {
       userData = await usersDatabase.addUser(
         "new test user",
         "new-test-password",
-        "newtestemail@test",
+        "newtestemail@test"
       );
       expect(userData.length).toEqual(1);
     });
@@ -41,7 +42,7 @@ describe("usersDatabase", () => {
       userData = await usersDatabase.addUser(
         "new test user",
         "new-test-password",
-        "newtestemail@test",
+        "newtestemail@test"
       );
       expect(Object.keys(userData[0])).toContain("id");
       expect(Object.keys(userData[0])).toContain("username");
@@ -52,7 +53,7 @@ describe("usersDatabase", () => {
       userData = await usersDatabase.addUser(
         "new test user",
         "new-test-password",
-        "newtestemail@test",
+        "newtestemail@test"
       );
       // expect(userData[0].id).toEqual(1); - returns unpredictable id so removing this line for now
       expect(userData[0].username).toEqual("new test user");

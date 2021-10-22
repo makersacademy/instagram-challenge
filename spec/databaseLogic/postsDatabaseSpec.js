@@ -1,6 +1,7 @@
+const postsDatabase = require("../../model/databaseLogic/postsDatabase");
+const { setupTests } = require("./databasehelpers");
+
 describe("postDatabase", () => {
-  const postsDatabase = require("../../model/databaseLogic/postsDatabase");
-  const { setupTests } = require("./databasehelpers");
   let postsData;
   let newPost;
 

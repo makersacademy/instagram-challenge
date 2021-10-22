@@ -10,6 +10,7 @@ class likesDatabase {
   }
 
   static async addLike(userId, postId) {
+    // eslint-disable-next-line no-underscore-dangle
     const notLikedByUser = await this._isNotAlreadyLiked(userId, postId);
     if (notLikedByUser) {
       const newLike = await connection.pool.query(
@@ -21,6 +22,7 @@ class likesDatabase {
     return "Post already liked";
   }
 
+  // eslint-disable-next-line no-underscore-dangle
   static async _isNotAlreadyLiked(userId, postId) {
     const existingLikes = await likesDatabase.findLikesbyPostId(postId);
     if (existingLikes.filter((e) => e.user_id === userId).length === 0) {
