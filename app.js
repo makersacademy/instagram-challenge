@@ -27,6 +27,7 @@ app.use(
     cookie: { maxAge: 300000000 },
     saveUninitialized: false,
     resave: false,
+    // eslint-disable-next-line comma-dangle
   })
 );
 

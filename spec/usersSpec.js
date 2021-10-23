@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 const User = require("../model/user");
 
 describe("User", () => {

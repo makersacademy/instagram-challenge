@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 const usersDatabase = require("../../model/databaseLogic/usersDatabase");
 const { setupTests } = require("./databasehelpers");
 

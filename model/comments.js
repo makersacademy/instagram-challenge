@@ -9,6 +9,7 @@ class Comment {
     const newComment = await this.commentsDatabaseClass.addComment(
       text,
       userId,
+      // eslint-disable-next-line comma-dangle
       postId
     );
     return newComment;

@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 const Comment = require("../model/comments");
 
 describe("Comment", () => {

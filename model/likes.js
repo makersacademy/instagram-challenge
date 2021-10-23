@@ -11,6 +11,7 @@ class Like {
 
   async getLikesByPostId(postId) {
     const numberOfLikes = await this.likesDatabaseClass.findLikesbyPostId(
+      // eslint-disable-next-line comma-dangle
       postId
     );
     return numberOfLikes.length;

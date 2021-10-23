@@ -9,6 +9,7 @@ class User {
     const newUser = await this.usersDatabaseClass.addUser(
       username,
       password,
+      // eslint-disable-next-line comma-dangle
       email
     );
     return {

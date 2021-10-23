@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 const connection = require("../../database/connection");
 
 const databaseTearDown = async () => {
