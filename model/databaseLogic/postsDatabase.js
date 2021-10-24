@@ -12,7 +12,7 @@ class postsDatabase {
 
   static async all() {
     const allPosts = await connection.pool.query(
-      "SELECT posts.id, posts.text, posts.created_at, posts.user_id, users.username FROM posts INNER JOIN users ON posts.user_id=users.id ORDER BY id ASC"
+      "SELECT posts.id, posts.text, posts.created_at, posts.user_id, users.username FROM posts INNER JOIN users ON posts.user_id=users.id ORDER BY id DESC"
     );
     return allPosts.rows;
   }

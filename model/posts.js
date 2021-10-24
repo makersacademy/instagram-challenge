@@ -17,15 +17,13 @@ class Post {
 
   async getPosts() {
     const allPosts = await this.postsDatabaseClass.all();
-    return allPosts
-      .map((element) => ({
-        id: element.id,
-        text: element.text,
-        userID: element.user_id,
-        createdDate: util.convertDateToUKFormat(element.created_at),
-        username: element.username,
-      }))
-      .reverse();
+    return allPosts.map((element) => ({
+      id: element.id,
+      text: element.text,
+      userID: element.user_id,
+      createdDate: util.convertDateToUKFormat(element.created_at),
+      username: element.username,
+    }));
   }
 
   async getPostById(id) {
