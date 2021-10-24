@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   post 'logout', to: 'sessions#destroy'
   get 'logout', to: 'sessions#destroy'
 
+  resources :users do
+    resources :posts
+  end
+
 end
 
   # get 'sessions/new'
