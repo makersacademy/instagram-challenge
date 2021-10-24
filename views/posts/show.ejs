@@ -14,36 +14,42 @@
       <a href="/signup" class="nav-item nav-link">Sign up</a>
       <% } %>
     </div>
-    <% if(session.authenticated){ %>
-    <h1>Hello, <%= session.user.username %>!</h1>
-    <% } else{ %>
-    <h1>Hello!</h1>
-    <% } %>
-    <li><%= selectedPost.text %></li>
-    <li><%= selectedPost.username %></li>
-    <li><%= selectedPost.createdDate %></li>
-    <li><%= numberOfLikes %> Likes</li>
-    <form
-      id="newLike"
-      action="/posts/<%= selectedPost.id %>/like/new"
-      method="POST"
-    >
-      <input type="submit" value="Like" />
-    </form>
-    <% comments.forEach((comment)=>{ %>
-    <ul>
-      <li><%= comment.text %></li>
-    </ul>
-    <% }) %>
+    <div class="user-greeting">
+      <% if(session.authenticated){ %>
+      <h1>Hello, <%= session.user.username %>!</h1>
+      <% } else{ %>
+      <h1>Hello!</h1>
+      <% } %>
+    </div>
+    <div class="box">
+      <div class="box-content">
+        <p><%= selectedPost.text %></p>
+        <p><%= selectedPost.username %></p>
+        <p><%= selectedPost.createdDate %></p>
+        <p><%= numberOfLikes %> Likes</p>
+        <form
+          id="newLike"
+          action="/posts/<%= selectedPost.id %>/like/new"
+          method="POST"
+        >
+          <input type="submit" value="Like" />
+        </form>
+        <% comments.forEach((comment)=>{ %>
+        <ul>
+          <li><%= comment.text %></li>
+        </ul>
+        <% }) %>
 
-    <form
-      id="newComment"
-      action="/posts/<%= selectedPost.id %>/comment/new"
-      method="POST"
-    >
-      <input type="text" id="newCommentText" name="newCommentText" />
-      <br />
-      <input type="submit" value="Comment" />
-    </form>
+        <form
+          id="newComment"
+          action="/posts/<%= selectedPost.id %>/comment/new"
+          method="POST"
+        >
+          <input type="text" id="newCommentText" name="newCommentText" />
+          <br />
+          <input type="submit" value="Comment" />
+        </form>
+      </div>
+    </div>
   </body>
 </html>

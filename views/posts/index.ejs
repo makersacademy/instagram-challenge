@@ -14,28 +14,30 @@
       <a href="/signup">Sign up</a>
       <% } %>
     </div>
-    <% if(session.authenticated){ %>
-    <h1>Hello, <%= session.user.username %>!</h1>
-    <% } else{ %>
-    <h1>Hello!</h1>
-    <% } %>
-    <h1>Posts</h1>
-    <form id="newPost" action="/posts/new" method="POST">
-      <input type="text" id="newPostText" name="newPostText" />
-      <br />
-      <input type="submit" value="Post" />
-    </form>
-    <ul class="posts">
-      <% posts.forEach((post)=>{ %>
-      <ul>
-        <li><%= post.text %></li>
-        <li><%= post.username %></li>
-        <li><%= post.createdDate %></li>
-        <form id="seePost" action="/posts/<%= post.id %>" method="GET">
+    <div class="user-greeting">
+      <% if(session.authenticated){ %>
+      <h1>Hello, <%= session.user.username %>!</h1>
+      <% } else{ %>
+      <h1>Hello!</h1>
+      <% } %>
+    </div>
+    <div class="box">
+      <div class="box-content">
+        <h1>Posts</h1>
+        <form action="/posts/new" method="POST">
+          <input type="text" id="newPostText" name="newPostText" />
+          <br />
+          <input type="submit" value="Post" />
+        </form>
+        <% posts.forEach((post)=>{ %>
+        <p><%= post.text %></p>
+        <p><%= post.username %></p>
+        <p><%= post.createdDate %></p>
+        <form action="/posts/<%= post.id %>" method="GET">
           <input type="submit" value="View" />
         </form>
-      </ul>
-      <% }) %>
-    </ul>
+        <% }) %>
+      </div>
+    </div>
   </body>
 </html>
