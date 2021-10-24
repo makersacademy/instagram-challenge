@@ -5,6 +5,8 @@ const util = require("../model/Util");
 describe("Comment", () => {
   let commentsDatabaseMock;
   let mockCommentsData;
+  let commentInstance;
+  let dateConverterSpy;
   beforeEach(async () => {
     commentsDatabaseMock = jasmine.createSpyObj("commentsDatabase", [
       "addComment",
@@ -63,6 +65,7 @@ describe("Comment", () => {
   describe("#getCommentsByPostId", () => {
     it("should call correct method in CommentsDb with correct argument", async () => {
       await commentInstance.getCommentsByPostId(1);
+      expect(dateConverterSpy).toHaveBeenCalled();
       expect(commentsDatabaseMock.getComments).toHaveBeenCalledWith(1);
     });
     it("should return array with length 1 based on calling getComments method in commentsDatabase", async () => {
