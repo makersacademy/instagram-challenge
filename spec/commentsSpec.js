@@ -5,11 +5,11 @@ const util = require("../model/Util");
 describe("Comment", () => {
   let commentsDatabaseMock;
   let mockCommentsData;
-  let commentInstance;
   beforeEach(async () => {
     commentsDatabaseMock = jasmine.createSpyObj("commentsDatabase", [
       "addComment",
       "getComments",
+      "getCommentsByPostId",
     ]);
     mockCommentsData = [
       {
@@ -22,7 +22,15 @@ describe("Comment", () => {
     dateConverterSpy = spyOn(util, "convertDateToUKFormat");
     util.convertDateToUKFormat.and.callFake(() => "12/12/2020");
     commentsDatabaseMock.addComment.and.callFake(() => mockCommentsData);
-    commentsDatabaseMock.getComments.and.callFake(() => mockCommentsData);
+    commentsDatabaseMock.getComments.and.callFake(() => [
+      {
+        id: 1,
+        text: "this is a test comment",
+        post_id: 1,
+        user_id: 1,
+        username: "test",
+      },
+    ]);
     commentInstance = new Comment(commentsDatabaseMock);
   });
 
@@ -66,6 +74,7 @@ describe("Comment", () => {
           userID: 1,
           postID: 1,
           createdDate: "12/12/2020",
+          username: "test",
         },
       ]);
     });
