@@ -1,4 +1,5 @@
 const commentsDatabase = require("./databaseLogic/commentsDatabase");
+const util = require("./Util");
 
 class Comment {
   constructor(commentsDatabaseClass = commentsDatabase) {
@@ -17,12 +18,16 @@ class Comment {
 
   async getCommentsByPostId(postId) {
     const comments = await this.commentsDatabaseClass.getComments(postId);
-    return comments.map((element) => ({
-      id: element.id,
-      text: element.text,
-      userID: element.user_id,
-      postID: element.post_id,
-    }));
+    return comments
+      .map((element) => ({
+        id: element.id,
+        text: element.text,
+        userID: element.user_id,
+        postID: element.post_id,
+        createdDate: util.convertDateToUKFormat(element.created_at),
+        username: element.username,
+      }))
+      .reverse();
   }
 }
 module.exports = Comment;

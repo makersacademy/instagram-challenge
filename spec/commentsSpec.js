@@ -1,5 +1,6 @@
 /* eslint-disable comma-dangle */
 const Comment = require("../model/comments");
+const util = require("../model/Util");
 
 describe("Comment", () => {
   let commentsDatabaseMock;
@@ -18,6 +19,8 @@ describe("Comment", () => {
         user_id: 1,
       },
     ];
+    dateConverterSpy = spyOn(util, "convertDateToUKFormat");
+    util.convertDateToUKFormat.and.callFake(() => "12/12/2020");
     commentsDatabaseMock.addComment.and.callFake(() => mockCommentsData);
     commentsDatabaseMock.getComments.and.callFake(() => mockCommentsData);
     commentInstance = new Comment(commentsDatabaseMock);
@@ -62,6 +65,7 @@ describe("Comment", () => {
           text: "this is a test comment",
           userID: 1,
           postID: 1,
+          createdDate: "12/12/2020",
         },
       ]);
     });

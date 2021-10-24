@@ -4,7 +4,7 @@ const connection = require("../../database/connection");
 class commentsDatabase {
   static async getComments(postId) {
     const comments = await connection.pool.query(
-      "SELECT * FROM comments WHERE post_id = $1;",
+      "SELECT comments.id, comments.text, comments.created_at, comments.user_id, comments.post_id, users.username FROM comments INNER JOIN users ON comments.user_id=users.id WHERE post_id = $1;",
       [postId]
     );
     return comments.rows;
