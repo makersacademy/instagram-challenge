@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe("The Home Page", () => {
+describe("Posts", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000/login");
     cy.get("#username").type("test");

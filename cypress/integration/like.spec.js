@@ -7,7 +7,7 @@ describe("Like post", () => {
     cy.get("#newPostText").type("this is a feature test post");
     cy.get("#newPost").submit();
     cy.contains("View").click();
-    cy.contains("Like").click();
+    cy.get("#newLike").submit();
   });
 
   it("shows comment", () => {
