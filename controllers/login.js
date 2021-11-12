@@ -1,4 +1,3 @@
-const flash = require("connect-flash");
 const User = require("../model/user");
 
 const LoginController = {

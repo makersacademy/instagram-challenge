@@ -17,6 +17,14 @@ class usersDatabase {
     );
     return matchingUser.rows;
   }
+
+  static async findByEmail(email) {
+    const matchingUser = await connection.pool.query(
+      "SELECT * FROM users WHERE email = $1",
+      [email]
+    );
+    return matchingUser.rows;
+  }
 }
 
 module.exports = usersDatabase;
