@@ -23,9 +23,12 @@
           </form>
         </div>
         <div class="user-section">
+  
+          <% if user_signed_in? %>  <!--DEVISE checks if user is signed in-->
+          <%= current_user.username %>
           <a><i class="fa fa-compass"></i></a>
           <a><i class="fa fa-heart"></i></a>
-          <% if user_signed_in? %>  <!--DEVISE checks if user is signed in-->
+
             <a href= "<%= user_path(current_user)%>" > <!--goes to user profile page-->
             <i class="fa fa-user"></i>
             </a>
@@ -33,6 +36,8 @@
             <i class='fas fa-sign-out-alt'></i>
             </a>
           <% else %>
+           <a><i class="fa fa-compass"></i></a>
+           <a><i class="fa fa-heart"></i></a>
             <a href="<%= new_user_session_path%>"> <!--SIGN IN Path-->
             <i class="fas fa-sign-in-alt"></i>
             </a>
