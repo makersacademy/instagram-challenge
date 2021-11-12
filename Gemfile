@@ -42,7 +42,8 @@ group :development, :test do
   gem 'rubocop-rails'
   gem 'simplecov', require: false
   gem 'simplecov-console', require: false
-  gem 'webdrivers'
+  # gem 'webdrivers'
+  # gem 'database_cleaner'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
