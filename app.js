@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const session = require("express-session");
+const flash = require("connect-flash");
 
 const app = express();
 const port = 3000;
@@ -30,7 +31,7 @@ app.use(
     // eslint-disable-next-line comma-dangle
   })
 );
-
+app.use(flash());
 // routes
 app.use("/login", loginRouter);
 app.use("/logout", logoutRouter);
