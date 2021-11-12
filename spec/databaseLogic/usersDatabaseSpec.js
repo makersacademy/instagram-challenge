@@ -30,6 +30,30 @@ describe("usersDatabase", () => {
     });
   });
 
+  describe("#findByEmail", () => {
+    beforeEach(async () => {
+      userData = await usersDatabase.findByEmail("test@test");
+    });
+
+    it("returns array of correct length", async () => {
+      expect(userData.length).toEqual(1);
+    });
+
+    it("returns object with correct keys", async () => {
+      expect(Object.keys(userData[0])).toContain("id");
+      expect(Object.keys(userData[0])).toContain("username");
+      expect(Object.keys(userData[0])).toContain("password");
+      expect(Object.keys(userData[0])).toContain("email");
+    });
+
+    it("returns correct values in object", async () => {
+      expect(userData[0].username).toEqual("test");
+      expect(userData[0].id).toEqual(1);
+      expect(userData[0].password).toEqual("test");
+      expect(userData[0].email).toEqual("test@test");
+    });
+  });
+
   describe("#addUser", () => {
     it("returns array of length 1", async () => {
       userData = await usersDatabase.addUser(
