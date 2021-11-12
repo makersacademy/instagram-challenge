@@ -61,7 +61,7 @@ class User {
   }
 
   static isThereAnyBlankInputs(username, email) {
-    if (username == null || email == null) {
+    if (username === "" || email === "") {
       return true;
     }
     return false;
