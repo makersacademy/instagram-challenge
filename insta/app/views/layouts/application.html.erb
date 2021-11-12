@@ -9,7 +9,7 @@
 
   <body>
     <!--Navigation Bar-->
-    <nav class="navbar navbar-light bg-light d-flex">
+    <nav class="navbar navbar-light bg-light d-flex"> 
       <div class="container">
         <div class="logo">
           <a class="navbar-brand" href="#">
@@ -24,7 +24,15 @@
         <div class="user-section">
           <a><i class="fa fa-compass"></i></a>
           <a><i class="fa fa-heart"></i></a>
-          <a><i class="fa fa-user"></i></a>
+          <% if user_signed_in? %>  <!--DEVISE checks if user is signed in-->
+            <a href="<%= destroy_user_session_path%>" data-method="delete"> <!--SIGN OUT PATH-->
+            <i class="fa fa-user"></i>
+            </a>
+          <% else %>
+            <a href="<%= new_user_session_path%>"> <!--SIGN IN PATH-->
+            <i class="fa fa-sign-in"></i>
+            </a>
+          <% end %>
         </div>
       </div>
     </nav>
