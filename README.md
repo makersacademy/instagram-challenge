@@ -2,7 +2,7 @@
 
 - This is v2 of the chitter challenge where the task is to create a chitter clone that includes the user stories shown at the bottom of this page.
 - It's an MVC app built using Node.js, Express and ejs. Jasmine is used for unit testing and cypress used for feature testing.
-- You can see the production version of the app here: `https://shrouded-savannah-60836.herokuapp.com/`
+- You can see the production version of the app [here](https://shrouded-savannah-60836.herokuapp.com/posts).
 
 Below are the steps to set everything up locally:
 
