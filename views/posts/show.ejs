@@ -34,6 +34,8 @@
         >
           <input type="submit" value="Like" />
         </form>
+
+        <% if(session.authenticated){ %>
         <form
           class="comment-form"
           id="newComment"
@@ -45,7 +47,13 @@
           <input type="submit" value="Comment" />
           <br /><br />
         </form>
-        <% comments.forEach((comment)=>{ %>
+        <% } else{ %>
+        <div class="welcome-user">
+          If you want to leave a comment, <a href="/signup">sign up</a> or
+          <a href="/login">log in</a> :) <br /><br />
+        </div>
+
+        <% } %> <% comments.forEach((comment)=>{ %>
         <div class="each-post">
           <p><%= comment.text %></p>
           <p>Posted by <i><%= comment.username %></i></p>
