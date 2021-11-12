@@ -3,6 +3,7 @@ const User = require("../model/user");
 
 describe("User", () => {
   let usersDatabaseMock;
+  let usersDatabaseMockWithNoUser;
   let userInstance;
   let mockUsersData;
 
@@ -10,6 +11,7 @@ describe("User", () => {
     usersDatabaseMock = jasmine.createSpyObj("usersDatabase", [
       "findByUsername",
       "addUser",
+      "findByEmail",
     ]);
     mockUsersData = [
       {
@@ -22,6 +24,7 @@ describe("User", () => {
     ];
     usersDatabaseMock.addUser.and.callFake(() => mockUsersData);
     usersDatabaseMock.findByUsername.and.callFake(() => mockUsersData);
+    usersDatabaseMock.findByEmail.and.callFake(() => mockUsersData);
     userInstance = new User(usersDatabaseMock);
   });
 
@@ -45,15 +48,15 @@ describe("User", () => {
         "wrongusername",
         "test"
       );
-      expect(authenticatedUser).toEqual(false);
+      expect(authenticatedUser).toEqual("incorrect username");
     });
 
-    it("should return false for incorrect passoword", async () => {
+    it("should return false for incorrect password", async () => {
       const authenticatedUser = await userInstance.authenticate(
         "test",
         "wrong password"
       );
-      expect(authenticatedUser).toEqual(false);
+      expect(authenticatedUser).toEqual("incorrect password");
     });
   });
 
@@ -65,6 +68,62 @@ describe("User", () => {
         "test",
         "test@test"
       );
+    });
+  });
+
+  describe("#isUsernameTaken", () => {
+    it("should return true since username is already taken", async () => {
+      expect(await userInstance.isUsernameTaken("test")).toEqual(true);
+    });
+    it("should return false since username is already taken", async () => {
+      usersDatabaseMock.findByUsername.and.callFake(() => []);
+      expect(await userInstance.isUsernameTaken("test-not-take")).toEqual(
+        false
+      );
+    });
+  });
+
+  describe("#isEmailTaken", () => {
+    it("should return true since email is already taken", async () => {
+      expect(await userInstance.isEmailTaken("test@test")).toEqual(true);
+    });
+    it("should return false since username is already taken", async () => {
+      usersDatabaseMock.findByEmail.and.callFake(() => []);
+      expect(await userInstance.isEmailTaken("test-not-taken@test")).toEqual(
+        false
+      );
+    });
+  });
+
+  describe("#isPasswordTooshot", () => {
+    it("should return true when password above 8 characters", async () => {
+      expect(User.isPasswordTooShort("passwordisok")).toEqual(false);
+    });
+    it("should return true when password is 8 characters", async () => {
+      expect(User.isPasswordTooShort("password")).toEqual(false);
+    });
+    it("should return false when password is below 8 characters", async () => {
+      expect(User.isPasswordTooShort("2short")).toEqual(true);
+    });
+  });
+
+  describe("#isThereAnyBlankInputs", () => {
+    it("should return true when username is blank", async () => {
+      expect(User.isThereAnyBlankInputs("", "test@test")).toEqual(true);
+    });
+
+    it("should return false when username is not blank", async () => {
+      expect(User.isThereAnyBlankInputs("notblank", "test@test")).toEqual(
+        false
+      );
+    });
+
+    it("should return true when email is blank", async () => {
+      expect(User.isThereAnyBlankInputs("test", "")).toEqual(true);
+    });
+
+    it("should return false when email is not blank", async () => {
+      expect(User.isThereAnyBlankInputs("test", "notblank")).toEqual(false);
     });
   });
 });
