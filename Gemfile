@@ -3,7 +3,16 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.0'
 
+# Helps with env variables when using a local host
+gem 'figaro', '~> 1.2'
+# For s3 image hosting
+gem 'carrierwave', '~> 2.2', '>= 2.2.1'
+gem 'fog', '~> 2.2'
+# For modifying images post upload/ Grayscale here https://www.imagemagick.org/script/command-line-options.php#grayscale
+gem 'mini_magick', '~> 4.11'
+# Unknown
 gem 'devise', '~> 4.8'
+# For bootstrap css
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
