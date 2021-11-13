@@ -2,24 +2,18 @@
 
 <h1>Posts</h1>
 <%= link_to 'New Post', new_post_path %>
-<table>
-  <tbody>
-    <% @posts.each do |post| %>
-    <% user = User.find(post.user_id) %>
-      <tr>
-        <td><%= user.username %></td>
-        <% if post.image.attached?  %>
-        <td><image src="<%= (url_for(post.image)) %>"></td>
-        <% end  %>
-        <td><%= post.caption %></td>
-        <% if current_user && current_user.id == post.user_id %>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end  %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+<% @posts.each do |post| %>
+<% user = User.find(post.user_id) %>
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="<%= (url_for(post.image)) %>" alt="Card image cap">
+    <div class="card-body">
+      <p class="card-text"><strong><%= user.username %>: </strong><%= post.caption %></p>
+      <% if current_user && current_user.id == post.user_id %>
+        <p class="card-text"><%= link_to 'Edit', edit_post_path(post) %></p>
+        <p class="card-text"><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      <% end  %>
+    </div>
+  </div>
+<% end %>
 
