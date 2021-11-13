@@ -1,3 +1,11 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
 <h1>Instagram</h1>
+
+<% if current_user %> 
+  <span>Welcome <%= current_user.first_name %>!</span>
+  <%= link_to "Log out", current_user_session, method: :delete %>
+<% else %>
+  <%= link_to "Login", new_user_session_path %>
+  <%= link_to "Sign-up", new_user_path %>
+<% end %>
