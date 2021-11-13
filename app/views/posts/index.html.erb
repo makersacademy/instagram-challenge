@@ -3,17 +3,6 @@
 <h1>Posts</h1>
 <%= link_to 'New Post', new_post_path %>
 
-<% @posts.each do |post| %>
-<% user = User.find(post.user_id) %>
-  <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="<%= (url_for(post.image)) %>" alt="Card image cap">
-    <div class="card-body">
-      <p class="card-text"><strong><%= user.username %>: </strong><%= post.caption %></p>
-      <% if current_user && current_user.id == post.user_id %>
-        <p class="card-text"><%= link_to 'Edit', edit_post_path(post) %></p>
-        <p class="card-text"><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-      <% end  %>
-    </div>
-  </div>
-<% end %>
+<%= render 'all' %>
+
 
