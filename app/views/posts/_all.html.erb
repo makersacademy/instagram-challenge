@@ -7,40 +7,42 @@
     <div class="">
       <img class="card-img-top" src="<%= (url_for(post.image)) %>" alt="Card image cap">
     </div>
-    <div class="card-body d-flex justify-content-between">
+    <div class="card-body p-8 d-flex justify-content-between flex-no-wrap">
       <div class="">
         <% if Like.where({post_id: post.id, user_id: current_user.id}).empty? %>
-        <%= button_to 'Like', likes_path(), method: :post, params: {post_id: post.id} %>
+        <%= button_to 'Like', likes_path(), method: :post, params: {post_id: post.id}, class: "btn btn-sm btn-info" %>
         <% else %>
         <% like = Like.find_by({post_id: post.id, user_id: current_user.id}) %>
-        <%= button_to 'Unlike', like, method: :delete, params: {post_id: post.id} %>
+        <%= button_to 'Unlike', like, method: :delete, params: {post_id: post.id}, class: "btn btn-sm btn-info" %>
         <% end %>
       </div>
+      <div class="align-items-center">
+        <p class="card-text"><%= Like.where({post_id: post.id}).count %> likes</p>
+      </div>
+    </div>
+    <div class="card-body p-8">
       <div class="d-flex flex-row-reverse">
-        <%= form_tag(comments_path, method: "post") do %>
+        <%= form_tag(comments_path, method: "post", class: "w-100 d-flex") do %>
           <%= hidden_field_tag :post_id, post.id %>
-          <%= text_field_tag(:content) %>
-          <%= submit_tag("Comment")  %>
+          <%= text_field_tag :content, 'Leave a nice comment...', class: 'border border-grey rounded w-75' %>
+          <%= submit_tag("Comment", class: 'btn border border-grey', style: "font-size:10px")  %>
         <% end %>
+      </div>
     </div>
-    </div>
-    <div class="card-header d-flex align-items-center">
-      <p class="card-text"><%= Like.where({post_id: post.id}).count %> likes</p>
-    </div>
-    <div class="card-body">
+    <div class="card-body p-8">
       <p class="card-text"><strong><%= user.username %>: </strong><%= post.caption %></p>
-      <div class="overflow-auto" style="max-height:100px">
+      <div class="overflow-auto" style="max-height:60px">
         <% Comment.where({post_id: post.id}).reverse_each do |comment| %>
         <% user = User.find(comment.user_id) %>
         <p class="card-text"><strong><%= user.username %>: </strong><%= comment.content %></p>
         <% end %>
       </div>
     </div>
-    <div class="card-footer">
-      <% if current_user && current_user.id == post.user_id %>
+    <% if current_user && current_user.id == post.user_id %>
+    <div class="card-footer d-flex justify-content-around">
         <button class="card-text btn btn-outline-info mr-5"><%= link_to 'Edit', edit_post_path(post) %></button>
         <button class="card-text btn btn-outline-danger"><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></button>
-      <% end %>
     </div>
+    <% end %>
   </div>
 <% end %>
