@@ -4,11 +4,13 @@
     <div class="card-header">
       <h4><%= user.username %></h4>
     </div>
-    <img class="card-img-top" src="<%= (url_for(post.image)) %>" alt="Card image cap">
+    <div class="p-3">
+      <img class="card-img-top" src="<%= (url_for(post.image)) %>" alt="Card image cap">
+    </div>
     <div class="card-body">
       <% if Like.where({post_id: post.id, user_id: current_user.id}).empty? %>
       <div class="mr-2">
-        <%= button_to 'Like', likes_path(), method: :post, params: {user_id: current_user, post_id: post.id}%>
+        <%= button_to 'Like', likes_path(), method: :post, params: {post_id: post.id} %>
       </div>
       <% end %>
     </div>
@@ -21,6 +23,20 @@
         <p class="card-text"><%= link_to 'Edit', edit_post_path(post) %></p>
         <p class="card-text"><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
       <% end %>
+    </div>
+    <div class="card-body">
+      <h5>Comments:</h5>
+      <% Comment.where({post_id: post.id}).reverse_each do |comment| %>
+      <% user = User.find(comment.user_id) %>
+      <p class="card-text"><strong><%= user.username %>: </strong><%= comment.content %></p>
+      <% end %>
+    </div>
+    <div class="card-body">
+        <%= form_tag(comments_path, method: "post") do %>
+          <%= hidden_field_tag :post_id, post.id %>
+          <%= text_field_tag(:content) %>
+          <%= submit_tag("Comment") %>
+        <% end %>
     </div>
   </div>
 <% end %>
