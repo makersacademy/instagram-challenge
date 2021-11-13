@@ -8,6 +8,14 @@
 * User can like a photo
 * User can write comments on photos
 
+# Workflow
+```
+$ rails g scaffold User username:string email:string password_digest:string
+```
+```
+$ rails g scaffold Post message:string
+```
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
