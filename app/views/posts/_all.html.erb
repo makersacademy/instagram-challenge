@@ -1,4 +1,4 @@
-<% @posts.each do |post| %>
+<% @posts.reverse_each do |post| %>
 <% user = User.find(post.user_id) %>
   <div class="card mb-2">
     <div class="card-header">
@@ -6,11 +6,21 @@
     </div>
     <img class="card-img-top" src="<%= (url_for(post.image)) %>" alt="Card image cap">
     <div class="card-body">
+      <% if Like.where({post_id: post.id, user_id: current_user.id}).empty? %>
+      <div class="mr-2">
+        <%= button_to 'Like', likes_path(), method: :post, params: {user_id: current_user, post_id: post.id}%>
+      </div>
+      <% end %>
+    </div>
+    <div class="card-body d-flex align-items-center">
+      <p class="card-text"><%= Like.where({post_id: post.id}).count %> likes</p>
+    </div>
+    <div class="card-body">
       <p class="card-text"><strong><%= user.username %>: </strong><%= post.caption %></p>
       <% if current_user && current_user.id == post.user_id %>
         <p class="card-text"><%= link_to 'Edit', edit_post_path(post) %></p>
         <p class="card-text"><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-      <% end  %>
+      <% end %>
     </div>
   </div>
 <% end %>
