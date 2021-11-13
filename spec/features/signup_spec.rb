@@ -6,6 +6,9 @@ RSpec.describe 'User', type: :system do
       visit root_path
       click_link 'Sign Up'
       fill_in(:user_email, with: 'test@example.com')
+      fill_in(:user_username, with: 'testguy')
+      fill_in(:user_first_name, with: 'tester')
+      fill_in(:user_last_name, with: 'guyson')
       fill_in(:user_password, with: 'password123')
       fill_in(:user_password_confirmation, with: 'password123')
       click_button
