@@ -1,3 +1,34 @@
+# User stories:
+```
+As a User
+So that I can share my photo with other people
+I want to post it to instagram
+
+As a User
+So that I can mark posts as my own
+I want to sign up and make posts with my username
+
+As a User
+So that no one else can post as me
+I want be able to log in with my details and log out when I want
+
+As a User
+So that I can see other people's photos and get inspired
+I want to see other posts in a feed
+
+As a User
+So that I can discuss the photos
+I want to comment on posts
+
+As a User
+So that I can show that I like a post
+I want to be able to click a button to like a post
+```
+
+## Domain Model
+
+![Domain Model](domain_model.drawio.svg)
+
 # README
 
 This README would normally document whatever steps are necessary to get the
