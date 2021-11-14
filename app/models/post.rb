@@ -3,6 +3,6 @@ class Post < ApplicationRecord
   has_many :comments
   belongs_to :user
   validates :images, attached: true,
-                     content_type: ['image/png', 'image/jpg'],
+                     content_type: ['image/png', 'image/jpg', 'image/jpeg'],
                      size: { less_than: 10.megabytes, message: 'is too big' }
 end
