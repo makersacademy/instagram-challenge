@@ -1,5 +1,9 @@
 # Instagram Challenge
 
+## Learning Objectives
+* Implement Devise and learn to use it for basic user authentication
+* Learn how to implement image uploads using ActiveStorage
+
 ## Usage
 ```
 $ git clone git@github.com:s-palmer/instagram-challenge.git
