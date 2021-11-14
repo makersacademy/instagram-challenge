@@ -55,9 +55,12 @@ group :test do
   gem 'rspec-rails'
   gem 'rubocop', '1.20', require: false
   gem 'rubocop-rails'
+  gem 'database_cleaner-active_record'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem "tailwindcss-rails", "~> 0.5.1"
+gem "tailwindcss-rails",
+    github: "dorianmariefr/tailwindcss-rails",
+    branch: "minimal"
