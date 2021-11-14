@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<div class="album">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <% @posts.reverse_each do |post| %>
+      <% user = User.find(post.user_id) %>
+      <div class="col">
+        <div class="card">
+          <div class="card-top d-flex justify-content-between p-2 px-3">
+            <div class="d-flex flex-row align-items-center">
+              <%= link_to user_path(user) do %>
+                <%= avatar_for(user) %>
+              <% end %>
+              <%= link_to user_path(user), class:"text-lowercase fs-6 mx-2 text-decoration-none link-dark" do %>
+                <%= user.first_name %> <%= user.last_name %>
+              <% end %>
+            </div>
+            <div class="d-flex flex-row mt-1">
+              <i class="bi bi-three-dots"></i>
+            </div>
+          </div>
+          <%= image_tag post.image if post.image.attached? %>
+          <div class="card-body">
+          Likes <%= post.likes %>
+          <%= post.content %>
+          <%= link_to 'Show', post %>
+          <%= link_to 'Edit', edit_post_path(post) %>
+          <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Add Comment', new_comment_path(post_id: post.id) %>
+          </div>
+        </div>
+      </div>
+    <% end %>  
+    </div>
+  </div>
+</div>

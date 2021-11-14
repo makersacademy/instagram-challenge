@@ -1,20 +1,30 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light mb-4 border-bottom">
-  <div class="container-fluid">
+<nav class="navbar navbar-light bg-white border-bottom">
+  <div class="container-fluid ms-4 align-items-center">
     <a class="navbar-brand" href="/">
       <%= image_tag "Instagram_logo.svg", alt:"Instagram", height:"32", class:"d-inline-block align-text-top" %>
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class:"nav-link active" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Sign-up", new_user_path, class: "nav-link active" %>
-        </li>
-      </ul>
+    <div class="d-flex">
+    <% if current_user %>
+      <%= link_to "/", class:"fs-4 px-2 link-dark" do %>
+        <i class="bi bi-house-door-fill"></i>
+      <% end %>
+      <%= link_to new_post_path, class:"fs-4 px-2 link-dark" do %>
+        <i class="bi bi-plus-square"></i>
+      <% end %>
+      <div class="dropdown text-end px-2">
+        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown">
+          <%= avatar_for(current_user) %>
+        </a>
+        <ul class="dropdown-menu text-small">
+          <li><%= link_to "Profile", user_path(current_user), class:"dropdown-item" %></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><%= link_to "Log out", current_user_session, method: :delete, class:"dropdown-item" %></li>
+        </ul>
+      </div>
+    <% else %>
+      <%= link_to "Login", new_user_session_path, class:"btn btn-outline-primary me-2" %>
+      <%= link_to "Sign-up", new_user_path, class: "btn btn-primary" %>
+    <% end %>
     </div>
   </div>
 </nav>
