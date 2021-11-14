@@ -1,5 +1,24 @@
 # Instagram Challenge
 
+## Usage
+```
+$ git clone git@github.com:s-palmer/instagram-challenge.git
+```
+```
+$ cd instagram-challenge
+```
+```
+$ bundle install
+```
+```
+$ rails db:create
+$ rails db:migrate
+```
+```
+$ rails s
+```
+
+Browse to localhost:3000 to get started.
 ## User Stories
 ```
 As a user
@@ -43,12 +62,8 @@ I want to be able to write comments on posts
 | <img src="public/images/tailwind.png" height="auto" width="70"> | [Tailwind CSS](https://tailwindcss.com/)               | A utility-first CSS framework      | Frontend design
 
 ## Workflow
-```
-$ rails g scaffold User username:string email:string password_digest:string
-```
-```
-$ rails g scaffold Post message:string
-```
+
+* Used a git hook to prevent committing if Rubocop has errors.
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
