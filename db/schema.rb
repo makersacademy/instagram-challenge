@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 2021_11_13_171154) do
 
   create_table "posts", force: :cascade do |t|
     t.string "caption"
-    t.string "has_attachment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
