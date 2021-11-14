@@ -1,14 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Image url:</strong>
-  <%= @post.image_url %>
-</p>
+<div class="post">
+  <div class="post-header">
+    <div class="post-author-info">
+      <%= image_tag("default.jpg", class: "post-author-pic") %>
+      <p class="post-author-name"><%= @post.user.username %></p>
+    </div>
+    <%= image_tag("option.png", class: "post-options") %>
+  </div>
+  <%= image_tag(@post.image, class: "post-image") %>
+  <div class="post-footer">
+    <p class="post-like-count">
+      23 likes
+    </p>
+    <div class="post-content">
+      <p class="post-caption-author-name">
+        <%= @post.user.username %>
+      </p>
+      <p class="post-caption-text">
+        <%= @post.caption %>
+      </p>
+    </div>
+    <p class="post-time-since">
+      <%= time_ago_in_words(@post.created_at) %> ago
+    </p>
 
-<p>
-  <strong>Caption:</strong>
-  <%= @post.caption %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+    <%= link_to 'Edit', edit_post_path(@post) %> |
+    <%= link_to 'Back', posts_path %>
+  </div>
+</div>

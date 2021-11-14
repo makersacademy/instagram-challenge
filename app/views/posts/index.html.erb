@@ -1,15 +1,33 @@
-<p id="notice"><%= notice %></p>
-<%= button_to "Logout", logout_path, method: :delete %>
-<%= flash[:notice] %>
+<div class="post-feed">
+  <% @posts.each do |post| %>
+    <div class="post">
+      <div class="post-header">
+        <div class="post-author-info">
+          <%= image_tag("default.jpg", class: "post-author-pic") %>
+          <p class="post-author-name"><%= post.user.username %></p>
+        </div>
+        <%= image_tag("option.png", class: "post-options") %>
+      </div>
+      <%= link_to image_tag(post.image), post, :class => "post-thumbnail" %>
+      <div class="post-footer">
+        <p class="post-like-count">
+          23 likes
+        </p>
+        <div class="post-content">
+          <p class="post-caption-author-name">
+            <%= post.user.username %>
+          </p>
+          <p class="post-caption-text">
+            <%= post.caption %>
+          </p>
+        </div>
+        <p class="post-time-since">
+          <%= time_ago_in_words(post.created_at) %> ago
+        </p>
 
-<% @posts.each do |post| %>
-  <tr>
-    <td><%= post.image_url %></td>
-    <td><%= post.caption %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-
-<%= link_to 'New Post', new_post_path %>
+        <%= link_to 'Edit', edit_post_path(post) %>
+        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure you want to delete this post?' } %>
+      </div>
+    </div>
+  <% end %>
+</div>
