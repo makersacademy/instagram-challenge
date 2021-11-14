@@ -12,7 +12,39 @@
   </head>
 
   <body>
-    
+    <nav class="navbar navbar-dark bg-primary">
+      <div class="container-fluid">
+        <% if Current.user %>
+        <a class="navbar-brand" href="/"><%= "Welcome, #{Current.user.username}" %></a>
+        <% else %>
+        <a class="navbar-brand" href="/"><%= "Welcome, Guest" %></a>
+        <% end %>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-1 ms-auto mt-1">
+            <div class="hstack gap-1">
+              <li class="nav-item">
+                <%= link_to 'Home', root_path, class: "link-dark"%>
+              </li>
+              <% if Current.user %>
+              <li class="nav-item ms-auto">
+                Not <%="#{Current.user.username}"%>? <%= link_to 'Logout', logout_path, method: :delete, class: "link-dark" %>
+              </li>
+              <% else %>
+              <li class="nav-item ms-auto">
+                <%= link_to 'Sign Up', sign_up_path, class: "link-dark" %> or
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Login', sign_in_path, class: "link-dark" %>
+              </li>
+              <% end %>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
