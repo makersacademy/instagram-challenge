@@ -10,7 +10,8 @@
 
 Browse to: https://gramstaham.herokuapp.com/
 
-### Local
+### Local
+
 ```
 $ git clone git@github.com:s-palmer/instagram-challenge.git
 ```
