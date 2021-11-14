@@ -1,0 +1,40 @@
+<main class="form-signin">
+    <h1 class="h3 mb-3 fw-normal">Please Sign Up</h1>
+      <%= form_with model: @user, url: sign_up_path, local: true do |f| %>
+    <div class="form-floating">
+      <%= f.text_field :username, :class => 'form-control', :id => 'floatingUsername', :placeholder => 'User' %>
+      <label for="floatingUsername">Username</label>
+    </div>
+    <div class="form-floating">
+      <%= f.text_field :first_name, :class => 'form-control', :id => 'floatingFirstName', :placeholder => 'User' %>
+      <label for="floatingFirstName">First Name</label>
+    </div>
+     <div class="form-floating">
+      <%= f.text_field :last_name, :class => 'form-control', :id => 'floatingLastName', :placeholder => 'User' %>
+      <label for="floatingLastName">Last Name</label>
+    </div>
+    <div class="form-floating">
+      <%= f.text_field :email, :class => 'form-control', :id => 'floatingEmail', :placeholder => 'user@example.com' %>
+      <label for="floatingEmail">Email address</label>
+    </div>
+    <div class="form-floating">
+      <%= f.date_field :date_of_birth, :class => 'form-control', :id => 'floatingDate' %>
+      <label for="floatingDate">Date of Birth</label>
+    </div>
+    <div>
+    <%= image_tag f.object.image_url if f.object.cached_image_data %>
+    <%= f.hidden_field :image, value: f.object.cached_image_data %>
+    <%= f.file_field :image , :class => 'form-control', :type => 'file' %>
+    </div>
+    <div class="form-floating">
+      <%= f.password_field :password, :class => 'form-control', :id => 'floatingPassword', :placeholder => 'Password' %>
+      <label for="floatingPassword">Password</label>
+    </div>
+    <div class="form-floating">
+      <%= f.password_field :password_confirmation, :class => 'form-control', :id => 'floatingConfirmation', :placeholder => 'Confirm your password' %>
+      <label for="floatingConfirmation">Confirm your password</label>
+    </div>
+    <%= f.submit 'Sign Up', :class => 'w-100 btn btn-lg btn-primary' %>
+    <% end %>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+</main>
