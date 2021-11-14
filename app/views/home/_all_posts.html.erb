@@ -1,8 +1,9 @@
 <% @posts.reverse_each do |post| %>
 <% user = User.find(post.user_id) %>
   <div class="card mb-2">
-    <div class="card-header">
-      <h4><%= user.username %></h4>
+    <div class="card-header d-flex">
+      <img class="rounded-circle " src="<%= (url_for(user.avatar)) %>" style="object-fit:cover; height:30px; width:30px">
+      <h4 style="margin-left:8px;"><%= user.username %></h4>
     </div>
     <div class="">
       <img class="card-img-top" src="<%= (url_for(post.image)) %>" alt="Card image cap">
@@ -30,11 +31,17 @@
       </div>
     </div>
     <div class="card-body p-8">
-      <p class="card-text"><strong><%= user.username %>: </strong><%= post.caption %></p>
+      <div class="d-flex">
+        <img class="rounded-circle" src="<%= (url_for(user.avatar)) %>" style="object-fit:cover; height:20px; width:20px; ">
+        <p class="card-text" style="margin-left:8px;"><strong><%= user.username %>: </strong><%= post.caption %></p>
+      </div>
       <div class="overflow-auto" style="max-height:60px">
         <% Comment.where({post_id: post.id}).reverse_each do |comment| %>
         <% user = User.find(comment.user_id) %>
-        <p class="card-text"><strong><%= user.username %>: </strong><%= comment.content %></p>
+        <div class="d-flex">
+          <img class="rounded-circle " src="<%= (url_for(user.avatar)) %>" style="object-fit:cover; height:20px; width:20px">
+          <p class="card-text" style="margin-left:8px;"><strong><%= user.username %>: </strong><%= comment.content %></p>
+        </div>
         <% end %>
       </div>
     </div>
