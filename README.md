@@ -36,11 +36,11 @@ I want to be able to write comments on posts
 
 |                                                                  | Tool                                                 | Use?                                       | Where can I see it?                                              |
 | ---------------------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------ | ---------------------------------------------------------------- |
-| <img src="public/images/rspec.png" height="auto" width="50">     | [RSpec](https://rspec.info/)                         | RSpec is a computer domain-specific language testing tool used to test Ruby code.                      | `/spec/*` Unit tests for the app's classes.                      |
-| <img src="public/images/capybara.png" height="auto" width="50">  | [Capybara](https://github.com/teamcapybara/capybara) | Capybara is a web-based test automation software        | `/spec/features/*` Feature testing for the app. e.g. Sign in/out |
-| <img src="public/images/psql.png" height="auto" width="50">      | [PostgreSQL](https://www.postgresql.org)             | PostgreSQL is an open-source relational database management system                  | `/db/migrations/*` In the SQL commands below.                    |
-| <img src="public/images/rails.png" height="auto" width="50">     | [Ruby on Rails](https://rubyonrails.org/)               | Rails is a web-application framework that includes everything needed to create database-backed web applications according to the Model-View-Controller (MVC) pattern. | -----  |
-| <img src="public/images/tailwind.png" height="auto" width="50"> | [Tailwind CSS](https://tailwindcss.com/)               | A utility-first CSS framework      | Frontend design
+| <img src="public/images/rspec.png" height="auto" width="70">     | [RSpec](https://rspec.info/)                         | RSpec is a computer domain-specific language testing tool used to test Ruby code.                      | `/spec/*` Unit tests for the app's classes.                      |
+| <img src="public/images/capybara.png" height="auto" width="70">  | [Capybara](https://github.com/teamcapybara/capybara) | Capybara is a web-based test automation software        | `/spec/features/*` Feature testing for the app. e.g. Sign in/out |
+| <img src="public/images/psql.png" height="auto" width="70">      | [PostgreSQL](https://www.postgresql.org)             | PostgreSQL is an open-source relational database management system                  | `/db/migrations/*` In the SQL commands below.                    |
+| <img src="public/images/rails.png" height="auto" width="70">     | [Ruby on Rails](https://rubyonrails.org/)               | Rails is a web-application framework that includes everything needed to create database-backed web applications according to the Model-View-Controller (MVC) pattern. | -----  |
+| <img src="public/images/tailwind.png" height="auto" width="70"> | [Tailwind CSS](https://tailwindcss.com/)               | A utility-first CSS framework      | Frontend design
 
 ## Workflow
 ```
