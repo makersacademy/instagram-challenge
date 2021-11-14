@@ -12,4 +12,12 @@ feature 'registration' do
 
     expect(page).to have_content 'Welcome, Mr.Test'
   end
+
+  scenario 'failed register' do
+    visit '/'
+    click_link 'Sign Up'
+    click_button 'Submit'
+    
+    expect(page).to have_content "Something went wrong. Please try again"
+  end
 end

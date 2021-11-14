@@ -8,6 +8,7 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-console'
+require 'web_helpers'
 # Add additional requires below this line. Rails is not loaded until this point!
 SimpleCov.start
 
