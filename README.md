@@ -5,6 +5,12 @@
 * Learn how to implement image uploads using ActiveStorage
 
 ## Usage
+
+### Web
+
+Browse to: https://gramstaham.herokuapp.com/
+
+### Local
 ```
 $ git clone git@github.com:s-palmer/instagram-challenge.git
 ```
