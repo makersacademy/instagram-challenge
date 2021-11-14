@@ -12,6 +12,7 @@ Also want to modify images to be B&W before upload
 Tried the above, failed, couldn't extrapolate how to do it from the limited and obscurantist documentation
 Now, the old functionality doesn't work, uploading an image
 In grayscale but only in the front-end html. + and - of this
+39:25, I've avoided using account names, first names, last names, to save time. I've proved the concept, so adding this stuff in is not worth the effort atm
 
 Add in validation so only images can be uploaded
 Do B&W by
@@ -27,6 +28,10 @@ Some html errors in application.html.erb, lines 47/48?
 
 
 User stories
+
+As a user
+So my posts can be attributed to me
+I want to be able to create an account and login
 
 As a user
 So I can show my photography
