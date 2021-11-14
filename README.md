@@ -1,12 +1,11 @@
-Instagram Challenge
-===================
+# Instagram Challenge
 
 ## Instructions
 
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+- Feel free to use Google, your notes, books, etc., but work on your own
+- If you refer to the solution of another coach or student, please put a link to that in your README
+- If you have a partial solution, **still check in a partial solution**
+- You must submit a pull request to this repo with your code by 9am Monday morning
 
 ## Task
 
@@ -23,6 +22,24 @@ Bonus if you can add filters!
 3. Initialize a new rails project
 
 Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+
+## User stories
+
+### User story 1
+
+As a user, I want to be able to log in
+
+### User story 2
+
+As a user, I want to post pictures
+
+### User story 3
+
+As a user, I want to be able to comment on the pictures.
+
+### User story 3
+
+As a user, I want to be able to like the pictures.
 
 ## Code Quality
 
