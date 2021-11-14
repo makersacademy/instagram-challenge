@@ -11,6 +11,7 @@ Background image gradient is essential for the overall look of the site. Spent 1
 Also want to modify images to be B&W before upload 
 Tried the above, failed, couldn't extrapolate how to do it from the limited and obscurantist documentation
 Now, the old functionality doesn't work, uploading an image
+In grayscale but only in the front-end html. + and - of this
 
 Add in validation so only images can be uploaded
 Do B&W by
@@ -23,3 +24,26 @@ The error is inlcuding this line     <%= javascript_include_tag 'application', '
 In application.html.erb, line 10
 
 Some html errors in application.html.erb, lines 47/48?
+
+
+User stories
+
+As a user
+So I can show my photography
+I want to be able to post a picture
+
+As a user
+So I can be cool
+I want all pictures to be converted to B&W automatically
+
+As a user
+So I can quickly give feedback on posts
+I want to be able to like them
+
+As a user
+So I can give detailed feedback on posts
+I want to be able to comment on them
+
+As a developer
+So I can make my application available remotely
+I want to host it externally
