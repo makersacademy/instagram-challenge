@@ -27,6 +27,8 @@ gem 'devise', '~> 4.2'
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
 
+gem 'active_storage_validations'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
@@ -56,6 +58,8 @@ group :test do
   gem 'rubocop', '1.20', require: false
   gem 'rubocop-rails'
   gem 'database_cleaner-active_record'
+  gem 'simplecov', require: false
+  gem 'simplecov-console', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
