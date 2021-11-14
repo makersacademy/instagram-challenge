@@ -13,6 +13,7 @@ Tried the above, failed, couldn't extrapolate how to do it from the limited and 
 Now, the old functionality doesn't work, uploading an image
 In grayscale but only in the front-end html. + and - of this
 39:25, I've avoided using account names, first names, last names, to save time. I've proved the concept, so adding this stuff in is not worth the effort atm
+45:00, creating a different nav bar for those logged in, separate view
 
 Add in validation so only images can be uploaded
 Do B&W by
