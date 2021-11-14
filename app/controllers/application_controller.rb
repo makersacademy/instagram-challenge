@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   def require_user_logged_in!
     unless Current.user
       redirect_to root_url
+      flash[:notice] = "Please log in first."
     end
   end
 

@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to posts_url
     else
-      flash[:alert] = "Invalid email or password."
+      flash.now[:alert] = "Invalid email or password."
       render :new
     end
   end
@@ -18,6 +18,6 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     redirect_to root_path
-    # notice
+    flash[:notice] = "You have logged out."
   end
 end

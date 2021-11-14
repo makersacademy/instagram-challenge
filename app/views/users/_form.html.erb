@@ -6,7 +6,11 @@
 
   <%= form.submit "Sign Up" %>
 
-  <p class="flash-alert"><%= flash[:alert] %></p>
+  <% flash.each do |type, msg| %>
+    <p class="flash-<%= type %>">
+      <%= msg %>
+    </p>
+  <% end %>
 
   <% if user.errors.any? %>
     <article id="error_explanation">
