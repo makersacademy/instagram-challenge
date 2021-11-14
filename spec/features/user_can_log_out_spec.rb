@@ -5,6 +5,6 @@ RSpec.feature "Log Out", type: :feature do
     register
     click_link ("Logout")
 
-    expect(page).to have_content("Signed out successfully.")
+    expect(page).to_not have_content("Test User")
   end
 end
