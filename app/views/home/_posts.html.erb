@@ -1,0 +1,77 @@
+<div class="container mb-5">
+  <p id="notice" class="text-center"><%= notice %></p>
+  <div class="d-flex align-content-center flex-wrap">
+    <% @posts.reverse_each do |post| %>
+      <div class="card m-1" style="width: 300px;">
+        <div class="d-flex justify-content-between p-2 px-3">
+          <div class="d-flex flex-row align-items-center">
+            <% if find_user_avatar(post.user_id).attached? %>
+            <%= image_tag(find_user_avatar(post.user_id), height:"50px", class:"rounded-circle", alt:"avatar") %>
+            <% else %>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZYRo0nQdHum-G5HlyiHSiVYrXlyCQnaX3lA&usqp=CAU" height="50px" class="rounded-circle" alt="avatar">
+            <% end %>
+            <div class="fw-bold mx-2"><%= find_user_name(post.user_id) %></div>
+          </div>
+          <div class="d-flex flex-row mt-1 text-muted">
+            <small class="pe-2"><time><%= display_post_time(post.created_at) %></time></small>
+          </div>
+        </div>
+        <%= image_tag(post.image, class:"card-img") if post.image.attached? %>
+
+        <div class="card-body pb-0">
+          <p class="card-text"><%= post.title %></p>
+          <!--Post buttons-->
+          <div class="d-flex flex-row align-items-center pt-1">
+            <small class="pe-1"><%= link_to 'View', post, class:"text-muted" %></small>
+            <% if current_user %>
+            
+            <% if current_user.id == post.user_id %>
+              <small class="pe-1"><%= link_to 'Edit', edit_post_path(post), class:"text-muted" %></small>
+              <small class="pe-1"><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class:"text-muted" %></small>
+            <% end %>
+            <% end %>
+          </div>
+          <hr>
+          <!--Post like button/comment count-->
+          <div class="d-flex justify-content-between align-items-center">
+            <% if current_user %>
+              <%= link_to like_path(post_id: post.id), method: :post, class:"btn btn-primary btn-sm" do %>
+                <i class="bi bi-hand-thumbs-up"></i> <%= post.likes %> likes
+              <% end %>
+            <% else %>
+              <%= link_to new_user_path, class:"btn btn-primary btn-sm" do %>
+                <i class="bi bi-hand-thumbs-up"></i> <%= post.likes %> likes
+              <% end %>
+            <% end %>
+            <span class="text-muted"><%= post.comments.length %> comments</span>
+          </div>
+          <!--Post comments-->
+          <hr>
+          <small class="pe-1"><%= link_to 'Add Comment', new_comment_path(post_id: post.id), class:"text-muted" %></small>
+          <div class="comments">
+          <% post.comments.reverse_each do |comment| %>
+            <hr>
+            <div class="d-flex flex-row mb-2"> <%= image_tag(find_user_avatar(post.user_id), height:"50px", class:"rounded-circle", alt:"avatar") if find_user_avatar(post.user_id).attached? %>
+              <div class="d-flex flex-column ml-2 mx-2"> 
+                <span class="name"><%= find_user_name(comment.user_id) %></span>
+                <div class="comment-text fw-light"><%= comment.content %></div>
+                  <div class="d-flex flex-row align-items-center pt-1"> 
+                  <% if current_user %>
+                  <% if current_user.id == comment.user_id %>
+                    <small class="pe-1"><%= link_to 'Edit', edit_comment_path(comment), class:"text-muted" %></small>
+                    <small class="pe-1"><%= link_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' }, class:"text-muted" %></small>
+                  <% end %>
+                  <% end %>
+                  <small class="pe-1 text-muted"><time><%= display_post_time(comment.created_at) %></time></small> 
+                  </div>
+              </div>
+            </div>
+          <% end %>
+          </div>
+          <br>
+        </div>
+    </div>
+    <% end %>
+    
+  </div>
+</div>
