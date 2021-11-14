@@ -1,0 +1,60 @@
+<%= form_with(model: user) do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="container">
+    
+    <div class="row">
+    <div class="col-6 mx-auto text-align-center bg-light border rounded-3 p-5 m-5">
+    <legend>Create your account</legend>
+      <div class="form-floating mb-3">
+        <%= form.text_field :first_name, class:"form-control", id:"floatingFirstName", placeholder:"First Name" %>
+        <%= form.label :first_name, for:"floatingFirstName" %>
+      </div>
+
+      <div class="form-floating mb-3">
+        <%= form.text_field :last_name, class:"form-control", id:"floatingLastName", placeholder:"Last Name" %>
+        <%= form.label :last_name, for:"floatingLastName" %>
+      </div>
+
+      <div class="form-floating mb-3">
+        <%= form.email_field :email, class:"form-control", id:"floatingEmail", placeholder:"Email" %>
+        <%= form.label :email, for:"floatingEmail" %>
+      </div>
+
+      <div class="form-floating mb-3">
+        <%= form.password_field :password, class:"form-control", id:"floatingPassword", placeholder:"Password" %>
+        <%= form.label :password, for:"floatingPassword" %>
+      </div>
+
+      <div class="form-floating mb-3">
+        <%= form.password_field :password_confirmation, class:"form-control", id:"floatingPasswordConfirmation", placeholder:"Confirm Password" %>
+        <%= form.label :password_confirmation, for:"floatingPasswordConfirmation" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label "Upload profile picture", class:"form-label" %>
+        <%= form.file_field :avatar, class:"form-control" %>
+      </div>
+
+        <%= form.hidden_field :active, value: true %>
+        <%= form.hidden_field :approved, value: true %>
+        <%= form.hidden_field :confirmed, value: true %>
+
+      <div class="actions">
+        <%= form.submit "Sign-up", class:"btn btn-primary" %>
+      </div>
+
+    </div>
+    </div>
+  </div>
+<% end %>

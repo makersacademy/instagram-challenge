@@ -1,0 +1,34 @@
+<p id="notice" class="text-center"><%= notice %></p>
+
+<%= form_for @user_session, url: user_sessions_url do |f| %>
+  <% if @user_session.errors.any? %>
+  <div class="alert alert-warning"id="error_explanation">
+    <h2><%= pluralize(@user_session.errors.count, "error") %> prohibited:</h2>
+    <ul>
+      <% @user_session.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="container">
+    <div class="row">
+    <div class="col-6 mx-auto text-align-center bg-light border rounded-3 p-5 m-5">
+      <div class="mb-3">
+        <%= f.label :email %>
+        <%= f.email_field :email, class:"form-control", id:"exampleInputEmail1"%>
+      </div>
+      <div class="mb-3">
+        <%= f.label :password %>
+        <%= f.password_field :password, class:"form-control", id:"exampleInputPassword1" %>
+      </div>
+      <div class="mb-3 form-check">
+        <%= f.check_box :remember_me, class:"form-check-input", id:"exampleCheck1" %>
+        <%= f.label :remember_me, class:"form-check-label", for:"exampleCheck1" %>
+      </div>
+      <%= f.submit "Login", class:"btn btn-primary" %>
+    </div>
+    </div>
+  </div>
+<% end %>
