@@ -51,6 +51,10 @@ So I can leave feedback
 I want to be able to write comments on posts
 ```
 
+## Diagramming
+
+![ig_db](https://user-images.githubusercontent.com/10038681/141694620-1737885b-c74d-48fc-9681-8172a074e1ca.png)
+
 ## Stack
 
 |                                                                  | Tool                                                 | Use?                                       | Where can I see it?                                              |
