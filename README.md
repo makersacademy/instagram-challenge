@@ -12,6 +12,13 @@ Also want to modify images to be B&W before upload
 Tried the above, failed, couldn't extrapolate how to do it from the limited and obscurantist documentation
 Now, the old functionality doesn't work, uploading an image
 
+Add in validation so only images can be uploaded
+Do B&W by
+Pre processing, only send bandw to s3
+Pre processing, sending colour and band
+On demand, bandw only created when needed
+Post processing, changing the displayed image to bandw
+
 The error is inlcuding this line     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 In application.html.erb, line 10
 
