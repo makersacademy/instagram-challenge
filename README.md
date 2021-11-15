@@ -1,18 +1,32 @@
+# !! Likes and Comments not yet implemented
+
+Using the app:
+
+```
+git clone https://github.com/ConorButler/instagram-challenge.git
+cd instagram-challenge
+bundle install
+npm install
+rails s
+```
+
+You may need to revert back to an earlier versin of node (16.13).
+
 # User stories:
 ```
-As a User
+✔ As a User
 So that I can share my photo with other people
 I want to post it to instagram
 
-As a User
+✔ As a User
 So that I can mark posts as my own
 I want to sign up and make posts with my username
 
-As a User
+✔ As a User
 So that no one else can post as me
 I want be able to log in with my details and log out when I want
 
-As a User
+✔ As a User
 So that I can see other people's photos and get inspired
 I want to see other posts in a feed
 
@@ -28,31 +42,6 @@ I want to be able to click a button to like a post
 ## Domain Model
 
 ![Domain Model](domain_model.drawio.svg)
-
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 
 Instagram Challenge
 ===================

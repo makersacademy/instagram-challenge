@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.all.order('created_at DESC')
   end
 
   # GET /posts/1 or /posts/1.json
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_url
     else
-      flash[:notice] = "Post could not be submitted."
+      flash.now[:notice] = "Post could not be submitted."
       render :new
     end
   end
@@ -50,7 +50,10 @@ class PostsController < ApplicationController
   def destroy
     check_user_is_author
     # for some reason it doesn't redirect here when post is nil
-    @post.destroy if @post
+    if @post
+      @post.destroy 
+      redirect_back(fallback_location:"/")
+    end 
   end
 
   private

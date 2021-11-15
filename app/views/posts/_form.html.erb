@@ -1,27 +1,40 @@
-<%= form_with(model: post) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-        <% post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<%= form_with(model: post, :html => { :class => "post-form" }) do |form| %>
+  <div class="post-form-left-column">
+    <div class="post-form-image-field">
+      <%= form.label :image %>
+      <%= form.file_field :image %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
   </div>
+  <div class="post-form-right-column">
+    <div class="post-focus-header-container">
+      <div class="post-focus-header">
+        <div class="post-author-info">
+          <%= image_tag("default.jpg", class: "post-author-pic") %>
+          <p class="post-author-name"><%= Current.user.username %></p>
+        </div>
+      </div>
+    </div>
+    <div class="post-form-body-container">
+      <div class="field">
+        <%= form.text_area :caption, class: "post-caption-input", maxlength: 150, placeholder: "Caption your post..." %>
+      </div>
+    </div>
+    <div class="post-form-footer-container">
+      <p id="notice"><%= notice %></p>
+      <% if post.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-  <div class="field">
-    <%= form.label :caption %>
-    <%= form.text_area :caption %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+          <ul>
+            <% post.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    </div>
   </div>
 <% end %>
