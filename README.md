@@ -1,7 +1,6 @@
-# !! Likes and Comments not yet implemented
+# Incomplete !! Likes and Comments not yet implemented, purely cosmetic buttons
 
-Using the app:
-
+Setup:
 ```
 git clone https://github.com/ConorButler/instagram-challenge.git
 cd instagram-challenge
@@ -9,6 +8,11 @@ bundle install
 npm install
 rails s
 ```
+
+## Using the app:
+* Click the plus icon on the navbar to create a new post
+* Click the picture icon on the navbar to log out
+* Click the home icon to go back to the posts feed
 
 You may need to revert back to an earlier versin of node (16.13).
 
