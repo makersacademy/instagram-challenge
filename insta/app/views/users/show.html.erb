@@ -13,11 +13,9 @@
           <button>Edit Profile</button>
         </a>
       </div>
-      <ul class="posts">
-        <li><span>12</span> posts</li>
-        <li><span>195</span> followers</li>
-        <li><span>345</span> following</li>
-      </ul>
+       <ul class="posts">
+        <li><span><%= @posts.count %></span> posts</li> <!--counts user's posts -->
+        </ul>
       <h2 class="name"><%= current_user.name %></h2>
       <%=link_to current_user.website, current_user.website, class: 'website' %>
     </div>
@@ -44,15 +42,11 @@
   </a>
 </div>
 
-<!--3 images from user-->
+<!--user's images-->
 <div class="user-images">
-  <div class="wrapper">
-    <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGljfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80">
-  </div>
-  <div class="wrapper">
-    <img src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F6135e97ba65c269251bef9ef%2FEurope-Covid-19-travel-restrictions%2F0x0.jpg%3FcropX1%3D134%26cropX2%3D1238%26cropY1%3D101%26cropY2%3D760">
-  </div>
-  <div class="wrapper">
-    <img src="https://youmatter.world/app/uploads/sites/2/2019/11/travel-world.jpg">
-  </div>
+  <% @posts.each do |post|%>
+    <div class="wrapper">
+      <%=image_tag post.image %>
+    </div>
+  <% end %>
 </div>
