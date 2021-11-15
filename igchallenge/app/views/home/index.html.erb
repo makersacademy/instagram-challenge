@@ -1,0 +1,35 @@
+<% if Current.user %>
+
+<div class="posts">
+  <% @posts.each do |post| %>
+  <div class="container">
+    <div class="row">
+      <div class="col"></div>
+        <div class="col-8">
+          <div class="card mb-3">
+            <%= image_tag post.image, class: 'card-img-top' %>
+            <div class="card-body">
+              <h5 class="card-title">
+                <%= post.user.username %>
+              </h5>
+              <p class="card-text">
+                <%= post.description %>
+              </p>
+              <p class="card-text">
+                <small class="text-muted">
+                  <!-- TBC Last updated mins ago -->
+                </small>
+              </p>
+            </div>
+          </div>
+        </div>
+      <div class="col"></div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<% else %>
+<h1>IG Challenge</h1>
+<h2>Please sign up and Log in first!</h2>
+<% end %>
