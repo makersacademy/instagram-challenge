@@ -1,51 +1,6 @@
 Instagram Challenge
 ===================
 
-## Features
-- [x] Sign up (with profile picture)
-- [x] Log in/log out using authlogic
-- [x] Create a post with an image
-- [x] Post comments
-- [x] Post likes (logic needs improving)
-- [x] Styled like Instagram using Bootstrap (Main page only so far)
-- [x] Responsive design
-- [ ] Styling missing from multiple pages
-- [ ] Routes not locked down
-- [ ] Testing
-- [ ] Refactoring
-
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-# Original readme
-<details>
-<summary>Click to expand!</summary>
-
-Instagram Challenge
-===================
-
 ## Instructions
 
 * Feel free to use Google, your notes, books, etc., but work on your own
@@ -84,5 +39,3 @@ end
 You can also lint Javascript, CSS, and ERB — feel free to research this. These
 will help you to train yourself to produce cleaner code — and will often alert
 you to mistakes or mishaps!
-
-</details>

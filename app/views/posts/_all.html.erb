@@ -1,0 +1,66 @@
+<p id="notice"><%= notice %></p>
+
+<div class="album">
+  <div class="container px-0">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <% @posts.reverse_each do |post| %>
+      <% user = User.find(post.user_id) %>
+      <div class="col">
+        <div class="card">
+          <div class="card-top d-flex justify-content-between p-2 px-3">
+            <div class="d-flex flex-row align-items-center">
+              <%= link_to user_path(user) do %>
+                <%= avatar_for(user) %>
+              <% end %>
+              <%= link_to user_path(user), class:"text-lowercase fs-6 mx-2 text-decoration-none link-dark" do %>
+                <%= user.first_name %> <%= user.last_name %>
+              <% end %>
+            </div>
+            <div class="dropdown d-flex flex-row mt-1">
+              <a href="#" class="d-block link-dark text-decoration-none" id="dropdownUser2" data-bs-toggle="dropdown">
+                <i class="bi bi-three-dots"></i>
+              </a>
+              <ul class="dropdown-menu text-small">
+                <li><%= link_to 'View', post, class:"dropdown-item" %></li>
+                <li><%= link_to 'Edit', edit_post_path(post), class:"dropdown-item" %></li>
+                <li><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class:"dropdown-item link-danger" %></li>
+              </ul>
+            </div>
+          </div>
+          <%= image_tag post.image if post.image.attached? %>
+          <div class="card-body py-2">
+            <section class="align-middle">
+              <%= link_to like_path(post_id: post.id), method: :post, class:"pe-2 fs-5 link-dark text-decoration-none" do %>
+                <i class="bi bi-heart"></i>
+              <% end %>
+              <%= link_to "/", class:"pe-2 fs-5 link-dark text-decoration-none" do %>
+                <i class="bi bi-chat"></i>
+              <% end %>
+            </section>
+            <div class="small">
+              <section class="mb-1 fw-bold">
+                <%= post.likes %> likes
+              </section>
+              <section class="card-text">
+                <span class="fw-bold"><%= user.first_name %> <%= user.last_name %></span>
+                <%= post.content %>
+              </section>
+              <section class="card-text text-muted">
+                View all <%= post.comments.length %> comments
+              </section>
+              <section class="card-text text-muted fw-light">
+                <%= time_ago_in_words(post.created_at) %>
+              </section>                
+            </div>            
+          </div>
+          <ul class="list-group">
+            <section class="card-body py-2 small">
+              <%= link_to 'Add a comment...', new_comment_path(post_id: post.id), class:"text-decoration-none link-secondary" %>
+            </section>
+          </ul>
+        </div>
+      </div>
+    <% end %>  
+    </div>
+  </div>
+</div>

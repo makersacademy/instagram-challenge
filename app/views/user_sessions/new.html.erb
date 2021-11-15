@@ -1,0 +1,30 @@
+<%= form_for @user_session, url: user_sessions_url do |f| %>
+  <% if @user_session.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user_session.errors.count, "error") %> prohibited:</h2>
+    <ul>
+      <% @user_session.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <div class="col-md-6">
+    <%= image_tag "Instagram_logo.svg", alt:"Instagram", height:"64", class:"d-inline-block align-text-top" %>
+    <div class="form-floating">
+      <%= f.email_field :email, class:"form-control", id:"floatingEmail", placeholder:"Email" %>
+      <%= f.label :email, for:"floatingEmail" %>
+    </div>
+    <div class="form-floating">
+      <%= f.password_field :password, class:"form-control", id:"floatingPassword", placeholder:"Password" %>
+      <%= f.label :password, for:"floatingPassword" %>
+    </div>
+    <div class="checkbox my-3">
+      <%= f.check_box :remember_me, class:"form-check-input" %>
+      <%= f.label :remember_me, class:"form-check-label" %>
+    </div>
+    <%= f.submit "Log in", class:"w-100 btn btn-lg btn-primary" %>
+  </div>
+<% end %>
+
+
