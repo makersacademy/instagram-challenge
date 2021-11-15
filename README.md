@@ -1,6 +1,6 @@
 Instructions
 
-This is an instagram clone. The task description can be found in READMEmakers.md. I decided to come up with a USP, which automatically converts uploaded images to grayscale. This allowed me to extend the functionality and start thinking about the business aspects of app design.
+This is an instagram clone. The task description can be found in READMEmakers.md. I decided to come up with a USP, automatically converting uploaded images to grayscale. This allowed me to extend the functionality and start thinking about the business aspects of app design.
 
 Project is best viewed as the raw code (see comment 6 below). A video demo can be found here https://youtu.be/GDJx7PdG_X0.
 
