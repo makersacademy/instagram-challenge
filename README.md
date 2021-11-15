@@ -6,8 +6,12 @@ git clone https://github.com/ConorButler/instagram-challenge.git
 cd instagram-challenge
 bundle install
 npm install
+rails db:create
+rails db:migrate
 rails s
 ```
+
+You may need to delete your database if it shares the name 'db/instagram(test/development)'.
 
 ## Using the app:
 * Click the plus icon on the navbar to create a new post
