@@ -1,0 +1,55 @@
+<% @posts.reverse_each do |post| %>
+<% user = User.find(post.user_id) %>
+  <div class="card mb-2">
+    <div class="card-header d-flex">
+      <img class="rounded-circle " src="<%= (url_for(user.avatar)) %>" style="object-fit:cover; height:30px; width:30px">
+      <h4 style="margin-left:8px;"><%= user.username %></h4>
+    </div>
+    <div class="">
+      <img class="card-img-top" src="<%= (url_for(post.image)) %>" alt="Card image cap">
+    </div>
+    <div class="card-body p-8 d-flex justify-content-between flex-no-wrap">
+      <div class="">
+        <% if Like.where({post_id: post.id, user_id: current_user.id}).empty? %>
+        <%= button_to 'Like', likes_path(), method: :post, params: {post_id: post.id}, class: "btn btn-sm btn-info" %>
+        <% else %>
+        <% like = Like.find_by({post_id: post.id, user_id: current_user.id}) %>
+        <%= button_to 'Unlike', like, method: :delete, params: {post_id: post.id}, class: "btn btn-sm btn-info" %>
+        <% end %>
+      </div>
+      <div class="align-items-center">
+        <p class="card-text"><%= Like.where({post_id: post.id}).count %> likes</p>
+      </div>
+    </div>
+    <div class="card-body p-8">
+      <div class="d-flex flex-row-reverse">
+        <%= form_tag(comments_path, method: "post", class: "w-100 d-flex") do %>
+          <%= hidden_field_tag :post_id, post.id %>
+          <%= text_field_tag :content, nil, placeholder: 'Leave a nice comment...', class: 'border border-grey rounded w-75' %>
+          <%= submit_tag("Comment", class: 'btn border border-grey', style: "font-size:10px")  %>
+        <% end %>
+      </div>
+    </div>
+    <div class="card-body p-8">
+      <div class="d-flex">
+        <img class="rounded-circle" src="<%= (url_for(user.avatar)) %>" style="object-fit:cover; height:20px; width:20px; ">
+        <p class="card-text" style="margin-left:8px;"><strong><%= user.username %>: </strong><%= post.caption %></p>
+      </div>
+      <div class="overflow-auto" style="max-height:60px">
+        <% Comment.where({post_id: post.id}).reverse_each do |comment| %>
+        <% user = User.find(comment.user_id) %>
+        <div class="d-flex">
+          <img class="rounded-circle " src="<%= (url_for(user.avatar)) %>" style="object-fit:cover; height:20px; width:20px">
+          <p class="card-text" style="margin-left:8px;"><strong><%= user.username %>: </strong><%= comment.content %></p>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <% if current_user && current_user.id == post.user_id %>
+    <div class="card-footer d-flex justify-content-around">
+        <button class="card-text btn btn-outline-info mr-5"><%= link_to 'Edit', edit_post_path(post) %></button>
+        <button class="card-text btn btn-outline-danger"><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+    </div>
+    <% end %>
+  </div>
+<% end %>

@@ -1,41 +1,34 @@
-Instagram Challenge
-===================
+# README
 
-## Instructions
+## User Stories
 
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+* As a user, I would like to be able to sign up and login
+* As a user, I would like to be able to post pictures
+* As a user, I would like to be able to see a feed of posted pictures by most recent
+* As a user, I would like to be able to like pictures I see
+* As a user, I would like to be able to comment on pictures I see
 
-## Task
 
-Build Instagram: Simple huh!
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-Bonus if you can add filters!
+Things you may want to cover:
 
-## How to start
+* Ruby version
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+* System dependencies
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+* Configuration
 
-## Code Quality
+* Database creation
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+* Database initialization
 
-```ruby
-group :development, :test do
-  gem 'rubocop', '1.20', require: false
-  gem 'rubocop-rails'
-end
-```
+* How to run the test suite
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...

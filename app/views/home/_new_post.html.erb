@@ -1,0 +1,15 @@
+<div class="m-2 mt-0 p-1 border border-info rounded">
+  <h6>New Post:</h6>
+  <%= form_with(url:posts_path, class: 'justify-content-center w-100 p-1') do |form| %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <div class="field">
+      <%= form.file_field(:image, class: "btn btn-sm btn-dark mw-100", style: "font-size:10px", required: true) %>
+    </div>
+    <div class="field">
+      <%= form.text_area(:caption, placeholder: "How should I caption this...", class: "w-100 text-wrap overflow-auto", style: "font-size:10px; height:50px") %>
+    </div>
+    <div class="actions d-flex justify-content-center">
+      <%= form.submit('Post', style: "font-size:10px") %>
+    </div>
+  <% end %>
+</div>
