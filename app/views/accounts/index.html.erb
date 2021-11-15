@@ -2,12 +2,25 @@
   <div class="row">
     <div class="col-8">
       <% @posts.each do |post| %>
-        <div class="text-white">
-        <br>
-        <%= post.account.email %>
-        </div>
+                  <div class="text-white">
+                    <br>
+                    <%= post.account.email %>
+                  </div>
         
         <%= image_tag post.image.url, class: "img img-fluid"  %>
+
+        <div class="text-white">
+        <%= render "posts/comments", post: post %>
+        </div>
+        
+        <div class="comment-box">
+          <%= form_for @comment do |f| %>
+            <%= f.hidden_field :post_id, value: post.id %>
+            <%= f.text_field :content, placeholder: "Add comment here..." %>
+            <%= f.submit "Post", class: "btn btn-light float-right" %>
+          <% end %>
+        </div>
+
       <% end %>
     </div>
   </div>

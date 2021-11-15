@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   
   get "/dashboard" => "accounts#index"
 
+  # get "/accounts/sign_out" => "public#homepage"
+
   resources :posts, only: [:new, :create, :show]
+
+  resources :comments, only: [:create]
+
 
   root to: "public#homepage"
 end
