@@ -30,7 +30,7 @@ For code quality:
 To start the server
 * `rails server`
 
-* Navigate to:
+Navigate to:
 * `http://localhost:3000/`
 
 User stories:
