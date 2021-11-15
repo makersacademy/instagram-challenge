@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :name, :website, :bio, :email, :phone, :gender)
+    params.require(:user).permit(:username, :name, :website, :bio, :email, :phone, :gender, :avatar) #avatar added
   end
   #Rails Strong Parameters: we permit these params.  If they aren't permitted, it will be blocked for security
 

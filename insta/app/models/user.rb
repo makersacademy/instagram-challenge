@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts, dependent: :destroy #when User is deleted, User's Posts are also deleted
+
+  has_one_attached :avatar
 end
