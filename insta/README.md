@@ -9,23 +9,19 @@ npm install
 rails db:create
 rails db:migrate
 rails s
+```
+
+Features
+```
+login/logout
+edit profile works, click on the user icon to change profile
 
 ```
 
-* Ruby version
+Features
+```
+show posts
+likes/comments
+friendship adding
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
