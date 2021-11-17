@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Chitter</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="topnav">
+      <a href="/posts">Posts</a>
+      <% if(session.authenticated){ %>
+      <a href="/logout" class="nav-item nav-link">Logout</a>
+      <% } else{ %>
+      <a href="/login" class="nav-item nav-link">Login</a>
+      <a href="/signup" class="nav-item nav-link">Sign up</a>
+      <% } %>
+    </div>
+    <div class="user-greeting">
+      <% if(session.authenticated){ %>
+      <h1>Hello, <%= session.user.username %>!</h1>
+      <% } else{ %>
+      <h1>Hello!</h1>
+      <% } %>
+    </div>
+    <div class="box">
+      <div class="box-content">
+        <p><%= selectedPost.text %></p>
+        <p><%= selectedPost.username %></p>
+        <p><%= selectedPost.createdDate %></p>
+        <p><%= numberOfLikes %> Likes</p>
+        <form
+          id="newLike"
+          action="/posts/<%= selectedPost.id %>/like/new"
+          method="POST"
+        >
+          <input type="submit" value="Like" />
+        </form>
+
+        <% if(session.authenticated){ %>
+        <form
+          class="comment-form"
+          id="newComment"
+          action="/posts/<%= selectedPost.id %>/comment/new"
+          method="POST"
+        >
+          <input type="text" id="newCommentText" name="newCommentText" />
+          <br />
+          <input type="submit" value="Comment" />
+          <br /><br />
+        </form>
+        <% } else{ %>
+        <div class="welcome-user">
+          If you want to leave a comment, <a href="/signup">sign up</a> or
+          <a href="/login">log in</a> :) <br /><br />
+        </div>
+
+        <% } %> <% comments.forEach((comment)=>{ %>
+        <div class="each-post">
+          <p><%= comment.text %></p>
+          <p>Posted by <i><%= comment.username %></i></p>
+          <p><%= comment.createdDate %></p>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </body>
+</html>
