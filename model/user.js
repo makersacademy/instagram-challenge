@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable comma-dangle */
 const usersDatabase = require("./databaseLogic/usersDatabase");
 
@@ -8,16 +9,16 @@ class User {
 
   async addUser(username, password, email) {
     // extract out this logic if possible
-    if (User.isThereAnyBlankInputs(username, email) === true) {
+    if (User._isThereAnyBlankInputs(username, email) === true) {
       throw new Error("Please fill in all boxes");
     }
-    if ((await this.isUsernameTaken(username)) === true) {
+    if ((await this._isUsernameTaken(username)) === true) {
       throw new Error("username already in use");
     }
-    if ((await this.isEmailTaken(email)) === true) {
+    if ((await this._isEmailTaken(email)) === true) {
       throw new Error("email already in use");
     }
-    if (User.isPasswordTooShort(password) === true) {
+    if (User._isPasswordTooShort(password) === true) {
       throw new Error("password needs to be at least 8 characters");
     }
     const newUser = await this.usersDatabaseClass.addUser(
@@ -48,23 +49,23 @@ class User {
     };
   }
 
-  async isUsernameTaken(username) {
+  async _isUsernameTaken(username) {
     const existingUsers = await this.usersDatabaseClass.findByUsername(
       username
     );
     return existingUsers.length > 0;
   }
 
-  async isEmailTaken(email) {
+  async _isEmailTaken(email) {
     const existingUsers = await this.usersDatabaseClass.findByEmail(email);
-    return existingUsers.length;
+    return existingUsers.length > 0;
   }
 
-  static isPasswordTooShort(password) {
+  static _isPasswordTooShort(password) {
     return password.length < 8;
   }
 
-  static isThereAnyBlankInputs(username, email) {
+  static _isThereAnyBlankInputs(username, email) {
     return username === "" || email === "";
   }
 }

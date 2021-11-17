@@ -1,9 +1,9 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable comma-dangle */
 const User = require("../model/user");
 
 describe("User", () => {
   let usersDatabaseMock;
-  let usersDatabaseMockWithNoUser;
   let userInstance;
   let mockUsersData;
 
@@ -42,30 +42,38 @@ describe("User", () => {
       });
     });
 
-    it("should return false for incorrect username", async () => {
+    it("should return throw correct error for incorrect username", async () => {
       usersDatabaseMock.findByUsername.and.callFake(() => []);
-      const authenticatedUser = await userInstance.authenticate(
-        "wrongusername",
-        "test"
-      );
-      expect(authenticatedUser).toEqual("incorrect username");
+      let error;
+      try {
+        await userInstance.authenticate("wrong username", "test");
+      } catch (e) {
+        error = e;
+      }
+      const expectedError = new Error("incorrect username");
+      expect(error).toEqual(expectedError);
     });
 
-    it("should return false for incorrect password", async () => {
-      const authenticatedUser = await userInstance.authenticate(
-        "test",
-        "wrong password"
-      );
-      expect(authenticatedUser).toEqual("incorrect password");
+    it("should return throw correct error for incorrect password", async () => {
+      let error;
+      try {
+        await userInstance.authenticate("test", "wrong password");
+      } catch (e) {
+        error = e;
+      }
+      const expectedError = new Error("incorrect password");
+      expect(error).toEqual(expectedError);
     });
   });
 
   describe("#addUser", () => {
     it("should call correct method in usersDb with correct argument", async () => {
-      await userInstance.addUser("test", "test", "test@test");
+      usersDatabaseMock.findByUsername.and.callFake(() => []);
+      usersDatabaseMock.findByEmail.and.callFake(() => []);
+      await userInstance.addUser("test", "test2test", "test@test");
       expect(usersDatabaseMock.addUser).toHaveBeenCalledWith(
         "test",
-        "test",
+        "test2test",
         "test@test"
       );
     });
@@ -73,11 +81,11 @@ describe("User", () => {
 
   describe("#isUsernameTaken", () => {
     it("should return true since username is already taken", async () => {
-      expect(await userInstance.isUsernameTaken("test")).toEqual(true);
+      expect(await userInstance._isUsernameTaken("test")).toEqual(true);
     });
     it("should return false since username is already taken", async () => {
       usersDatabaseMock.findByUsername.and.callFake(() => []);
-      expect(await userInstance.isUsernameTaken("test-not-take")).toEqual(
+      expect(await userInstance._isUsernameTaken("test-not-take")).toEqual(
         false
       );
     });
@@ -85,11 +93,11 @@ describe("User", () => {
 
   describe("#isEmailTaken", () => {
     it("should return true since email is already taken", async () => {
-      expect(await userInstance.isEmailTaken("test@test")).toEqual(true);
+      expect(await userInstance._isEmailTaken("test@test")).toEqual(true);
     });
     it("should return false since username is already taken", async () => {
       usersDatabaseMock.findByEmail.and.callFake(() => []);
-      expect(await userInstance.isEmailTaken("test-not-taken@test")).toEqual(
+      expect(await userInstance._isEmailTaken("test-not-taken@test")).toEqual(
         false
       );
     });
@@ -97,33 +105,33 @@ describe("User", () => {
 
   describe("#isPasswordTooshot", () => {
     it("should return true when password above 8 characters", async () => {
-      expect(User.isPasswordTooShort("passwordisok")).toEqual(false);
+      expect(User._isPasswordTooShort("passwordisok")).toEqual(false);
     });
     it("should return true when password is 8 characters", async () => {
-      expect(User.isPasswordTooShort("password")).toEqual(false);
+      expect(User._isPasswordTooShort("password")).toEqual(false);
     });
     it("should return false when password is below 8 characters", async () => {
-      expect(User.isPasswordTooShort("2short")).toEqual(true);
+      expect(User._isPasswordTooShort("2short")).toEqual(true);
     });
   });
 
   describe("#isThereAnyBlankInputs", () => {
     it("should return true when username is blank", async () => {
-      expect(User.isThereAnyBlankInputs("", "test@test")).toEqual(true);
+      expect(User._isThereAnyBlankInputs("", "test@test")).toEqual(true);
     });
 
     it("should return false when username is not blank", async () => {
-      expect(User.isThereAnyBlankInputs("notblank", "test@test")).toEqual(
+      expect(User._isThereAnyBlankInputs("notblank", "test@test")).toEqual(
         false
       );
     });
 
     it("should return true when email is blank", async () => {
-      expect(User.isThereAnyBlankInputs("test", "")).toEqual(true);
+      expect(User._isThereAnyBlankInputs("test", "")).toEqual(true);
     });
 
     it("should return false when email is not blank", async () => {
-      expect(User.isThereAnyBlankInputs("test", "notblank")).toEqual(false);
+      expect(User._isThereAnyBlankInputs("test", "notblank")).toEqual(false);
     });
   });
 });
