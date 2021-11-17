@@ -25,7 +25,7 @@ Then repeat the above for the test database: `chitter_v2_test`
 You might want to create some initial data:
 
 ```
-INSERT INTO users(username, password, email) VALUES('test-user', 'Password1', 'test@test.com');
+INSERT INTO users(username, password, email) VALUES('test', 'Password', 'test@test.com');
 INSERT INTO posts(text, user_id) VALUES('this is the first post of chitter', 1);
 INSERT INTO comments(text, post_id, user_id) VALUES('this is the first comment', 1, 1);
 INSERT INTO likes(post_id, user_id) VALUES(1, 1);
@@ -54,7 +54,7 @@ To install nodemon on your machine, run the following command:
 
 To run the app, run the following command:
 
-`nodemon app.js`
+`npm start`
 
 Visit http://localhost:3000/
 
@@ -71,7 +71,9 @@ Visit http://localhost:3000/
 
 ### Running tests with Cypress
 
-`npx cypress open`
+You will need to have mozilla firefox downloaded in order for cypress tests to work
+
+`npm run cypress:open`
 
 ## User Stories
 
