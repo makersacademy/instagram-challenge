@@ -5,7 +5,7 @@ describe("Posts", () => {
     beforeEach(() => {
       cy.visit("http://localhost:3000/login");
       cy.get("#username").type("test");
-      cy.get("#password").type("test");
+      cy.get("#password").type("Password");
       cy.get("#loginUser").submit();
     });
 

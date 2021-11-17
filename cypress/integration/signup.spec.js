@@ -33,7 +33,7 @@ describe("The Signup Page", () => {
   it("notifies user when email already exists", () => {
     cy.get("#username").type(createRandomString(8));
     cy.get("#password").type("blahdeblah");
-    cy.get("#email").type("test@test");
+    cy.get("#email").type("test@test.com");
     cy.get("#newUser").submit();
     cy.contains("email already in use");
   });
