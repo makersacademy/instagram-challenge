@@ -52,32 +52,20 @@ class User {
     const existingUsers = await this.usersDatabaseClass.findByUsername(
       username
     );
-    if (existingUsers.length > 0) {
-      return true;
-    }
-    return false;
+    return existingUsers.length > 0;
   }
 
   async isEmailTaken(email) {
     const existingUsers = await this.usersDatabaseClass.findByEmail(email);
-    if (existingUsers.length > 0) {
-      return true;
-    }
-    return false;
+    return existingUsers.length;
   }
 
   static isPasswordTooShort(password) {
-    if (password.length < 8) {
-      return true;
-    }
-    return false;
+    return password.length < 8;
   }
 
   static isThereAnyBlankInputs(username, email) {
-    if (username === "" || email === "") {
-      return true;
-    }
-    return false;
+    return username === "" || email === "";
   }
 }
 
