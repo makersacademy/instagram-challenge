@@ -6,7 +6,9 @@
 
 Below are the steps to set everything up locally:
 
-# Create Database
+# Set up locally
+
+## Create Database
 
 In `psql` or `TablePlus` run the following query:
 
