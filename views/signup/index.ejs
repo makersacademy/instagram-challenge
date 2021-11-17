@@ -14,10 +14,11 @@
     <form id="newUser" action="/signup" method="POST">
       <div class="box">
         <h1>Sign up</h1>
-        <% if(message.length > 0){ %>
-          <div>
-            <%= message %>
-          <% } %>
+        <div>
+          <% if(errors.length > 0) { %> <%errors.forEach((item) => { %>
+          <div class="alert-danger"><%= item %></div>
+          <%})%> <%}%>
+        </div>
         <input
           type="text"
           id="username"

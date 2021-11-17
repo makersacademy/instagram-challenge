@@ -7,6 +7,19 @@ class User {
   }
 
   async addUser(username, password, email) {
+    // extract out this logic if possible
+    if (User.isThereAnyBlankInputs(username, email) === true) {
+      throw new Error("Please fill in all boxes");
+    }
+    if ((await this.isUsernameTaken(username)) === true) {
+      throw new Error("username already in use");
+    }
+    if ((await this.isEmailTaken(email)) === true) {
+      throw new Error("email already in use");
+    }
+    if (User.isPasswordTooShort(password) === true) {
+      throw new Error("password needs to be at least 8 characters");
+    }
     const newUser = await this.usersDatabaseClass.addUser(
       username,
       password,
@@ -23,7 +36,7 @@ class User {
   async authenticate(username, password) {
     const result = await this.usersDatabaseClass.findByUsername(username);
     if (result.length === 0) {
-      throw "incorrect username";
+      throw new Error("incorrect username");
     }
     if (result[0].password !== password) {
       throw new Error("incorrect password");
