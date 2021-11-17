@@ -23,10 +23,10 @@ class User {
   async authenticate(username, password) {
     const result = await this.usersDatabaseClass.findByUsername(username);
     if (result.length === 0) {
-      return "incorrect username";
+      throw "incorrect username";
     }
     if (result[0].password !== password) {
-      return "incorrect password";
+      throw new Error("incorrect password");
     }
     return {
       id: result[0].id,
