@@ -38,7 +38,7 @@ I want to sign up for an account.
 
 As a user,
 So that I can access and create my own content,
-I want to log in to my account uisng my email.
+I want to log in to my account uisng my username.
 
 As a user,
 So that I only I can access my account,
@@ -54,7 +54,7 @@ I want to be able to like a post.
 
 As a user,
 So that I can access my account more flexibly,
-I want to be able to login with a phone number or username.
+I want to be able to login with an email or phone number.
 
 As a user,
 So that I can personalise the content that I see,
@@ -62,8 +62,42 @@ I want to follow other users.
 
 As a user,
 So that I can describe my content,
-I want to be able to add a description to my photo.
+I want to be able to add a caption to my photo.
 
+As a user,
+So that I can make my photos look great,
+I want to be able to add a filter.
+
+As a user,
+So that I can see what has been posted, 
+I want to be able to see a list of all posts,
+
+As a user,
+So people know which post is mine,
+I want my username to be displayed with my post.
+
+As a user,
+So that I can see what has been posted,
+I want to see all my posts.
+
+As a user,
+So that I can remove unwanted content,
+I want to be able to delete my post.
+```
+
+Routing
+
+```
+instagram.com's routing:
+/
+/create/select
+/create/style
+/create/details - This is where you add the caption. Has a share post button
+/create/upload - "Your post has been shared"
+
+/accounts/emailsignup
+
+ 
 ```
 
 ## How I appraoched this challenge
@@ -74,6 +108,17 @@ I want to be able to add a description to my photo.
 - Draft user stories
 
 
+## My developer practice
+- Used toggl to track my time
+- Used a pomodoro timer to ensure I took regular breaks
+
+
+## Reflections
+
+
+## Questions
+
+## Next time I would:
 
 ## Code Quality
 
