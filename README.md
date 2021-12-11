@@ -106,10 +106,11 @@ instagram.com's routing:
 
 ## How I appraoched this challenge
 
-1. Planning
+1. Planning (1h 25m)
 - Made a Trello board using the Acebook Challenge template board.
 - Looked at Instagram website to see how it worked from a user's perspective
 - Draft user stories
+- Mockup the site
 
 
 ## My developer practice
