@@ -100,6 +100,10 @@ instagram.com's routing:
  
 ```
 
+## Mockup
+
+
+
 ## How I appraoched this challenge
 
 1. Planning
@@ -111,6 +115,7 @@ instagram.com's routing:
 ## My developer practice
 - Used toggl to track my time
 - Used a pomodoro timer to ensure I took regular breaks
+- Commit regularily
 
 
 ## Reflections
