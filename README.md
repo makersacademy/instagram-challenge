@@ -24,6 +24,7 @@ Code quality: RuboCop
 ```
 bin/rails db:create
 bin/rails db:migrate
+RAILS_ENV=test bin/rails db:migrate - is there a better way to do this?
 ```
 
 4. Start the web server from the terminal
