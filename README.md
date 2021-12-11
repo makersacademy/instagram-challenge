@@ -21,8 +21,59 @@ Bonus if you can add filters!
 1. Produce some stories, break them down into tasks, and estimate
 2. Fork this repo, clone, etc
 3. Initialize a new rails project
+4. Sketch mockups
 
 Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+
+## User Stories
+
+```
+As a user,
+So that I can share my content,
+I want to be able to post a photo.
+
+As a user,
+So that I can keep my content secure,
+I want to sign up for an account.
+
+As a user,
+So that I can access and create my own content,
+I want to log in to my account uisng my email.
+
+As a user,
+So that I only I can access my account,
+I want to be able to log out.
+
+As a user,
+So that I can interact with my friends,
+I want to be able to write a comment on a post.
+
+As a user,
+So that I can show which photos I like,
+I want to be able to like a post.
+
+As a user,
+So that I can access my account more flexibly,
+I want to be able to login with a phone number or username.
+
+As a user,
+So that I can personalise the content that I see,
+I want to follow other users.
+
+As a user,
+So that I can describe my content,
+I want to be able to add a description to my photo.
+
+```
+
+## How I appraoched this challenge
+
+1. Planning
+- Made a Trello board using the Acebook Challenge template board.
+- Looked at Instagram website to see how it worked from a user's perspective
+- Draft user stories
+
+
 
 ## Code Quality
 
