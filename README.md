@@ -11,8 +11,8 @@ Code quality: RuboCop
 1. Make a clone of this repo on your local machine using
 `git clone https://github.com/katemyoung/instagram-challenge.git`
 
-2. Navigate to the `instagram` directory
-`cd ./instagram-challenge/instagram`
+2. Navigate to the `instagram-challenge` directory
+`cd instagram-challenge `
 
 3. Check you have the required ruby, sqlite3, node, yarn and rails versiovs installed. (Link to getting started)
 
