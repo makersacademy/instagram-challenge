@@ -144,6 +144,9 @@ instagram.com's routing:
 - Mockup the site
 - Estimate first feature (post photos) and create acceptance criteria
 
+2. Set up Rails app (1h 40m)
+
+3. TDD features
 
 ## My developer practice
 - Used toggl to track my time
