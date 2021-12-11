@@ -148,6 +148,7 @@ instagram.com's routing:
 2. Set up Rails app (1h 40m)
 
 3. TDD features
+- post a photo (1h 20m so far)
 
 ## My developer practice
 - Used toggl to track my time
