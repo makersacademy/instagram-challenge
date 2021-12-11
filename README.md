@@ -20,7 +20,11 @@ Code quality: RuboCop
 `bundle install`
 
 4. Set up the databases
-(details here)
+(details here - both necessary?)
+```
+bin/rails db:create
+bin/rails db:migrate
+```
 
 4. Start the web server from the terminal
 `bin/rails server`
@@ -29,7 +33,7 @@ Code quality: RuboCop
 
 ## How to run the test suite
 
-
+`bundle exec rspec`
 
 ## How I would complete this project
 
