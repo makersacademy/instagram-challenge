@@ -2,5 +2,20 @@
 
 <h1>Welcome, <%= name %></h1>
 
+<% if user_signed_in? %>
+  <h2>Posts: </h2>
+  <div>
+  <% @posts.each do |post| %>
+    <div>
+      <%= link_to post.caption, post %>
+    </div><br>
+  <% end %>
+</div>
+<br>
+<br>
+<%= link_to new_post_path do %>
+  New post
+<% end %>
+<% end %>
 
 
