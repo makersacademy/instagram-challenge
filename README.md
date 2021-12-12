@@ -1,12 +1,24 @@
-Instagram Challenge
-===================
+# Instagram Challenge
+
+User can sign up, sign in and sign out. Also, user can post an image with a caption and add a comment. Posts appear with the newest post first.
+
+I still need to work on TDD, styling and add a feature to like a picture. Also, I need to add an association between user and posts which I tried to do but unsuccessfully.
+
+# Technologies used:
+
+- Git
+- GitHub
+- Ruby
+- Ruby on Rails
+- CSS
+- HTML
 
 ## Instructions
 
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+- Feel free to use Google, your notes, books, etc., but work on your own
+- If you refer to the solution of another coach or student, please put a link to that in your README
+- If you have a partial solution, **still check in a partial solution**
+- You must submit a pull request to this repo with your code by 9am Monday morning
 
 ## Task
 

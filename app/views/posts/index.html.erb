@@ -1,0 +1,24 @@
+<% name = current_user.present? ? current_user.email : "Stranger" %>
+
+<h1>Welcome, <%= name %></h1>
+
+<% if user_signed_in? %>
+  <h2>Posts: </h2>
+  <div>
+  <% @posts.each do |post| %>
+    <div>
+      <%= link_to post.caption, post %>
+        <% if post.image.attached? %>
+         <image src="<%=(url_for(post.image))%>">
+        <% end %>
+    </div><br>
+  <% end %>
+</div>
+<br>
+<br>
+<%= link_to new_post_path do %>
+  New post
+<% end %>
+<% end %>
+
+
