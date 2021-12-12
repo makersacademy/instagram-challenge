@@ -1,0 +1,33 @@
+<br>
+<div>
+  <h4>Post:</h4>
+    <p><%= @post.title %></p>
+    <% if @post.image.attached? %>
+    <image class="image" src="<%=(url_for(@post.image))%>">
+    <% end %>
+</div><br>
+
+<div>
+<h4>Comments:</h4>
+<% @post.comments.each do |comment| %>
+  <ul class="list-group">
+   <li class="list-group-item">
+      <strong>Comment:</strong>
+      <%= comment.body %>
+    </li>
+  </ul>
+<% end %>
+</div><br><br>
+
+<div>
+<h4>Add a comment:</h4>
+<%= form_with model: [ @post, @post.comments.build ] do |form| %>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+</div>
