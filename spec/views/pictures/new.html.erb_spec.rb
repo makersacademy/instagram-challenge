@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "pictures/create.html.erb", type: :view do
+RSpec.describe "pictures/new.html.erb", type: :view do
   pending 
   it 'displays an create new post form' do
     render
