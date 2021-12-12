@@ -1,13 +1,6 @@
 Instagram Challenge
 ===================
 
-## Instructions
-
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
 ## Task
 
 Build Instagram: Simple huh!
@@ -16,26 +9,63 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 
 Bonus if you can add filters!
 
-## How to start
+## User stories
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+**Completed stories:**
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-group :development, :test do
-  gem 'rubocop', '1.20', require: false
-  gem 'rubocop-rails'
-end
+```
+As a developer
+I want a basic rails app up and running
+So that I can implement features for users
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+```
+As a user
+I want to post some text
+So that other people can see my post
+```
+
+```
+As a user
+I want to comment on someone else's post
+So that I can react to the content of someone else's post
+```
+
+```
+As a user
+I want to add an image to my post
+So that other people can see the image
+```
+
+**Not started stories:**
+
+```
+As a user
+I want to like someone else's posts
+So that I can react to the content of someone else's post
+```
+
+```
+As a user
+I want to sign up and log in
+So that I can create my own posts and react to other people's posts
+```
+
+## Technology used
+Ruby on Rails
+RSpec
+DatabaseCleaner
+Orderly
+Bootstrap
+Capybara
+SimpleCov
+Git
+Github
+
+## Instructions
+1. Clone this repository
+2. Run `bundle install`
+3. Run `bin/rails db:create`
+4. Run `bin/rails db:migrate`
+5. Run `bundle exec rspec`
+6. Run `bin/rails server`
