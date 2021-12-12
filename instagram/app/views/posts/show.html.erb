@@ -1,19 +1,23 @@
-<div class="d-flex align-item-center justify-content-center">
-<h1><%= @post.title %></h1>
-</div>
+<br>
+<div>
+<h4>Post:</h4>
+<p><%= @post.title %></p>
+</div><br>
 
 <div>
-<h2>Comments</h2>
+<h4>Comments:</h4>
 <% @post.comments.each do |comment| %>
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
+  <ul class="list-group">
+   <li class="list-group-item">
+      <strong>Comment:</strong>
+      <%= comment.body %>
+    </li>
+  </ul>
 <% end %>
-</div>
+</div><br><br>
 
 <div>
-<h2>Add a comment:</h2>
+<h4>Add a comment:</h4>
 <%= form_with model: [ @post, @post.comments.build ] do |form| %>
   <p>
     <%= form.label :body %><br>
