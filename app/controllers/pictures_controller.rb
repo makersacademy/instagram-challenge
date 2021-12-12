@@ -3,7 +3,11 @@ class PicturesController < ApplicationController
     @pictures = Picture.all
   end
 
+  def new
+  end
+
   def create
+    redirect_to root_path
   end
   
   private
