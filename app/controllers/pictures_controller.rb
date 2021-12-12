@@ -5,4 +5,9 @@ class PicturesController < ApplicationController
 
   def create
   end
+  
+  private
+  def picture_params 
+    params.require(:image).permit(:caption)
+  end
 end
