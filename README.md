@@ -3,8 +3,8 @@ Instagram Challenge
 
 This is my Instagram clone in Rails made over the weekend following Week 8 of Makers Acacdemy.
 
-Test coverage: SimpleCov
-Code quality: RuboCop
+Test coverage: SimpleCov. Models: 100%, Controllers: 93%. Load coverage/index.html in a browser for full report.
+Code quality: RuboCop (not run yet)
 
 ## How to explore this project
 
@@ -30,14 +30,18 @@ RAILS_ENV=test bin/rails db:migrate - is there a better way to do this?
 4. Start the web server from the terminal
 `bin/rails server`
 
-5. In a browser, navigate to localhost:3000 and expore the app! You can ... (completed feature list here )
+5. In a browser, navigate to localhost:3000 and expore the app! You can 
+- add a picture
+- add a caption for a picture
+- see the pictures that have been added
 
 ## How to run the test suite
 
-`bundle exec rspec`
+`rspec`
+
+Load coverage/index.html in a browser for full code coverage report.
 
 ## How I would complete this project
-
 
 ## Task
 
@@ -138,6 +142,8 @@ instagram.com's routing:
 ## How I appraoched this challenge
 (link to Trello board?)
 
+Time so far: 9 hours
+
 1. Planning (1h 40m)
 - Made a Trello board using the Acebook Challenge template board.
 - Looked at Instagram website to see how it worked from a user's perspective
@@ -148,7 +154,7 @@ instagram.com's routing:
 2. Set up Rails app (1h 40m)
 
 3. TDD features
-- post a photo (1h 20m so far)
+- post a photo (4h 20m so far) this included some troubleshooting of set up of new computer
 
 ## My developer practice
 - Used toggl to track my time
@@ -161,28 +167,12 @@ instagram.com's routing:
 
 ## Reflections
 
-
 ## Questions
 
 ## Next time I would:
 
-## Code Quality
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-group :development, :test do
-  gem 'rubocop', '1.20', require: false
-  gem 'rubocop-rails'
-end
-```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
-
-Test photo credits:
+## Test photo credits:
 Photo by <a href="https://unsplash.com/@oulashin?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Sean Oulashin</a> on <a href="https://unsplash.com/s/photos/beach?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
    
 Photo by <a href="https://unsplash.com/@mike?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Mike Kotsch</a> on <a href="https://unsplash.com/s/photos/winter?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
