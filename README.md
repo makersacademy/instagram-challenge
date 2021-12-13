@@ -1,7 +1,7 @@
 Instagram Challenge
 ===================
 
-This is my Instagram clone in Rails made over the weekend following Week 8 of Makers Acacdemy.
+This is my Instagram clone in Rails made over the weekend following Week 8 of Makers Acacdemy. I Implemented the user story features: add a photo, see photos and add a caption.
 
 **Test coverage:** SimpleCov. Models: 100%, Controllers: 93%. Load coverage/index.html in a browser for full report.
 
@@ -53,6 +53,10 @@ So that I can share my content,
 I want to be able to post a photo.
 
 As a user,
+So that I can see what has been posted, 
+I want to be able to see a display of all posts.
+
+As a user,
 So that I can keep my content secure,
 I want to sign up for an account.
 
@@ -81,16 +85,8 @@ So that I can personalise the content that I see,
 I want to follow other users.
 
 As a user,
-So that I can describe my content,
-I want to be able to add a caption to my photo.
-
-As a user,
 So that I can make my photos look great,
 I want to be able to add a filter.
-
-As a user,
-So that I can see what has been posted, 
-I want to be able to see a list of all posts,
 
 As a user,
 So people know which post is mine,
