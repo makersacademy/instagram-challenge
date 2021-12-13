@@ -1,0 +1,16 @@
+<%= link_to "New Post", new_post_path %>
+
+<% @posts.each do |post| %>
+  <div class="post">
+    <% if post.image.attached? %>
+      <img src="<%=(url_for(post.image))%>">
+    <% end %>
+    <br>
+    <%= link_to post.title, post %>
+    <br>
+    <%= post.body %>
+    <br>
+    <%= post.user.email %>
+  </div>
+<% end %>
+
