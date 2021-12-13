@@ -43,22 +43,6 @@ Load coverage/index.html in a browser for full code coverage report.
 
 ## How I would complete this project
 
-## Task
-
-Build Instagram: Simple huh!
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
-
-## How to start
-
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-4. Sketch mockups
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
 
 ## User Stories
 
