@@ -22,7 +22,7 @@ class PicturesController < ApplicationController
   private
 
   def picture_params
-    params.require(:picture).permit(:caption) # wow. this was it. solved by going back to the blog.
+    params.require(:picture).permit(:caption, :image) # wow. this was it. solved by going back to the blog.
   end
   
 
