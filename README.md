@@ -3,8 +3,9 @@ Instagram Challenge
 
 This is my Instagram clone in Rails made over the weekend following Week 8 of Makers Acacdemy.
 
-Test coverage: SimpleCov. Models: 100%, Controllers: 93%. Load coverage/index.html in a browser for full report.
-Code quality: RuboCop (not run yet)
+**Test coverage:** SimpleCov. Models: 100%, Controllers: 93%. Load coverage/index.html in a browser for full report.
+
+**Code quality:** RuboCop (not run yet)
 
 ## How to explore this project
 
