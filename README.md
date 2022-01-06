@@ -1,6 +1,24 @@
 # Incomplete !! Likes and Comments not yet implemented, purely cosmetic buttons
 
+For this challenge I mainly focused on CSS and styling, trying to get it to look as close to Instagram as possible.
+
+# Demo
+
+![Demo](https://i.gyazo.com/707e6b6a58dbba5bf85237acecd79c4d.gif)
+Users can only delete/edit their own posts.
+
+## Screenshots
+
+![Login](https://i.gyazo.com/5d09f26f58a05b47a4c8577c189a4620.png)
+
+![Sign Up](https://i.gyazo.com/eb6bcb0f610cdb46767600fd4d5a24a2.png)
+Form validations on log in/sign up.
+
+![Create Post](https://i.gyazo.com/7dfab39b1436bf014e18f437a561d25f.png)
+Form validations on caption length.
+
 Setup:
+
 ```
 git clone https://github.com/ConorButler/instagram-challenge.git
 cd instagram-challenge
@@ -14,13 +32,15 @@ rails s
 You may need to delete your database if it shares the name 'db/instagram(test/development)'.
 
 ## Using the app:
-* Click the plus icon on the navbar to create a new post
-* Click the picture icon on the navbar to log out
-* Click the home icon to go back to the posts feed
+
+- Click the plus icon on the navbar to create a new post
+- Click the picture icon on the navbar to log out
+- Click the home icon to go back to the posts feed
 
 You may need to revert back to an earlier versin of node (16.13).
 
 # User stories:
+
 ```
 ✔ As a User
 So that I can share my photo with other people
@@ -51,15 +71,14 @@ I want to be able to click a button to like a post
 
 ![Domain Model](domain_model.drawio.svg)
 
-Instagram Challenge
-===================
+# Instagram Challenge
 
 ## Instructions
 
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+- Feel free to use Google, your notes, books, etc., but work on your own
+- If you refer to the solution of another coach or student, please put a link to that in your README
+- If you have a partial solution, **still check in a partial solution**
+- You must submit a pull request to this repo with your code by 9am Monday morning
 
 ## Task
 
