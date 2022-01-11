@@ -3,7 +3,7 @@ Instagram Challenge
 
 This is my Instagram clone in Rails made over the weekend following Week 8 of Makers Acacdemy. I Implemented the user story features: add a photo, see photos and add a caption.
 
-This app is deployed on Heroku: https://tranquil-basin-31776.herokuapp.com 
+This app is deployed on Heroku: https://tranquil-basin-31776.herokuapp.com w
 
 **Test coverage:** SimpleCov. Models: 100%, Controllers: 93%. Load coverage/index.html in a browser for full report.
 
