@@ -73,3 +73,5 @@ end
 
 
 gem "rspec-rails", "~> 5.0"
+
+gem "bcrypt", "~> 3.1"
