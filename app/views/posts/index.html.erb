@@ -1,1 +1,21 @@
-<%= link_to "New post", new_post_path %>
+<div>
+  <%= link_to "New post", new_post_path %>
+</div>
+
+<div>
+  <% @posts.each do |post| %>
+    <div>
+      <% user = User.find(post.user_id) %>
+      <%= user.username %>
+    </div>
+    <div>
+      <% if post.photo.representable? %>
+        <%= image_tag post.photo.representation(resize_to_limit: [300, 300]) %>
+      <% end %>
+    </div>
+    <div>
+      <%= user.username %>
+      <%= post.caption %>
+    </div>
+  <% end %>
+</div>

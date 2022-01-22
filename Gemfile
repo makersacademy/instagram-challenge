@@ -79,3 +79,5 @@ gem "bcrypt", "~> 3.1"
 gem "bulma-rails", "~> 0.9.2"
 
 gem "active_storage_validations", "~> 0.9.6"
+
+gem "image_processing", "~> 1.12"
