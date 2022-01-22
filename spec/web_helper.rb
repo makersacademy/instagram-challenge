@@ -16,3 +16,10 @@ def log_in
   fill_in "session[password]", with: "password"
   click_button "Log in"
 end
+
+def create_post
+  click_link "New post"
+  fill_in "post[caption]", with: "My breakfast"
+  page.attach_file(Rails.root + 'spec/test_pics/food_pic.jpeg')
+  click_button "Create Post"
+end

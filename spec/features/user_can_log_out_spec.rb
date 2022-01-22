@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Log out", type: :feature do
+RSpec.feature "Log out", type: :feature, js: true do
   scenario "User can log out" do
     user_sign_up
     log_in
