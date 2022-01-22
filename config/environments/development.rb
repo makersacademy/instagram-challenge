@@ -7,6 +7,9 @@ Rails.application.configure do
   # it changes. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
+
+  # Set ActiveStorage to use local disk storage
+  config.active_storage.service = :local
   
   # Devise gem setting: Ensure you have defined default url options in your environments files
   # In production, :host should be set to the actual host of your application.
