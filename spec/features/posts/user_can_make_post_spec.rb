@@ -11,5 +11,6 @@ RSpec.feature "Log out", type: :feature do
     expect(page).to have_content("kim_morgan")
     expect(page).to have_content("My breakfast")
     expect(page.find('img')['src'][-13..-1]).to eq("food_pic.jpeg")
+    expect(page).to have_content("Less than a minute ago")
   end
 end

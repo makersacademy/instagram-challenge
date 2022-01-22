@@ -1,6 +1,7 @@
 module PostsHelper
 
   def format_time(time)
+    time = time.to_s
     time = Time.parse(time)
     minutes_since_post = ((Time.now - time)/60).floor()
 

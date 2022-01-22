@@ -1,21 +1,22 @@
-<div>
-  <%= link_to "New post", new_post_path %>
-</div>
-
-<div>
+<div class="px-6">
   <% @posts.each do |post| %>
-    <div>
+    <div class="columns py-3 is-bordered">
       <% user = User.find(post.user_id) %>
       <%= user.username %>
     </div>
-    <div>
+    <div class="columns py-2">
       <% if post.photo.representable? %>
-        <%= image_tag post.photo.representation(resize_to_limit: [300, 300]) %>
+        <%= image_tag post.photo.representation(resize_to_limit: [640, 640]) %>
       <% end %>
     </div>
     <div>
-      <%= user.username %>
-      <%= post.caption %>
+      <div class="columns py-3">
+        <%= user.username %>
+        <%= post.caption %>
+      </div>
+      <div class="columns">
+        <%= format_time(post.created_at) %>
+      </div>
     </div>
   <% end %>
 </div>
