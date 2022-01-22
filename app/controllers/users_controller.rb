@@ -8,9 +8,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      flash[:success] = "Account created"
-      redirect_to root_path
-    else 
+      flash[:success] = "Account created!"
+      redirect_to posts_path
+    else
+      flash.now[:failure] = "Unable to create account. All fields are required. Already have an account? Log in" 
       render :new
     end
 
