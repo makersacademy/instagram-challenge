@@ -1,9 +1,14 @@
 <h1>Posts</h1>
-
+<%= button_to "Log Out", destroy_user_session_path, method: :delete %>
 <ul>
   <% @posts.each do |post| %>
     <li>
+      <%= post.user.username %>
+    </li>
+    <li>
       <%= image_tag post.pic.variant(:gravity=>"Center", resize: "400x400^", crop: '400x400+0+0') %>
+    </li>
+    <li>
       <%= post.text %>
     </li>
   <% end %>
