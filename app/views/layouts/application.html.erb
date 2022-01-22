@@ -16,6 +16,12 @@
         <div class="is-<%= key %> notification is-light has-text-bold alert alert-<%= key %>"><%= value %></div>
       <% end %>
     </div>
+    <% if logged_in? %>
+      <%= current_user.name %>
+      <%= link_to "Log out", logout_path, data: {
+        method: :delete,
+      }%>
+    <% end %>
     <%= yield %>
     <%= javascript_importmap_tags %>
   </body>

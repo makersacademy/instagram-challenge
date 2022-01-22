@@ -8,3 +8,11 @@ def user_sign_up
   fill_in "user[password_confirmation]", with: "password"
   click_button "Create User"
 end
+
+def log_in
+  visit("/")
+  click_link "Log in"
+  fill_in "session[email]", with: "kim@kim.com"
+  fill_in "session[password]", with: "password"
+  click_button "Log in"
+end
