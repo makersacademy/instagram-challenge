@@ -1,0 +1,37 @@
+<div class="d-flex align-itmes-center justify-content-center">
+  <h1>Instagram</h1>
+</div>
+<br>
+<div class="d-flex align-itmes-center justify-content-center">
+  <p>Sign up to see photos and videos from your friends</p>
+</div>
+<br>
+<div class="d-flex align-itmes-center justify-content-center">
+  <% if @user.errors.any? %>
+    <div class="alert alert-danger">
+      <% @user.errors.full_messages.each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= form_with model: @user, url: sign_up_path do |form| %>
+    <div class="mb-2">
+      <%= form.text_field :name, class: "form-control", placeholder: "Full name"%>
+    </div>
+    <div class="mb-2">
+      <%= form.text_field :email, class: "form-control", placeholder: "Email"%>
+    </div>
+    <div class="mb-2">
+      <%= form.password_field :password, class: "form-control", placeholder: "Password"%>
+    </div>
+    <div class="mb-2">  
+      <%= form.password_field :password_confirmation, class: "form-control", placeholder: "Password confirmation" %>
+    </div>
+      <br>
+    <div class="d-flex align-itmes-center justify-content-center">  
+      <%= form.submit "Next", class: "btn btn-primary" %>
+    </div>
+
+  <% end %>
+</div>
