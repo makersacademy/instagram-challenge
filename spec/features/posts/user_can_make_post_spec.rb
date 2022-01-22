@@ -10,6 +10,6 @@ RSpec.feature "Log out", type: :feature do
     click_button "Create Post"
     expect(page).to have_content("kim_morgan")
     expect(page).to have_content("My breakfast")
-    expect(page).to have_image
+    expect(page.find('img')['src'][-13..-1]).to eq("food_pic.jpeg")
   end
 end
