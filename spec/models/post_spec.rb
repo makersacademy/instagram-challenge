@@ -19,7 +19,18 @@ RSpec.describe Post, type: :model do
   end
 
   it "must have an attachment" do
-    post = Post.new(caption: "My breakfast", user_id: 1)
+    user = User.new(name: "Kim", email: "kim@gmail.com", username: "kim_morgan", password: "password", password_confirmation: "password")
+    user.save
+    post = Post.new(caption: "My breakfast", user_id: user.id)
     expect(post.valid?).to be false
   end
+
+  it "is valid with valid attributes" do
+    user = User.new(name: "Kim", email: "kim@gmail.com", username: "kim_morgan", password: "password", password_confirmation: "password")
+    user.save
+    post = Post.new(caption: "My breakfast", user_id: user.id)
+    post.photo.attach(io: File.open("/Users/kimmorgan/Desktop/food_pic.jpeg"), filename: "food_pic.jpg", content_type: "image/jpeg")
+    expect(post.valid?).to be true
+  end
+
 end
