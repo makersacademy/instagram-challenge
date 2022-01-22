@@ -8,10 +8,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-
-    if @post.save
-      redirect_to @posts
+    @user = User.find(current_user.id)
+    
+    if @user.posts.create(post_params)
+      redirect_to posts_path
     else
       render :new, status: :unprocessable_entity
     end
