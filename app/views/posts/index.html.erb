@@ -1,22 +1,28 @@
-<div class="px-6">
+<div class="columns is-multiline is-centered">
   <% @posts.each do |post| %>
-    <div class="columns py-3 is-bordered">
-      <% user = User.find(post.user_id) %>
-      <%= user.username %>
-    </div>
-    <div class="columns py-2">
-      <% if post.photo.representable? %>
-        <%= image_tag post.photo.representation(resize_to_limit: [640, 640]) %>
-      <% end %>
-    </div>
-    <div>
-      <div class="columns py-3">
+  <div class="column is-two-thirds">
+    <div class="box">
+
+      <div class="block">
+        <% user = User.find(post.user_id) %>
+        <%= user.username %>
+      </div>
+      <hr>
+      <div class="columns is-centered">
+        <% if post.photo.representable? %>
+          <%= image_tag post.photo.representation(resize_to_limit: [640, 640]) %>
+        <% end %>
+      </div>
+      <hr>
+      <div class="block">
         <%= user.username %>
         <%= post.caption %>
       </div>
-      <div class="columns">
+      <div class="block">
         <%= format_time(post.created_at) %>
       </div>
+      
     </div>
+  </div>
   <% end %>
 </div>
