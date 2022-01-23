@@ -70,3 +70,8 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+group :development, :test do
+  gem 'rubocop', '1.20', require: false
+  gem 'rubocop-rails'
+end

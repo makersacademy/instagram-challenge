@@ -37,6 +37,13 @@ So I can explain interact with other users
 I would like to be able "like" other users pictures.
 ```
 
+Testing Notes
+=============
+
+For testing I have used Rails own testing frame. To run it use **bin/rails test command**.
+
+
+
 Instagram Challenge
 ===================
 
