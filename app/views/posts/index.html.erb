@@ -1,12 +1,18 @@
-<div class="m-3">
-New Posts Showing up here eventually
-<% @posts.each do |post| %>
-  <% if post.image.attached? %>
-  <%= image_tag post.image, class: "post-image"%>
+  <% @posts.each do |post| %>
+  <div class="container is-flex is-flex-direction-column is-align-items-center mt-3" id="posts-container">
+  <div class="container mb-3" style="border:1px solid #ccf2ff;background-color:white"">
+    <div class="is-flex m-0 p-3 avatar-username" style="border-bottom:1px solid #ccf2ff">
+    <%# temporary avatar %>
+      <i class="fas fa-user-circle ml-2 mr-4" style="color:black;font-size:1.6rem"></i>
+      <p><%= User.find(post.user_id).username %></p>
+    </div>
+    <div>
+    <% if post.image.attached? %>
+    <%= image_tag post.image, class: "post-image"%>
+    <% end %>
+    </div>
+    <div class="p-3"><strong class="mr-2"><%= User.find(post.user_id).username %></strong><%= post.body %></div>
+    <div class="pl-3" style="font-size:0.8rem;border-top:1px solid #ccf2ff"><%= DateTime.parse(post.created_at.to_s).strftime('%d %b %Y') %></div>
+  </div>
   <% end %>
-  <p>
-    <%= link_to post.body, post %>
-  </p>
-  <p id="created-at"><%= DateTime.parse(post.created_at.to_s).strftime('%a %d %b %Y') %></p>
-<% end %>
 </div>
