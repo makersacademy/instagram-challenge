@@ -1,8 +1,9 @@
 <h1>FakeGram</h1>
 <%= link_to "New Post", new_post_path %>
 <%= button_to "Log Out", destroy_user_session_path, method: :delete %>
-<ul>
-  <% @posts.each do |post| %>
+
+<% @posts.each do |post| %>
+  <ul>
     <li>
       <%= post.user.username %>
     </li>
@@ -12,5 +13,18 @@
     <li>
       <%= post.text %>
     </li>
+  </ul>
+
+  <h2>Add a comment:</h2>
+  <%= form_with model: [ post, post.comments.build ] do |form| %>
+    <div>
+      <%= form.label :body, "Comment" %><br>
+      <%= form.text_area :body %>
+    </div>
+    <div>
+      <%= form.submit %>
+    </div>
   <% end %>
-</ul>
+
+<% end %>
+
