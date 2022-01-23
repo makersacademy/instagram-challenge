@@ -15,10 +15,19 @@
     </li>
   </ul>
 
-  <h2>Add a comment:</h2>
+  <h3>Comments</h3>
+  <ul>
+    <% post.comments.each do |comment| %>
+      <li>
+        <strong><%= User.find(comment.user_id).username %></strong><br>
+        <p><%= comment.body %></p>
+      </li>
+    <% end %>
+  </ul>
+
+  <h3>Add a new comment:</h3>
   <%= form_with model: [ post, post.comments.build ] do |form| %>
     <div>
-      <%= form.label :body, "Comment" %><br>
       <%= form.text_area :body %>
     </div>
     <div>

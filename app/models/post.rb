@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_one_attached :pic
-  has_many :comments
+  has_many :comments, dependent: :destroy
   validates :text, presence: true
+  has_one_attached :pic
 end
