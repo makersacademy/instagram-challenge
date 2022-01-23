@@ -5,7 +5,7 @@
 <% @posts.each do |post| %>
   <ul>
     <li>
-      <%= post.user.username %>
+      <strong><%= post.user.username %></strong>
     </li>
     <li>
       <%= image_tag post.pic.variant(:gravity=>"Center", resize: "400x400^", crop: '400x400+0+0') %>
@@ -25,10 +25,9 @@
     <% end %>
   </ul>
 
-  <h3>Add a new comment:</h3>
   <%= form_with model: [ post, post.comments.build ] do |form| %>
     <div>
-      <%= form.text_area :body %>
+      <%= form.text_area :body, placeholder: "comment goes here.." %>
     </div>
     <div>
       <%= form.submit %>
