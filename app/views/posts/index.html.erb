@@ -1,5 +1,12 @@
+<div class="m-3">
+New Posts Showing up here eventually
 <% @posts.each do |post| %>
-<p>
-  <%= link_to post.body, post %>
-</p>
+  <% if post.image.attached? %>
+  <%= image_tag post.image, class: "post-image"%>
+  <% end %>
+  <p>
+    <%= link_to post.body, post %>
+  </p>
+  <p id="created-at"><%= DateTime.parse(post.created_at.to_s).strftime('%a %d %b %Y') %></p>
 <% end %>
+</div>

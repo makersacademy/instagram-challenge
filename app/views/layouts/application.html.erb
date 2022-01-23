@@ -7,6 +7,8 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag "application", async: true %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <script src="https://kit.fontawesome.com/ea92a85679.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,6 +17,7 @@
   </head>
 
   <body>
+  <% if user_signed_in? %>
     <nav class="navbar is-info is-fixed-top has-shadow" role="navigation" aria-label="main navigation">
 
       <div class="navbar-brand container is-fluid is-flex is-justify-content-space-between mt-1 mb-1 pl-2 pr-2">
@@ -35,19 +38,26 @@
           </div>
               
           <div class="navbar-item">
-            <%= link_to posts_path do %>
+            <%# <%= link_to posts_path do %>
               <i class="fas fa-user-circle" style="color:white;font-size:1.3rem"></i>
-            <% end %>
+            <%# <% end %>
           </div>
 
           <div class="navbar-item">
-            <%= link_to posts_path do %>
-              <i class="fas fa-sign-out-alt" style="color:white;font-size:1.3rem"></i>
-            <% end %>
+            <%= button_to "", destroy_user_session_path, method: :delete, :class => "button is-rounded is-small is-info is-inverted fas fa-sign-out-alt" %>
           </div>
         </div>
       </div>   
     </nav>
+  <% end %>
+  <div class="mt-2">
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+  </div>
     <%= yield %>
   </body>
 </html>

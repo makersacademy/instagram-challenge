@@ -1,16 +1,18 @@
-New post
-
-<%= form_with model: @post do |form| %>
+<div class="m-3">
+<%= form_for @post do |form| %>
   
   <div>
+
+    <%= form.label :Image, :class => 'image-label' %>
+    <%= form.file_field :image, :class => "new-image" %>
     <%= form.text_area :body %>
 
-  <% @post.errors.full_messages_for(:body).each do |message| %>
-  <div><%= message %></div>
-    <% end %>
-  </div>
+  <%# <% @post.errors.full_messages_for(:body).each do |message| %>
+  <%# <div><%= message %>
+    <%# <% end %>
 
   <div>
     <%= form.submit "Post" %>
   </div>
 <% end %>
+</div>

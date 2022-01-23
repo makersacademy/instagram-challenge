@@ -1,10 +1,12 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.all.order('created_at DESC')
   end
 
   def show
-    @post = Post.find(params[:id])
+    if params[:id] != "new"
+      @post = Post.find(params[:id])
+    end
   end
 
   def new
@@ -12,18 +14,14 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-
-    if @post.save
-      redirect_to posts_url
-    else
-      render :new, status: :unprocessable_entity
-    end
+    @user = User.find(current_user.id)
+    @post = @user.posts.create(post_params)
+    redirect_to posts_url
   end
 
   private
-  
+
   def post_params
-    params.require(:post).permit(:body)
+    params.require(:post).permit(:body, :image)
   end
 end
