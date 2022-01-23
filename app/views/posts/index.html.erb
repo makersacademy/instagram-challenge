@@ -6,13 +6,15 @@
       <div class="block is-flex is-justify-content-space-between	">
         <% user = User.find(post.user_id) %>
         <%= user.username %>
+        <% if user == current_user %>
           <span class="icon">
           <%= link_to post_path(post), class: "deleter", data: {
             turbo_method: :delete
           } do %>
             <i class='far fa-trash-alt'></i>
           <% end %>
-        </span>
+          </span>
+        <% end %>
       </div>
       <hr>
       <div class="columns is-centered">
