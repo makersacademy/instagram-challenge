@@ -1,0 +1,38 @@
+<h1>FakeGram</h1>
+<%= link_to "New Post", new_post_path %>
+<%= button_to "Log Out", destroy_user_session_path, method: :delete %>
+
+<% @posts.each do |post| %>
+  <ul>
+    <li>
+      <strong><%= post.user.username %></strong>
+    </li>
+    <li>
+      <%= image_tag post.pic.variant(:gravity=>"Center", resize: "400x400^", crop: '400x400+0+0') %>
+    </li>
+    <li>
+      <%= post.text %>
+    </li>
+  </ul>
+
+  <h3>Comments</h3>
+  <ul>
+    <% post.comments.each do |comment| %>
+      <li>
+        <strong><%= User.find(comment.user_id).username %></strong><br>
+        <p><%= comment.body %></p>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= form_with model: [ post, post.comments.build ] do |form| %>
+    <div>
+      <%= form.text_area :body, placeholder: "comment goes here.." %>
+    </div>
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+
+<% end %>
+

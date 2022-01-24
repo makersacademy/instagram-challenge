@@ -1,0 +1,24 @@
+<h1>New Post</h1>
+
+<%= form_with model: @post do |form| %>
+
+  <div>
+    <%= form.label :pic, "Picture" %><br>
+    <%= form.file_field :pic %><br>
+    <% @post.errors.full_messages_for(:pic).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :text %><br>
+    <%= form.text_area :text %><br>
+    <% @post.errors.full_messages_for(:text).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
