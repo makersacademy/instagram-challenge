@@ -1,3 +1,49 @@
+User Stories
+============
+
+```
+As a user
+So I can join Instagram
+I would like to be able to sign up.
+```
+```
+As a user 
+So I can access my Instagram account
+I would like to be able to sign in.
+```
+```
+As a user 
+So I can close my Instagram account
+I would like to be able to sign out.
+```
+```
+As a user 
+So I can share what I am doing
+I would like to be able post a picture.
+```
+```
+As a user 
+So I can explain what I am doing
+I would like to be able post a picture with a description.
+```
+```
+As a user 
+So I can explain interact with other users
+I would like to be able comment in other users pictures.
+```
+```
+As a user 
+So I can explain interact with other users
+I would like to be able "like" other users pictures.
+```
+
+Testing Notes
+=============
+
+For testing I have used Rails own testing frame. To run it use **bin/rails test command**.
+
+
+
 Instagram Challenge
 ===================
 
