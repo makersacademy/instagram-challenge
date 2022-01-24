@@ -9,8 +9,9 @@ class MainController < ApplicationController
       session[:user_id] = user.id
       redirect_to homepage_path, notice: "Logged in successfully"
     else
-      flash[:alert] = "invalid email or password"
-      render :new
+      # flash[:alert] = "Invalid email or password"
+      # render :index, notice: "Invalid email or password"
+      redirect_to root_path, notice: "Invalid email or password"
     end
   end
 end
