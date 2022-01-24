@@ -1,0 +1,37 @@
+<div class="columns is-multiline is-centered">
+  <% @posts.each do |post| %>
+  <div class="column is-two-thirds mt-0">
+    <div class="box">
+
+      <div class="block is-flex is-justify-content-space-between	">
+        <% user = User.find(post.user_id) %>
+        <%= user.username %>
+        <% if user == current_user %>
+          <span class="icon">
+          <%= link_to post_path(post), class: "deleter", data: {
+            turbo_method: :delete
+          } do %>
+            <i class='far fa-trash-alt'></i>
+          <% end %>
+          </span>
+        <% end %>
+      </div>
+      <hr>
+      <div class="columns is-centered">
+        <% if post.photo.representable? %>
+          <%= image_tag post.photo.representation(resize_to_limit: [640, 640]) %>
+        <% end %>
+      </div>
+      <hr>
+      <div class="block">
+        <%= user.username %>
+        <%= post.caption %>
+      </div>
+      <div class="block">
+        <%= format_time(post.created_at) %>
+      </div>
+      
+    </div>
+  </div>
+  <% end %>
+</div>

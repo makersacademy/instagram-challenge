@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Instagram</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css" integrity="sha512-IgmDkwzs96t4SrChW29No3NXBIBv8baW490zk5aXvhCD8vuZM3yUSkbyTBcXohkySecyzIrUwiF/qV0cuPcL3Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="has-background-white-ter">
+    <div class="container">
+      <% flash.each do |key, value| %>
+        <div class="is-<%= key %> notification is-light has-text-bold alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+    </div>
+    <section class="section pb-4">
+      <nav class="navbar has-shadow is-fixed-top" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <%= image_tag ("Logo.png"), height: '50', width: '150', class: "navbar-item" %>
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <div class="navbar-menu" id="navMenu">
+          <div class="navbar-end">
+            <% if logged_in? %>
+            <div class="navbar-item px-1">
+              <%= link_to "New post", new_post_path %>
+            </div>
+            <div class="navbar-item px-1">
+              <%= current_user.name %>
+            </div>
+            <div class="navbar-item pr-4 pl-1">
+              <%= link_to "Log out", logout_path, data: {
+                turbo_method: :delete,
+              }, class: "button is-primary" %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </nav>
+    </section>
+    <div class="container px-6 mt-0">
+        <%= yield %>
+    </div>
+
+  </body>
+</html>
