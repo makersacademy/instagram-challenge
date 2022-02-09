@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   root 'pictures#index'
   resources :pictures
-
-  get '/users/new', to: 'users#new'
+  resources :users
   
   # For details one DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
