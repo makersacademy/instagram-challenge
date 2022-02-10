@@ -21,8 +21,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-# Use Devise for login security
-gem "devise"
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -38,7 +37,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 5.0.0'
   gem 'rubocop', '1.20', require: false
   gem 'rubocop-rails'
-  gem 'factory_bot_rails'
 end
 
 group :development do
