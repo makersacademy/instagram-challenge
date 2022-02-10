@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "UserSignUps", type: :feature do 
   scenario "a valid signup" do
-    visit new_user_path
+    visit users_new_path
     fill_in("username", with: "Kate")
     fill_in("password", with: "123")
     click_button "Sign up"
