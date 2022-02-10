@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending
+  it { is_expected.to be }
 end
+
+
+# User existst
