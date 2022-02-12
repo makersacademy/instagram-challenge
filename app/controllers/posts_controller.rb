@@ -16,7 +16,6 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
-
   # def show
     
   # end
@@ -24,7 +23,6 @@ class PostsController < ApplicationController
   # def edit
     
   # end
-
 
   # def destroy
     
