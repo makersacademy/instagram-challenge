@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bundle-audit'
 
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -35,6 +35,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'dotenv-rails'
   gem 'rubocop-rails'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -53,7 +54,6 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
-  gem 'rspec-rails'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end

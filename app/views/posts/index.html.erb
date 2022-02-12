@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extragram</title>
+</head>
+<body>
+  
+  <%= button_to 'posts/new', method: :get do %>
+    Add Extra
+  <% end %>
+
+  <h1> Extragram main page </h1>
+  <!-- Display posts-->
+  <% @posts.each_with_index do |post, index| %>
+    <div class="post" id="post-<%= index %>">
+      <div class="post_author" id="post_author-<%= index %>">
+        <%= post.author %>
+      </div>
+        <%= image_tag(post.image, class: "post_image", id: "post_image-#{index}") %>
+      <div class="post_content" id="post_content-<%= index %>">
+        <%= post.content %>
+      </div>
+    </div>
+  <% end %>
+
+</body>
+</html>
