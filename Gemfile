@@ -27,6 +27,18 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+# Add boostrap for styles
+gem 'bootstrap', '~> 5.1.3'
+
+# Add jquery for bootstrap javascript
+gem 'jquery-rails'
+
+# Add icons 
+gem 'font-awesome-rails'
+
+# User registration and authentication
+gem 'devise'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
