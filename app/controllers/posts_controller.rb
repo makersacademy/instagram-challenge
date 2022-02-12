@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   # POST
   def create
     Post.create(post_params)
-    redirect_to posts_path
+    redirect_to root_path
   end
 
 
@@ -37,6 +37,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content, :image)
+    params.require(:post).permit(:content, :image, :author)
   end
 end
