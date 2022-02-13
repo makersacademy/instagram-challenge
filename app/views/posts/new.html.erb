@@ -10,17 +10,30 @@
     <main class="form-new_post col-md-5 col-lg-6 px-md-4 py-5">
       <div class='post-form'>
         <%= form_for @post do |form| %>
+          <% if @post.errors.any? %>
+            <div class="alert alert-danger" role="alert">
+            There is <%= @post.errors.full_messages.length %> errors!
+            </div> 
+            <ul>
+              <% @post.errors.full_messages.each do |message| %>
+              <li> <%= message %> </li>
+              <% end %>
+            </ul>
+          <% end %>
+          
+          
+          
           <h1 class="h3 mb-3 fw-normal"> Making your post </h1>
-          <%= form.file_field :image, class: 'form-control', id: 'post-image'%><br>
-          <div class="form-floating">
+          <%= form.file_field :image, class: 'form-control', id: 'post-image', accept: "image/png, image/jpeg" %><br>
+          <div class="form">
             <%= form.label :content, class: 'form-label' %>
-            <%= form.text_field :content, class: 'form-control' %><br>
+            <%= form.text_field :content, class: 'form-control'%><br>
           </div>
-          <div class="form-floating">
+          <div class="form">
             <%= form.label :author, class: 'form-label' %>
-            <%= form.text_field :author, class: 'form-control' %><br>
+            <%= form.text_field :author, class: 'form-control'%><br>
           </div>
-          <%= form.submit "Make post", class: 'w-100 btn btn-lg btn-outline-primary"'%>
+          <%= form.submit "Make post", class: "btn btn-primary btn-lg btn-block" %>
         <% end %>
       </div>
     </main>

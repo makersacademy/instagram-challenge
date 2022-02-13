@@ -33,4 +33,16 @@ RSpec.feature "UserCanMakeAPosts", type: :feature do
     expect(posts[0].text).to have_text 'Extra Extra Extra Extra'
 
   end
+
+  scenario 'user inputs a file that is not jpeg or png' do
+    visit '/'
+    click_button 'Make post'
+
+    click_button 'Make post'
+
+    expect(current_path).to eq '/posts' 
+    expect(page).to have_content 'Image is required'
+    expect(page).to have_content 'Content is required'
+    expect(page).to have_content 'Author is required'
+  end
 end
