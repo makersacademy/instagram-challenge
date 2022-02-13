@@ -23,17 +23,21 @@
     <h2> <%= current_user.name %>'s Posts </h2>
     <div>
       <% @posts.each do |post| %>
-      <div style="width: 300px; border: 0.5px solid black">
-        <% if post.user.profile_picture.attached?%>
-          <%= image_tag post.user.profile_picture ,:style => "height: 40px; border-radius: 100%;"%> 
-        <% end %>
-        <%= current_user.usernname %>
-        <%= image_tag post.image ,:style => "height: 100px"%> 
-        <%= post.caption %>
-      </div>
-      <br>
+  <div style="width: 300px; border: 0.5px solid black; padding-left: 10px; border-radius: 10px">
+    
+   <p style="border-bottom: 0.5px solid black; background-color: silver">
+    <% if post.user.profile_picture.attached?%>
+        <%= image_tag post.user.profile_picture, :style => "height: 40px; border-radius: 100%;"%>
     <% end %>
-    </div>
+    <%= User.find(post.user_id).usernname %>
+  </p>
+    <p style="border-bottom: 0.5px solid black; text-align: center;">
+      <%= image_tag post.image ,:style => "height: 100px"%>
+    </p>
+    <%= post.caption %>
+  </div>
+  <br>
+<% end %>
 
 </div>
 
