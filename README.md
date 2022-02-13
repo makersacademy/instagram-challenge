@@ -4,6 +4,14 @@ Instagram Challenge
 ## User Stories
 
 ```
+As a user
+So I can post as myself
+I want to be able to sign up
+
+As a user
+So I can change my information
+I want to be able to edit my profile
+
 As a user 
 So I can express myself
 I want to be able to post a picture
