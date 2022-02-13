@@ -5,8 +5,7 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
-  
   get 'home/index'
-
   root "home#index"
+  resources :users, only: [:show, :edit, :update]
 end
