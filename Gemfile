@@ -36,6 +36,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'rubocop-rails'
   gem 'rspec-rails'
+  gem 'htmlbeautifier'
 end
 
 group :development do
