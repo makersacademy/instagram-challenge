@@ -1,6 +1,7 @@
 Instagram Challenge
 ===================
 
+<<<<<<< HEAD
 ## User Stories
 
 ```
@@ -33,6 +34,8 @@ So I can have a pleasant viewing experience
 I want the website to be styled like Instagram
 ```
 
+=======
+>>>>>>> 786ac5e9c5c152146f4c130515842df2a817ca8f
 ## Instructions
 
 * Feel free to use Google, your notes, books, etc., but work on your own
