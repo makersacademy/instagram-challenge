@@ -2,7 +2,9 @@
   <div class="profile row">
     <div class="col-md-4 avatar">
       <div class="wrapper">
-        <img src="/images/profile_1.png">
+        <% if current_user.avatar.attached? %>
+          <%= image_tag current_user.avatar %>
+        <%end %>
       </div>
     </div>
     
@@ -14,7 +16,7 @@
         </a>
       </div>
       <ul class="posts">
-        <li><span>?</span> posts</li>
+        <li><span><%= @posts.count %></span> posts</li>
         <li><span>?</span> followers</li>
         <li><span>?</span> following</li>
       </ul>
@@ -23,14 +25,11 @@
   </div>
 </div>
 
+
 <div class="user-images">
-  <div class="wrapper">
-    <img src="/images/ashley_one.jpeg">
-  </div>
-  <div class="wrapper">
-    <img src="/images/ashley_two.png">
-  </div>
-  <div class="wrapper">
-    <img src="/images/ashley_three.jpeg">
-  </div>
+  <% @posts.each do |post| %>
+    <div class="wrapper">
+      <%= image_tag post.image %>
+    </div>
+  <% end %>
 </div>
