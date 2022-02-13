@@ -1,24 +1,86 @@
-# README
+## To run
+```
+  > bundle install
+  > bin/rails db:create
+  > bin/rails db:migrate
+```
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To access on http://localhost:3000/ :
+```
+  > bin/rails server
+```
 
-Things you may want to cover:
+or access on Heroku:
+https://extragram-1.herokuapp.com/
 
-* Ruby version
+## Technologies used:
+Ruby on Rails, Bootstrap, PostgreSQL, RSPEC, Capybara
 
-* System dependencies
+## Features:
+- visitor can add a post
+- root page shows all posts with image, description and author
 
-* Configuration
+## Features in development:
+- user can like posts
+- user authentication
+- user can add comments to posts
 
-* Database creation
+### Edge cases considered:
+  - Adding a post
+    - user can only add jpeg or png
+    - image, content and author are required fields
 
-* Database initialization
+### Edge cases to consider:
+  - Liking a post
+    - user can only like an image once
+  - Signing up
+    - user can't sign up on the same email
+    - user password has to be 6-10 characters long
 
-* How to run the test suite
+## User stories:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+As a user
+So I know whose posts I am seeing
+I want to see person’s name next to each post
+```
 
-* Deployment instructions
+```
+As a user
+So that I can be cool
+I want to post an image on Extragram with a description and my name
+```
 
-* ...
+```
+As a user
+So that I can get famous
+I want others to be able to like my pictures
+```
+
+```
+As a user
+So that I can get some attenion
+I want to be able to leave a comment on any post
+```
+
+```
+As a user
+So I am not embarassed using Extragram
+I want it to look cool
+```
+
+```
+As a user
+So that no one pretends to be me
+I want to be able to sign up, sign in, sing out
+```
+
+<p style="text-align: center">
+  <img src="https://i.imgur.com/ZHVzj0G.gif">
+</p>
+
+
+## Database model:
+<p style="text-align: center">
+  <img src="https://i.imgur.com/MmRGaHM.png">
+</p>
