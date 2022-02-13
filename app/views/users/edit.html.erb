@@ -1,0 +1,44 @@
+<h1>Edit Profile</h1>
+
+<div class="user-edit-page">
+  <div class="edit-options">
+    <%# <a href="">Edit Profile</a> %>
+    <%# <a href="">Change Password</a> %>
+  </div>
+
+</div>
+
+<%= form_with model: current_user, local: true, html: {class: "form-horizontal form-edit-user"} do |f| %>
+      <div class="user-info-profile-pic">
+        <%= current_user.usernname %>
+        <%# <img class="avatar" height="100px"  src="/fran_profile.jpg"> %>
+        <% if current_user.profile_picture.attached?%>
+          <%= image_tag current_user.profile_picture ,:style => "height: 100px"%> 
+        <% end %>
+      </div>
+      
+      <div class="user-info-pic"> 
+        <%= f.label :profile_picture, class: 'user-info' %>
+        <%= f.file_field :profile_picture %>
+      </div>
+
+      <div class="user-info">
+        <%= f.label :name, class: 'user-info' %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+
+      <div class="user-info">
+        <%= f.label :usernname, class: 'col-sm-3 col-form-label' %>
+        <%= f.text_field :usernname, class: 'form-control' %>
+      </div>
+
+      <div class="user-info">
+        <%= f.label :bio, class: 'col-sm-3 col-form-label' %>
+        <%= f.text_area :bio, class: 'form-control' %>
+      </div>
+
+      <div class="user-info">
+      <%= f.submit "Submit", class: 'btn btn-primary' %>
+    </div>
+
+    <% end %>

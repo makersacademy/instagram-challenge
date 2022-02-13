@@ -1,0 +1,45 @@
+<div class="user-profile">
+
+  <div class="profile-row">
+    <div class="user-profile-pic">
+      <% if current_user.profile_picture.attached?%>
+          <%= image_tag current_user.profile_picture ,:style => "height: 140px; border-radius: 100%;"%>  
+        <% end %>
+    </div>
+
+    <div class="user-basic-info">
+      <h2 class="username"> <%= current_user.usernname %> </h2>
+      <h3 class="username"> <%= current_user.bio %> </h3>
+      <a class="edit-profile" href="<%= edit_user_path(current_user)%>">
+        <button>Edit Profile</button>
+      </a>
+    </div>
+
+    <ul class="users-posts">
+      <li><span><%= @posts.count %></span> posts</li>
+    </ul>
+    
+    
+    <h2> <%= current_user.name %>'s Posts </h2>
+    <div>
+      <% @posts.each do |post| %>
+  <div style="width: 300px; border: 0.5px solid black; padding-left: 10px; border-radius: 10px">
+    
+   <p style="border-bottom: 0.5px solid black; background-color: silver">
+    <% if post.user.profile_picture.attached?%>
+        <%= image_tag post.user.profile_picture, :style => "height: 40px; border-radius: 100%;"%>
+    <% end %>
+    <%= User.find(post.user_id).usernname %>
+  </p>
+    <p style="border-bottom: 0.5px solid black; text-align: center;">
+      <%= image_tag post.image ,:style => "height: 100px"%>
+    </p>
+    <%= post.caption %>
+  </div>
+  <br>
+<% end %>
+
+</div>
+
+
+

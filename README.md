@@ -1,6 +1,40 @@
 Instagram Challenge
 ===================
 
+## User Stories
+
+```
+As a user
+So I can post as myself
+I want to be able to sign up
+
+As a user
+So I can change my information
+I want to be able to edit my profile
+
+As a user 
+So I can express myself
+I want to be able to post a picture
+
+As a user 
+So I can express myself better
+I want to be able to post a caption with my picture
+
+As a user
+So I can share my thoughts
+I want to be able to comment on posts
+
+As a user
+So I can support my friends
+I want to be able to like a post
+
+As a user
+So I can have a pleasant viewing experience
+I want the website to be styled like Instagram
+```
+
+=======
+
 ## Instructions
 
 * Feel free to use Google, your notes, books, etc., but work on your own
