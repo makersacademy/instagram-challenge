@@ -5,13 +5,13 @@ RSpec.feature "UserCanMakeAPosts", type: :feature do
     
     # main page
     visit '/'
-    click_button 'Extra'
+    click_button 'Make post'
 
     # make post route
-    attach_file('post_image', './spec/fixtures/test-image.jpeg')
+    attach_file('post-image', './spec/fixtures/test-image.jpeg')
     fill_in 'post_content', with: 'Extra Extra Extra Extra' 
     fill_in 'post_author', with: 'Person'
-    click_button 'Add Extra'
+    click_button 'Make post'
 
     # main page
     posts = page.all('.post')

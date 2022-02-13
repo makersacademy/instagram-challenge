@@ -1,30 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Extragram</title>
-</head>
-<body>
-  
-  <%= button_to 'posts/new', method: :get do %>
-    Add Extra
-  <% end %>
-
-  <h1> Extragram main page </h1>
-  <!-- Display posts-->
-  <% @posts.each_with_index do |post, index| %>
-    <div class="post" id="post-<%= index %>">
-      <div class="post_author" id="post_author-<%= index %>">
-        <%= post.author %>
-      </div>
-        <%= image_tag(post.image, class: "post_image", id: "post_image-#{index}") %>
-      <div class="post_content" id="post_content-<%= index %>">
-        <%= post.content %>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extragram</title>
+  </head>
+  <body>
+    <!-- Display posts-->
+    <div class="album py-5 bg-light">
+      <div class="container-sm">
+        <div class="row">
+          <nav id="sticky-sidebar", class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse ">
+            <div class="sticky-top py-5 pt-3">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <%= button_to 'posts', method: :get, class: 'btn btn-sm btn-outline-secondary' do %>
+                    Home
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= button_to 'posts/new', method: :get, class: 'btn btn-sm btn-outline-secondary' do %>
+                    Make post
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <main class="col-md-5 col-lg-6 px-md-4 d-flex flex-column align-items">
+            <% @posts.each_with_index do |post, index| %>
+              <div class="post" id="post-<%= index %>">
+                <div class="p-2 card shadow-sm">
+                  <%= image_tag(post.image, class: "post_image", id: "post_image-#{index}")%>
+                  <div class="card-body">
+                    <p class="card-text"> <%= post.content %></p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Like</button>
+                      </div>
+                      <small class="text-muted"> <%= post.author %></small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </main>
+        </div>
       </div>
     </div>
-  <% end %>
-
-</body>
+  </body>
 </html>
