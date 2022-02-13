@@ -10,16 +10,20 @@
 
 <%= form_with model: current_user, local: true, html: {class: "form-horizontal form-edit-user"} do |f| %>
       <div class="user-info-profile-pic">
-        <img class="avatar" height="100px"  src="/fran_profile.jpg">
+        <%= current_user.usernname %>
+        <%# <img class="avatar" height="100px"  src="/fran_profile.jpg"> %>
+        <% if current_user.profile_picture.attached?%>
+          <%= image_tag current_user.profile_picture ,:style => "height: 100px"%> 
+        <% end %>
       </div>
       
-      <%# <div class="user-info"> %>
-        <%# <p><%= current_user.usernname %></p> 
-        <%# <a class="change-photo" href="">Change Profile Photo</a> %>
-      <%# </div> %>
+      <div class="user-info-pic"> 
+        <%= f.label :profile_picture, class: 'user-info' %>
+        <%= f.file_field :profile_picture %>
+      </div>
 
       <div class="user-info">
-        <%= f.label :name, class: 'user-info-profile-pic' %>
+        <%= f.label :name, class: 'user-info' %>
         <%= f.text_field :name, class: 'form-control' %>
       </div>
 

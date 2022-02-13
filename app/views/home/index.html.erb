@@ -1,2 +1,14 @@
-<h1>Welcome to Benstagram</h1>
+<h1>Welcome to InstaFran</h1>
 
+<% @posts.each do |post| %>
+  <div style="width: 300px; border: 0.5px solid black">
+    
+    <% if post.user.profile_picture.attached?%>
+      <%= image_tag post.user.profile_picture, :style => "height: 40px; border-radius: 100%;"%> 
+    <% end %>
+    <%= User.find(post.user_id).usernname %>
+    <%= image_tag post.image ,:style => "height: 100px"%> 
+    <%= post.caption %>
+  </div>
+  <br>
+<% end %>

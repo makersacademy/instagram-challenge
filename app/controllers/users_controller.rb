@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   def show
-
+    @user = User.find(params[:id])
+    @posts = @user.posts.order(created_at: :desc)
   end
 
   def update
@@ -21,6 +22,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :name, :usernname, :bio)
+    params.require(:user).permit(:email, :password, :name, :usernname, :bio, :profile_picture)
   end
 end

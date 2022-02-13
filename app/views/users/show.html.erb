@@ -2,7 +2,9 @@
 
   <div class="profile-row">
     <div class="user-profile-pic">
-      <img height="200px" src="/fran_profile.jpg" />
+      <% if current_user.profile_picture.attached?%>
+          <%= image_tag current_user.profile_picture ,:style => "height: 140px; border-radius: 100%;"%>  
+        <% end %>
     </div>
 
     <div class="user-basic-info">
@@ -14,16 +16,24 @@
     </div>
 
     <ul class="users-posts">
-      <li><span>0</span> posts</li>
-      <li><span>0</span> followers</li>
-      <li><span>0</span> following</li>
+      <li><span><%= @posts.count %></span> posts</li>
     </ul>
     
-    <h2 class="name"> <%= current_user.name %></h2>
-
-    <a class="users-posts" href="">
-        My Posts
-    </a>
+    
+    <h2> <%= current_user.name %>'s Posts </h2>
+    <div>
+      <% @posts.each do |post| %>
+      <div style="width: 300px; border: 0.5px solid black">
+        <% if post.user.profile_picture.attached?%>
+          <%= image_tag post.user.profile_picture ,:style => "height: 40px; border-radius: 100%;"%> 
+        <% end %>
+        <%= current_user.usernname %>
+        <%= image_tag post.image ,:style => "height: 100px"%> 
+        <%= post.caption %>
+      </div>
+      <br>
+    <% end %>
+    </div>
 
 </div>
 

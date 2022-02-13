@@ -16,6 +16,10 @@ As a user
 So I can express myself
 I want to be able to post a picture
 
+As a user 
+So I can express myself better
+I want to be able to post a caption with my picture
+
 As a user
 So I can share my thoughts
 I want to be able to comment on posts
