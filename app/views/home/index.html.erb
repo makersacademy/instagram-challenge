@@ -1,13 +1,17 @@
-<h1>Welcome to InstaFran</h1>
+<h1>Welcome to Instagram</h1>
 
 <% @posts.each do |post| %>
-  <div style="width: 300px; border: 0.5px solid black">
+  <div style="width: 300px; border: 0.5px solid black; padding-left: 10px; border-radius: 10px">
     
+   <p style="border-bottom: 0.5px solid black; background-color: silver">
     <% if post.user.profile_picture.attached?%>
-      <%= image_tag post.user.profile_picture, :style => "height: 40px; border-radius: 100%;"%> 
+        <%= image_tag post.user.profile_picture, :style => "height: 40px; border-radius: 100%;"%>
     <% end %>
     <%= User.find(post.user_id).usernname %>
-    <%= image_tag post.image ,:style => "height: 100px"%> 
+  </p>
+    <p style="border-bottom: 0.5px solid black; text-align: center;">
+      <%= image_tag post.image ,:style => "height: 100px"%>
+    </p>
     <%= post.caption %>
   </div>
   <br>
