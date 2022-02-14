@@ -5,10 +5,24 @@ RSpec.feature "UserCanLikePosts", type: :feature do
     Post.create(content: "content", image: fixture_file_upload('./spec/fixtures/test-image.jpeg'), author: 'author' )
     visit '/'
 
-    posts = page.all(".post")
-
     click_button("Like")
 
-    expect(posts[0]).to have_content "SomeONE likes this"
+    posts = page.all(".post")
+    
+    expect(posts[0]).to have_content "1 likes"
+  end
+
+  scenario 'post get many likes' do
+    Post.create(content: "content", image: fixture_file_upload('./spec/fixtures/test-image.jpeg'), author: 'author' )
+    visit '/'
+
+    
+    click_button("Like")
+    click_button("Like")
+    click_button("Like")
+    
+    posts = page.all(".post")
+
+    expect(posts[0]).to have_content "3 likes"
   end
 end
