@@ -10,7 +10,7 @@ I want to post them on instagram
 
 As a user
 So I can tell people about my pic
-I want to write a blurb with my pic
+I want to write a title with my pic
 
 As a user
 So I can compliment my friends food pic
