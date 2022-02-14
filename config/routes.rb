@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
 
     get "/dashboard" => "accounts#index"
-    
+    get "profile/:username" => "accounts#profile"
+
     resources :posts, only: [:new,:create,:show]
 
     root "public#homepage" #controller name 'public' and a method name 'homepage'
