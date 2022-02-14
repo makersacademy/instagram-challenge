@@ -54,6 +54,14 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
+#/////
+#images 
+gem 'carrierwave', '~> 2.0'
+gem 'fog', '~> 1.38'
+
+#local ENV variables 
+gem 'figaro', '~> 1.1', '>= 1.1.1'
+#/////
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
