@@ -39,3 +39,14 @@ end
 You can also lint Javascript, CSS, and ERB — feel free to research this. These
 will help you to train yourself to produce cleaner code — and will often alert
 you to mistakes or mishaps!
+
+Database Instructions:
+
+Create Table:
+bin/rails generate migration CreatePosts
+name:string surname:string
+run bin/rails db:migrate
+
+Add column to existing table:
+bin/rails generate migration CreatePosts created_at:datetime updated_at:datetime
+run bin/rails db:migrate

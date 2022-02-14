@@ -1,0 +1,21 @@
+<article class="post">
+  <div>
+    <ul class="post-header">
+      <li class="username"><%= link_to "@#{@user.username}" %></li>
+    </ul>
+
+    <div class="photo-container">
+      <article class="photo">
+        <%= image_tag(@post.image) %>
+      </article>
+    </div>
+  </div>
+  <p class="caption"><%= @post.caption %></p>
+</article><br>
+
+<%= form_for @post do |form| %>
+  <%= form.file_field :image, name: "image", class: "image-upload" %><br>
+  <%= form.text_field :caption, name: "caption", class: "caption-field", placeholder: "Caption", value: @post.caption %><br>
+  <%= form.submit "Save", class: "submit" %>
+<% end %>
+<%= notice %>
