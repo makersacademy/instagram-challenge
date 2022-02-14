@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "UserCanLikePosts", type: :feature do
   scenario 'user likes a picture' do
-    Post.create(content: "content", image: fixture_file_upload('./spec/fixtures/test-image.jpeg'), author: 'author' )
+    Post.create(content: "content", image: fixture_file_upload('./spec/fixtures/test-image.jpeg'), author: 'author')
     visit '/'
 
     click_button("Like")
@@ -13,7 +13,7 @@ RSpec.feature "UserCanLikePosts", type: :feature do
   end
 
   scenario 'post get many likes' do
-    Post.create(content: "content", image: fixture_file_upload('./spec/fixtures/test-image.jpeg'), author: 'author' )
+    Post.create(content: "content", image: fixture_file_upload('./spec/fixtures/test-image.jpeg'), author: 'author')
     visit '/'
 
     

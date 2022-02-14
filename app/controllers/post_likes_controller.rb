@@ -8,4 +8,3 @@ class PostLikesController < ApplicationController
     params.require(:post).permit(:post_id)
   end
 end
-
