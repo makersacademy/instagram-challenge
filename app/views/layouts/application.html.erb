@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Instamilligram</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <!--Navigation Bar-->
+    <nav class="navbar navbar-light bg-light d-flex">
+      <div class="container">
+        <div class="logo">
+          <a class="navbar-brand" href="/">
+            <%= fa_stacked_icon "camera inverse", base: "circle"%>
+            Instamilligram
+          </a>
+        </div>
+        <div class="user-section">
+          <% if user_signed_in? %>
+            <a href="<%= user_path(current_user) %>">Profile</a>
+            <a href="<%= destroy_user_session_path %>">Sign Out</a>
+          <% else %>
+            <a href="<%= new_user_session_path%>">Sign In</a>
+            <a href="<%= new_user_registration_path%>">Sign Up</a>
+          <% end %>
+        </div>
+      </div>
+    </nav>
+
+    <!--Main content-->
+    <main class="container" style="min-height: 500px;">
+      <%= yield %>
+    </main>
+
+    <!--Footer-->
+    <footer class="container footer">
+      <nav class="navbar d-flex">
+        <ul>
+          <li>WEEKEND CHALLGENGE 8</li>
+        </ul>
+        <p> MAKERS ACADEMY </p>
+      </nav>
+    </footer>
+  </body>
+</html>
