@@ -1,41 +1,38 @@
 Instagram Challenge
 ===================
 
-## Instructions
+# To build an instaagram style web app:
 
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+# User stories
+As a user
+So I can share my pics
+I want to post them on instagram
 
-## Task
+As a user
+So I can tell people about my pic
+I want to write a title with my pic
 
-Build Instagram: Simple huh!
+As a user
+So I can compliment my friends food pic
+I want to be able to comment on a pic
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+As a user
+So I can show my approval
+I want to be able to like a pic
 
-Bonus if you can add filters!
+As a user
+So I can keep my account secure
+I want to be abe to sign up
 
-## How to start
+As a user
+So I can access my account
+I want to be able to sign in
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+As a user
+So I can I can keep my account secure
+I want to be able to sign out
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+As a user
+So I can enjoy using kinstagram
+I want it to look really cool
 
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-group :development, :test do
-  gem 'rubocop', '1.20', require: false
-  gem 'rubocop-rails'
-end
-```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
