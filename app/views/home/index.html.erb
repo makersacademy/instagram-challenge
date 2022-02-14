@@ -38,6 +38,34 @@
       <div class="description">
         <%= post.description %>
       </div>
+      
+      <!-- *** COMMENTS *** -->
+      <% post.comments.each do |comment| %>
+          <div class="user">
+            <div class="username">
+              <%= comment.user.username %>
+            </div>
+          </div>
+          <div class="comment">
+            <%= comment.comment %>
+          </div>
+      <% end %>
+
+      <!-- *** NEW COMMENT FORM *** -->
+      <%= form_for Comment.new, :html => { :class => "new_comment" } do |f|  %>
+        <div class="form-group">
+          <%= f.text_field :comment %>
+        </div>
+        <div class="form-group">
+          <%= f.text_field :user_id, value: current_user.id, class:'d-none'%>
+        </div>
+        <div class="form-group">
+          <%= f.text_field :post_id, value: post.id, class:'d-none'%>
+        </div>
+        <div class="text-center">
+          <%= f.submit 'Submit Comment', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
     </section>
   <% end %>
 </div>

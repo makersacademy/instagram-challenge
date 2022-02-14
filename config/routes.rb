@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   root "home#index"
   resources :users, only: [:show, :edit, :update]
   resources :posts, only: [:create, :new]
+  resources :comments, only: [:create, :new]
 end
