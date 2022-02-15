@@ -1,41 +1,92 @@
-Instagram Challenge
-===================
+## Access on heroku
 
-## Instructions
+https://extragram-1.herokuapp.com/
 
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-## Task
-
-Build Instagram: Simple huh!
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
-
-## How to start
-
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-group :development, :test do
-  gem 'rubocop', '1.20', require: false
-  gem 'rubocop-rails'
-end
+## To run locally:
+```
+  > bundle install
+  > bin/rails db:create
+  > bin/rails db:migrate
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+To access on http://localhost:3000/ :
+```
+  > bin/rails server
+```
+
+## Technologies used:
+Ruby on Rails, Bootstrap, PostgreSQL, RSPEC, Capybara
+
+## Features:
+- visitor can add a post
+- root page shows all posts with image, description and author
+
+## Features in development:
+- user can like posts
+- user authentication
+- user can add comments to posts
+
+## Reflections:
+- lots of time spent on fixing Heroku - creating a Procfile was essential to prevent it from crashing
+- similarly with Github actions, creating a Github workflow file was time consuming but made everything smooth - it executes database migrations and installs specific versions on dependencies
+- Bootstrap seemed relatively easy to use
+
+## User stories:
+
+```
+As a user
+So I know whose posts I am seeing
+I want to see person’s name next to each post
+```
+
+```
+As a user
+So that I can be cool
+I want to post an image on Extragram with a description and my name
+```
+
+```
+As a user
+So that I can get famous
+I want others to be able to like my pictures
+```
+
+```
+As a user
+So that I can get some attenion
+I want to be able to leave a comment on any post
+```
+
+```
+As a user
+So I am not embarassed using Extragram
+I want it to look cool
+```
+
+```
+As a user
+So that no one pretends to be me
+I want to be able to sign up, sign in, sing out
+```
+
+<p style="text-align: center">
+  <img src="https://i.imgur.com/ZHVzj0G.gif">
+</p>
+
+
+## Database model:
+<p style="text-align: center">
+  <img src="https://i.imgur.com/MmRGaHM.png">
+</p>
+
+### Edge cases considered:
+  - Adding a post
+    - user can only add jpeg or png
+    - image, content and author are required fields
+
+### Edge cases to consider:
+  - Liking a post
+    - user can only like an image once
+  - Signing up
+    - user can't sign up on the same email
+    - user password has to be 6-10 characters long
