@@ -1,0 +1,29 @@
+<div class="coontainer is-flex is-flex-direction-column is-align-items-center"">
+  <div class="container is-flex is-flex-direction-column is-align-items-center" id="form-container-signup">
+    <p id="railsgram">Railsgram</p>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="container is-flex is-flex-direction-column">
+      <%= f.text_field :username, autofocus: true, placeholder: "username", :class => "textfield-login-signup mb-2" %>
+
+      <%= f.text_field :email, autofocus: true, autocomplete: "email", placeholder: "your@email.com", :class => "textfield-login-signup mb-2" %>
+    
+      <%= f.password_field :password, autocomplete: "new-password", placeholder: "password", :class => "textfield-login-signup" %>
+    
+      <% if @minimum_password_length %>
+      <span style="font-size:0.8rem;text-align:center"><em>(<%= @minimum_password_length %> characters minimum)</em></span>
+      <% end %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "confirm password", :class => "textfield-login-signup mb-4" %>
+    
+      <%= f.submit "Sign Up", :class => "button is-link is-rounded mb-5" %>
+  
+    </div>
+    <% end %>
+  </div>
+  <div class="container is-flex is-justify-content-center is-align-items-center m-2" id="link-signup">
+      <p class="mr-1">Already have an account?</p>
+    <%= link_to new_user_session_path  do %>
+      <strong>Login</strong>
+    <% end %>
+  </div>
+</div>

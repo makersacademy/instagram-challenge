@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+  <head>
+    <title>InstagramChallenge</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag "application", async: true %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/ea92a85679.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+  <% if user_signed_in? %>
+    <nav class="navbar is-info is-fixed-top has-shadow" role="navigation" aria-label="main navigation">
+
+      <div class="navbar-brand container is-fluid is-flex is-justify-content-space-between mt-1 mb-1 pl-2 pr-2">
+        <div class="navbar-item">
+          <p style="font-family: 'Lobster', cursive; font-size: 1.5rem;">Railsgram</p><%# <img src="" width="28" height="28"> %>
+        </div>
+        <div class="is-flex">
+          <div class="navbar-item">
+            <%= link_to posts_path do %>
+              <i class="fas fa-home" style="color:white; font-size:1.3rem"></i>
+            <% end %>
+          </div>
+
+          <div class="navbar-item">
+            <%= link_to new_post_path do %>
+              <i class="fas fa-plus" style="color:white;font-size:1.3rem"></i>
+            <% end %>
+          </div>
+              
+          <div class="navbar-item">
+            <%# <%= link_to posts_path do %>
+              <i class="fas fa-user-circle" style="color:white;font-size:1.3rem"></i>
+            <%# <% end %>
+          </div>
+
+          <div class="navbar-item">
+            <%= button_to "", destroy_user_session_path, method: :delete, :class => "button is-rounded is-small is-info is-inverted fas fa-sign-out-alt" %>
+          </div>
+        </div>
+      </div>   
+    </nav>
+  <% end %>
+  <div class="mt-2 is-flex is-justify-content-center" style="background-color:">
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+  </div>
+    <%= yield %>
+  </body>
+</html>
