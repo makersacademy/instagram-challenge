@@ -4,8 +4,7 @@ import { useNavigate } from "react-router";
 export default function Create() {
 
  const [form, setForm] = useState({
-   email: "",
-   password: ""
+   message: ""
  });
 
  const navigate = useNavigate();
@@ -22,63 +21,45 @@ export default function Create() {
    e.preventDefault();
  
    // When a post request is sent to the create url, add a new record to the database.
-   const newUser = { ...form };
+   const newPost = { ...form };
 
-   await fetch("http://localhost:4000/users/", {
+   await fetch("http://localhost:4000/posts/", {
      method: "POST",
      headers: {
        "Content-Type": "application/json",
      },
-     body: JSON.stringify(newUser),
+     body: JSON.stringify(newPost),
    })
    .catch(error => {
      window.alert(error);
      return;
    });
  
-   setForm({ name: "", password: "" });
+   setForm({ message: ""});
    navigate("/");
  }
  
  // This following section will display the form that takes the input from the user.
  return (
    <div>
-     <h3>Sign Up (React)</h3>
+     <h3>Post Messge (React)</h3>
      <form onSubmit={onSubmit}>
       <div className="form-group">
-         <label htmlFor="username">User Name</label>
+         <label htmlFor="message">Message</label>
          <input
            type="input"
            className="form-control"
-           id="username"
-           value={form.username}
-           onChange={(e) => updateForm({ username: e.target.value })}
+           id="message"
+           value={form.message}
+           onChange={(e) => updateForm({ message: e.target.value })}
          />
        </div>
-       <div className="form-group">
-         <label htmlFor="email">Email</label>
-         <input
-           type="email"
-           className="form-control"
-           id="email"
-           value={form.email}
-           onChange={(e) => updateForm({ email: e.target.value })}
-         />
-       </div>
-       <div className="form-group">
-         <label htmlFor="password">Password</label>
-         <input
-           type="password"
-           className="form-control"
-           id="password"
-           value={form.password}
-           onChange={(e) => updateForm({ password: e.target.value })}
-         />
-       </div>
+      
        <div className="form-group">
          <input
            type="submit"
-           value="Sign Up"
+           id="post-message"
+           value="Post"
            className="btn btn-primary"
          />
        </div>
@@ -88,7 +69,9 @@ export default function Create() {
 }
 
 
-// curl "http://localhost:4000/users/" \
+// curl "http://localhost:4000/posts/" \
 //   -X POST \
 //   -H "Content-Type: application/json" \
-//   -d '{"email":"test@test.com","password":"test"}'
+//   -d '{"message":"test@test.com"}'
+
+//curl "http://localhost:4000/posts"
