@@ -90,10 +90,10 @@ export default function Create() {
 
 
 
-curl "http://localhost:4000/users/" \
-  -X POST \
-  -H "Content-Type: application/json" \
-  -d '{"email":"test@test.com","password":"test"}'
+// curl "http://localhost:4000/users/" \
+//   -X POST \
+//   -H "Content-Type: application/json" \
+//   -d '{"email":"test@test.com","password":"test"}'
 
 //   {"email":"test@test.com","password":"test"}
 
