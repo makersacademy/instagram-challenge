@@ -1,50 +1,50 @@
 import React, { useState } from "react";
-// import { useNavigate } from "react-router";
+import { useNavigate } from "react-router";
  
 export default function Create() {
 
-//  const [form, setForm] = useState({
-//    email: "",
-//    password: ""
-//  });
+ const [form, setForm] = useState({
+   email: "",
+   password: ""
+ });
 
-//  const navigate = useNavigate();
+ const navigate = useNavigate();
  
-//  // This method will update the state properties.
-//  function updateForm(value) {
-//    return setForm((prev) => {
-//      return { ...prev, ...value };
-//    });
-//  }
+ // This method will update the state properties.
+ function updateForm(value) {
+   return setForm((prev) => {
+     return { ...prev, ...value };
+   });
+ }
  
-//  // This function will handle the submission.
-//  async function onSubmit(e) {
-//    e.preventDefault();
+ // This function will handle the submission.
+ async function onSubmit(e) {
+   e.preventDefault();
  
-//    // When a post request is sent to the create url, add a new record to the database.
-//    const newUser = { ...form };
+   // When a post request is sent to the create url, add a new record to the database.
+   const newUser = { ...form };
  
-//    await fetch("http://localhost:3000/users/new", {
-//      method: "POST",
-//      headers: {
-//        "Content-Type": "application/json",
-//      },
-//      body: JSON.stringify(newUser),
-//    })
-//    .catch(error => {
-//      window.alert(error);
-//      return;
-//    });
+   await fetch("http://localhost:4000/users/new", {
+     method: "POST",
+     headers: {
+       "Content-Type": "application/json",
+     },
+     body: JSON.stringify(newUser),
+   })
+   .catch(error => {
+     window.alert(error);
+     return;
+   });
  
-//    setForm({ name: "", password: "" });
-//    navigate("/");
-//  }
+   setForm({ name: "", password: "" });
+   navigate("/");
+ }
  
  // This following section will display the form that takes the input from the user.
  return (
    <div>
      <h1>Inside Create New User</h1>
-     {/* <h3>Sign Up (React)</h3>
+     <h3>Sign Up (React)</h3>
      <form onSubmit={onSubmit}>
        <div className="form-group">
          <label htmlFor="email">Email</label>
@@ -73,7 +73,7 @@ export default function Create() {
            className="btn btn-primary"
          />
        </div>
-     </form> */}
+     </form>
    </div>
  );
 }
