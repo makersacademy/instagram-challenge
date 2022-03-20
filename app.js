@@ -8,7 +8,8 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 //const session = require("express-session");
 const methodOverride = require("method-override");
-
+app.use(express.urlencoded({extended: true}))
+app.use(express.json())
 //const postsRouter = require("./routes/posts");
 //const sessionsRouter = require("./routes/sessions");
 //const usersRouter = require("./routes/users");
@@ -28,7 +29,7 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'build'))); 
+//app.use(express.static(path.join(__dirname, 'build'))); 
 app.use(methodOverride("_method"));
 
 // app.use(

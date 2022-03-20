@@ -23,8 +23,8 @@ export default function Create() {
  
    // When a post request is sent to the create url, add a new record to the database.
    const newUser = { ...form };
- 
-   await fetch("http://localhost:4000/users/new", {
+
+   await fetch("http://localhost:4000/users/", {
      method: "POST",
      headers: {
        "Content-Type": "application/json",
@@ -46,6 +46,16 @@ export default function Create() {
      <h1>Inside Create New User</h1>
      <h3>Sign Up (React)</h3>
      <form onSubmit={onSubmit}>
+      <div className="form-group">
+         <label htmlFor="username">User Name</label>
+         <input
+           type="input"
+           className="form-control"
+           id="username"
+           value={form.username}
+           onChange={(e) => updateForm({ username: e.target.value })}
+         />
+       </div>
        <div className="form-group">
          <label htmlFor="email">Email</label>
          <input
@@ -77,3 +87,14 @@ export default function Create() {
    </div>
  );
 }
+
+
+
+curl "http://localhost:4000/users/" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"email":"test@test.com","password":"test"}'
+
+//   {"email":"test@test.com","password":"test"}
+
+//   {"user": {"email":"test@test.com","password":"test"}}
