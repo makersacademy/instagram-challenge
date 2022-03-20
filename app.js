@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const session = require("express-session");
 const methodOverride = require("method-override");
+const multer=require('multer')
 
 const homeRouter = require("./routes/home");
 const imagesRouter = require("./routes/images");
@@ -24,6 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use('/uploads', express.static(__dirname +'/uploads'));
 app.use(methodOverride("_method"));
 app.use(flash());
 
@@ -62,6 +64,7 @@ const sessionChecker = (req, res, next) => {
 // route setup
 app.use("/", homeRouter);
 app.use("/images", sessionChecker, imagesRouter);
+// app.use("/images", imagesRouter);
 app.use("/sessions", sessionsRouter);
 app.use("/users", usersRouter);
 
