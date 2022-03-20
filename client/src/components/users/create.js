@@ -43,7 +43,6 @@ export default function Create() {
  // This following section will display the form that takes the input from the user.
  return (
    <div>
-     <h1>Inside Create New User</h1>
      <h3>Sign Up (React)</h3>
      <form onSubmit={onSubmit}>
       <div className="form-group">
@@ -89,12 +88,9 @@ export default function Create() {
 }
 
 
-
 // curl "http://localhost:4000/users/" \
 //   -X POST \
 //   -H "Content-Type: application/json" \
 //   -d '{"email":"test@test.com","password":"test"}'
 
-//   {"email":"test@test.com","password":"test"}
-
-//   {"user": {"email":"test@test.com","password":"test"}}
+//curl "http://localhost:4000/posts"

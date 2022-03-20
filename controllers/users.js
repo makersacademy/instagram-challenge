@@ -9,26 +9,16 @@ const UsersController = {
     
     const hash = bcrypt.hashSync(req.body.password, saltRounds);
     req.body.password = hash
-    console.log("Before Instantiation of new user", req.body.password )
-    const user = new User({username:req.body.username, email:req.body.email, password:req.body.password});
-    // User.create({username:req.body.username, email:req.body.email, password:req.body.password}), function(err, user){
-    //   if (err) {
-    //     throw err;
-    //   }
-    //   return res.json(user)
-    // }
-    
-    console.log("Created a User", user)
 
-    // user.save(function (err) {
-    //   if (err) return handleError(err);
-    //   // saved!
-    // });
+    const user = new User({username:req.body.username, email:req.body.email, password:req.body.password});
+
+    console.log("Created a User", user)
 
     user.save((err, result) => {
       if (err) {
         throw err;
       }
+      // Returning the hashed password. Should return something different.. probably a session key or similar
       res.json(result)
     });
   },

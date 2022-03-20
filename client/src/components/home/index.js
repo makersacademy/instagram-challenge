@@ -4,7 +4,7 @@ export default function Home() {
 
   return (
     <div>
-      <h3>Testing Welcome to Instagram From React</h3>
+      <h3>Welcome to Instagram From React</h3>
     </div>
   );
  }
