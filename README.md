@@ -6,12 +6,13 @@ Instagram Challenge
 Whilst all the Makers documentation discusses developing this challenge using Ruby On Rails we were asked to build it using the MERN Stack (Mongo, Express, React and Node).
 
 I am investigating using Multer to upload photos. Installed using the command: npm install multer multer-gridfs-storage
-https://www.bezkoder.com/node-js-upload-store-images-mongodb/#Create_middleware_for_uploading_038_storing_image
+I used this to assist me[store images]
+(https://www.bezkoder.com/node-js-upload-store-images-mongodb/#Create_middleware_for_uploading_038_storing_image)
 
 
 #### Break down the requirements 
 
-- Break down what is required in this chllange to create [user stories](https://github.com/nelsonclaire/instagram-challenge/blob/master/task_stories/user_stories.md) which should assist with how to create the tests, classes and methods.
+- Break down what is required in this challenge to create [user stories](https://github.com/nelsonclaire/instagram-challenge/blob/master/task_stories/user_stories.md) which should assist with how to create the tests, classes and methods.
 
 
 ## Technologies used
