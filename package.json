@@ -10,7 +10,8 @@
     "start:test": "PORT=3030 MONGODB_URL='mongodb://127.0.0.1/instagram_test' npm start",
     "test": "npm run lint && npm run test:unit && npm run test:integration",
     "test:unit": "jest",
-    "test:integration": "cypress run"
+    "test:integration": "cypress run",
+    "build:instagram": "rm -rf build && cd client && npm run build && cd .. && cp -r client/build ."
   },
   "engines": {
     "node": ">=16.14.0"
@@ -18,6 +19,7 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "express-session": "^1.17.2",

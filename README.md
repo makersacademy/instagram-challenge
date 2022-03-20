@@ -1,6 +1,10 @@
 Instagram Challenge
 ===================
 
+# Running the Servers
+`npm start` to start the express server
+`cd client && npm start` to start the react server
+
 ## Instructions
 
 * Feel free to use Google, your notes, books, etc., but work on your own
