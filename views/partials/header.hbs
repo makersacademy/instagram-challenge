@@ -1,0 +1,24 @@
+<nav>
+  <a href="/">Home</a>
+  <ul>
+    <li><a href="/users">Users</a></li>
+    <li><a href="/users/new">Add User</a></li>
+    <li><a href="/images">All Images</a></li>
+    <li><a href="/images/new">New Image</a></li>
+  </ul>
+
+  {{#if loggedIn}}
+      <form id="delete-session-form" action="/sessions?_method=DELETE" method="post" >
+        <button data-cy="submit-logout-user" type="submit">Logout</button>
+      </form>
+    {{else}}
+      <form id="new-session-form" action="/sessions" method="post" >
+        <label for="name">Login as:</label>
+        <input id="name" type="name" name="name" value="" data-cy="input-login-user">
+        <button data-cy="submit-login-user" type="submit">Login</button>
+      </form>
+    {{/if}}
+  
+  
+
+</nav>
