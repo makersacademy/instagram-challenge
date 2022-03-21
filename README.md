@@ -1,6 +1,14 @@
 Instagram Challenge
 ===================
 
+# Installing
+from root folder
+`npm install'
+then 
+`cd client`
+`npm install`
+
+
 # Running the Servers
 `npm start` to start the express server
 `cd client && npm start` to start the react server
