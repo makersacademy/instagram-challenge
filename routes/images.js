@@ -3,7 +3,8 @@ const router = express.Router();
 
 const ImagesController = require("../controllers/images");
 
-router.get("/", ImagesController.Index);
+// router.get("/", ImagesController.Index);
+router.get("/", ImagesController.New);
 router.post("/", ImagesController.Create);
 router.get("/new", ImagesController.New);
 router.post("/like/:id", ImagesController.Like);

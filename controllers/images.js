@@ -50,9 +50,22 @@ const ImagesController = {
 
 
   Create: async (req, res) => {
-    console.log(req.file);
+    console.log(req.body);
     try {
-      await upload(req, res);
+      // await upload(req, res);
+      const image = new Image(req.body);
+      console.log("Got here");
+      console.log(image);
+    
+    image.save((err) => {
+      if (err) {
+        throw err;
+      }
+      res.status(201).redirect("/images");
+    });
+
+
+
       console.log(req.file);
       if (req.file == undefined) {
         return res.send({
