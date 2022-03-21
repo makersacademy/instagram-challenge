@@ -10,9 +10,10 @@ describe("User model", () => {
     mongoose.connection.collections.users.drop(() => {
       done();
     });
-    user = new User({
-      name: "testuser",
-    });
+  })
+  beforeEach( async () => {
+    user = new User({name: 'testuser'})
+    await user.save();
   })
 
   it("has a name", () => {

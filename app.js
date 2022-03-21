@@ -3,11 +3,14 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+const session = require("express-session");
 const methodOverride = require("method-override");
 const hbs = require('hbs');
 
 const homeRouter = require("./routes/home");
-const usersRouter = require("./routes/users")
+const usersRouter = require("./routes/users");
+const sessionsRouter = require("./routes/sessions");
+const imagesRouter = require("./routes/images");
 
 const app = express();
 
@@ -23,9 +26,41 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(methodOverride("_method"));
 
+app.use(
+  session({
+    key: "user_sid",
+    secret: "super_secret",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      expires: 600000,
+    },
+  })
+);
+
+// clear the cookies after user logs out
+app.use((req, res, next) => {
+  if (req.cookies.user_sid && !req.session.user) {
+    res.clearCookie("user_sid");
+  }
+  next();
+});
+
+const sessionChecker = (req, res, next) => {
+  if (!req.session.user && !req.cookies.user_sid) {
+    res.locals.loggedIn = false;
+    res.redirect("/");
+  } else {
+    res.locals.loggedIn = true;
+    next();
+  }
+};
+
 // route setup
 app.use("/", homeRouter);
-app.use("/users", usersRouter);
+app.use("/sessions", sessionsRouter);
+app.use("/users", sessionChecker, usersRouter);
+app.use("/images", sessionChecker, imagesRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
