@@ -15,11 +15,13 @@ I have been tasked to create a web app that will work similar to Instagram - use
 ## Instructions
 Clone this repository to your desired location using `git clone https://github.com/mcsuGH/instagram-challenge.git`.\
 \
-You can then run `npm install` whilst in the main directory in your terminal to install any dependencies.\
+Make sure you have the most recent update of Node and then you can run `npm install` whilst in the main directory in your terminal to install dependencies.\
 \
 You can run tests by using the command `npm run start:test` to load up the test server then using `npm test` to run the test files.
 \
-In order to access for the website to function, you will need to run the server on localhost by using `npm start` then going on `localhost:3000` to access the website. From there, you will be able to make an account and those account details will then be stored on your local database. You will be able to post pictures so make sure to clear the database every so often so that it does not take up too much space - to do this, open `mongo` in the terminal, use the command `use instagram` to access the instagram database, then you can use `db.drop()` to clear the entire database.
+In order to access for the website to function, you will need to run the server on localhost by using `npm start` then going on `localhost:2800` to access the website. From there, you will be able to make an account and those account details will then be stored on your local database.\
+\
+You will be able to post pictures so make sure to clear the database every so often so that it does not take up too much space - to do this, open `mongo` in the terminal, use the command `use instagram` (or `use instagram_test` if you wish to access the test database, although that gets cleared every time tests are ran) to access the instagram database, then you can use `db.users.drop()` and `db.posts.drop()` to clear the database.
 
 ## User Stories
 ```
@@ -48,7 +50,9 @@ I would like to be able to add filters to them
 ## References
 ```
 https://www.asciiart.eu/electronics/cameras
+https://geeksforgeeks.org/upload-and-retrieve-image-on-mongodb-using-mongoose/
 ```
-used the above for the ASCII art, made by Joan Starks
+used the above for the ASCII art, made by Joan Starks\
+used the above to upload and retrieve images in mongoDB
 
 ## Functionality yet to be added

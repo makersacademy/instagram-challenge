@@ -7,6 +7,8 @@ const session = require("express-session");
 const methodOverride = require("method-override");
 var hbs = require('hbs');
 const moment = require('moment');
+const multer=require('multer');
+var bodyParser = require('body-parser');
 
 const homeRouter = require("./routes/home");
 const postsRouter = require("./routes/posts");
@@ -25,6 +27,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride("_method"));
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 app.use(
   session({
