@@ -5,3 +5,15 @@ Posted by: {{post.user.email}}
 {{formatDate post.createdAt}}
 <br>
 {{post.caption}}
+<br>
+{{#if (ifEqual user.email post.user.email)}}
+<form action='/posts/{{post.id}}?_method=DELETE' method='POST'>
+  <div class="btn-text-right">
+    <button class="dltbtn"><i class="fa fa-trash"></i></button>
+  </div>
+  </form>
+{{else}}
+  <div class="btn-text-right">
+    <button class="likebtn"> <i class="fa fa-thumbs-up"></i> </button>
+  </div>
+{{/if}}
