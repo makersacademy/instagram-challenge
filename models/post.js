@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
 const PostSchema = new mongoose.Schema({
-  name: String,
-  desc: String,
-  img: { data: Buffer, contentType: String },
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+  url: String,
+  caption: String,
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  likes: { type: Number, default: 0 }
 },
   {timestamps: true},
 );
