@@ -1,10 +1,10 @@
 <img height='1000', width = '1000' src = "{{post.url}}">
 <br>
-Posted by: {{post.user.email}}
+{{post.user.email}}: {{post.caption}}
 <br>
 {{formatDate post.createdAt}}
 <br>
-{{post.caption}}
+liked by {{post.likes}} people
 <br>
 {{#if (ifEqual user.email post.user.email)}}
 <form action='/posts/{{post.id}}?_method=DELETE' method='POST'>
@@ -17,3 +17,7 @@ Posted by: {{post.user.email}}
     <button class="likebtn"> <i class="fa fa-thumbs-up"></i> </button>
   </div>
 {{/if}}
+<br>
+<form action = '/posts'>
+  <button class = "back">back</button>
+</form>
