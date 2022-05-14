@@ -3,8 +3,20 @@
   <head>
     <title>{{title}}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    {{#if user}}
+    Hey {{user.email}}
+    {{/if}}
   </head>
   <body>
     {{{body}}}
+    {{#if user}}
+      <form action='/sessions?_method=DELETE' method='POST'>
+        <button class = "logout">Log Out</button>
+      </form>
+    {{else}}
+      <form action='/sessions/new'>
+        <button class = "login">Log In</button>
+      </form>
+    {{/if}}
   </body>
 </html>
