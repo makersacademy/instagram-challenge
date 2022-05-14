@@ -42,6 +42,20 @@ app.use(
   })
 );
 
+// Helper functions
+hbs.registerHelper('formatDate', function(dateString) {
+  return new hbs.SafeString(
+      'at ' + moment(dateString).format("HH:mm") +' on ' + moment(dateString).format("MMM D") + ' ' + moment(dateString).format("YYYY")
+  );
+});
+
+hbs.registerHelper('ifEqual', function(userId, postId) {
+  if (userId === postId) {
+    return true
+  } 
+  return false
+})
+
 // clear the cookies after user logs out
 app.use((req, res, next) => {
   if (req.cookies.user_sid && !req.session.user) {
