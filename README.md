@@ -1,12 +1,29 @@
 Instagram Challenge
 ===================
 
-## Instructions
+```
 
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+──▄█████████████████████████▄──
+▄█▀░█░█░█░░░░░░░░░░░░░░░░░░░▀█▄
+█░░░█░█░█░░░░░░░░░░░░░░█████░░█
+█░░░█░█░█░░░░░░░░░░░░░░█████░░█
+█░░░█░█░█░░░░░░░░░░░░░░█████░░█
+█░░░░░░░░░▄▄▄█████▄▄▄░░░░░░░░░█
+███████████▀▀░░░░░▀▀███████████
+█░░░░░░░██░░▄█████▄░░██░░░░░░░█
+█░░░░░░░██░██▀░░░▀██░██░░░░░░░█
+█░░░░░░░██░██░░░░░██░██░░░░░░░█
+█░░░░░░░██░██▄░░░▄██░██░░░░░░░█
+█░░░░░░░██▄░▀█████▀░▄██░░░░░░░█
+█░░░░░░░░▀██▄▄░░░▄▄██▀░░░░░░░░█
+█░░░░░░░░░░▀▀█████▀▀░░░░░░░░░░█
+█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█
+█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█
+█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█
+▀█▄░░░░░░░░░░░░░░░░░░░░░░░░░▄█▀
+──▀█████████████████████████▀──
+```
+
 
 ## Task
 
@@ -16,13 +33,27 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 
 Bonus if you can add filters!
 
-## How to start
+## User Stories
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+```
+As a user, 
+So that I can post as me, 
+I would like to be able to create an account
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+As a user, 
+So that I can show people what I've been up to, 
+I would like to be able to post pictures to Instagram
+
+As a user,
+So that I can reply to peoples pictures, 
+I would like to be able to post comments on peoples pictures
+
+As a user, 
+So that I can show my friends some love, 
+I would like to be able to like a picture
+
+```
+
 
 ## Code Quality
 
