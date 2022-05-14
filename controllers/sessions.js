@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const bcrypt = require("bcrypt");
 
 const SessionsController = {
   New: (req, res) => {
@@ -11,14 +12,17 @@ const SessionsController = {
     const password = req.body.password;
 
     User.findOne({ email: email }).then((user) => {
-      if (!user) {
-        res.redirect("/sessions/new");
-      } else if (user.password != password) {
-        res.redirect("/sessions/new");
-      } else {
-        req.session.user = user;
-        res.redirect("/posts");
-      }
+      bcrypt.compare(password, user.password, function (err, isMatch) {
+        if (err) throw err;
+
+        if (isMatch) {
+          req.session.user = user;
+          res.redirect("/posts");
+        } else {
+          req.flash("message", "Invalid Credentials");
+          res.redirect("sessions/new");
+        }
+      });
     });
   },
 

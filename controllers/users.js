@@ -7,6 +7,9 @@ const UsersController = {
 
   Create: (req, res) => {
     const user = new User(req.body);
+    user.email = req.body.email;
+    user.password = req.body.password;
+    user.username = req.body.username;
     user.save((err) => {
       if (err) {
         throw err;
