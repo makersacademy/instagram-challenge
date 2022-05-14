@@ -16,6 +16,19 @@ var port = normalizePort(process.env.PORT || '2800');
 app.set('port', port);
 
 /**
+ * Connect to MongoDB
+ **/
+
+ var mongoDbUrl = process.env.MONGODB_URI || "mongodb://localhost/instagram";
+ mongoose.connect(mongoDbUrl, {
+   useNewUrlParser: true,
+   useUnifiedTopology: true,
+ });
+ 
+ var db = mongoose.connection;
+ db.on("error", console.error.bind(console, "MongoDB connection error:"));
+
+/**
  * Create HTTP server.
  */
 
