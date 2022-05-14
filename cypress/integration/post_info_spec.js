@@ -12,7 +12,6 @@ describe("See post info", () => {
 
     cy.get('div[class="posts"]').first().find(".postimage").click()
     cy.url().should("include", "/posts");
-    cy.contains("Posted by: someone6@example.com")
-    cy.contains("this is a picture")
+    cy.contains("someone6@example.com: this is a picture")
   });
 });

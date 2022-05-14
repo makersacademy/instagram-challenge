@@ -39,6 +39,12 @@ const PostsController = {
       else res.render("posts/id", { post: post, user: req.session.user })
     })
   },
+  Likes: (req, res) => {
+    Post.findOneAndUpdate({_id: req.params.id}, {$inc : {'likes' : 1}}).exec((err, post) => {
+      if (err) res.json(err);
+      else res.status(201).redirect(`/posts/${req.params.id}`);
+    })
+  },
   Delete: (req, res) => {
     Post.findByIdAndRemove(req.params.id, 
       function(err, docs) {

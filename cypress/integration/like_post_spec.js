@@ -10,6 +10,6 @@ describe("Delete", () => {
     cy.get('.likebtn').click();
 
     // length 1 to see if the post made in this current test has been deleted
-    cy.contains("Likes: 1");
+    cy.contains("liked by 1 people");
   });
 });
