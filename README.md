@@ -48,7 +48,19 @@ Then, in your browser, enter `localhost:3000` in the address bar to visit the si
 
 ## Testing
 
-Jest was used for unit tests which applied to the models, while Cypress carried out integration tests to mimic user input in order to see the correct results were displayed on the pages.
+Jest was used for unit tests which applied to the models, while Cypress carried out integration tests to mimic user input in order to see the correct results were displayed on the pages. To run the unit tests, simply enter `jest` or `npm run test:unit` into the terminal. In order to run the integration tests, first the test server needs to be run by entering:
+
+```
+npm run start:test
+```
+
+Then the integration tests can be initiated by entering:
+
+```
+npm run test:integration
+```
+
+All tests can be ran together at once by simply entering `npm test` into the terminal *(remember the integration tests will need the test server to be runnning in order for them to pass)*.
 
 ## Improvements
 
