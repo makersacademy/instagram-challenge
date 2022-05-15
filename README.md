@@ -27,7 +27,7 @@ Instagram Challenge
 
 ## Video of program
 
-[![Watch the video](https://imgur.com/yOaPxri)](https://www.youtube.com/watch?v=wIAwM5qhk1Y)
+[![Watch the video](https://imgur.com/yOaPxri.png)](https://www.youtube.com/watch?v=wIAwM5qhk1Y)
 
 ## User Stories
 
