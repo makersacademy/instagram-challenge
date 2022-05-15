@@ -12,7 +12,7 @@ describe("Delete", () => {
     // length 2 because in unit test, a post is already created
     cy.get('div[class="posts"]').find('.postimage').should('have.length', 2)
 
-    cy.get('div[class="posts"]').first().find(".postimage").click()
+    cy.get('div[class="posts"]').find(".images").first().find(".postimage").click()
     cy.get('.dltbtn').click();
 
     cy.url().should("include", "/posts");

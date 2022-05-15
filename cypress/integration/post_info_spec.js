@@ -9,8 +9,7 @@ describe("See post info", () => {
     cy.get("#url").type("https://imgur.com/PpUyft2.jpeg");
     cy.get("#caption").type("this is a picture");
     cy.get(".createpost").click();
-
-    cy.get('div[class="posts"]').first().find(".postimage").click()
+    cy.get('div[class="posts"]').find(".images").first().find(".postimage").click()
     cy.url().should("include", "/posts");
     cy.contains("someone6@example.com: this is a picture")
   });

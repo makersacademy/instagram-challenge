@@ -13,7 +13,6 @@ describe("Comment model", () => {
   it("has a message and the number of likes", () => {
     var comment = new Comment({ message: 'hey', user: '627b88582de61f0e5db7f4ca', post: '627b88582de61f0e5db7f4ca' });
     expect(comment.message).toEqual("hey");
-    expect(comment.likes).toEqual(0);
   });
 
   it("can list all comments", (done) => {
