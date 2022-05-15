@@ -1,7 +1,7 @@
-const homeController = {
-  Index: function(req, res, next) {
+const HomeController = {
+  Index: (req, res) => {
     res.render('home/index', { title: 'Fakestagram' });
   },
 };
 
-module.exports = homeController;
+module.exports = HomeController;
