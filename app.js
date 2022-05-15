@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require("express-session");
+const methodOverride = require("method-override");
 
 
 const homeRouter = require('./routes/home');
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride("_method"));
 
 app.use(
   session({
@@ -43,7 +45,7 @@ app.use((req, res, next) => {
 });
 
 const sessionChecker = (req, res, next) => {
-  if (!req.session.user && !req.cookies.user_id) {
+  if (!req.session.user && !req.cookies.user_sid) {
     res.redirect('/');
   } else {
     next();
