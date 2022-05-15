@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
-const User = require('../../models/user');
 require("../mongodb_helper");
+const User = require('../../models/user');
 
 describe("User", () => {
   beforeEach((done) => {
@@ -12,13 +12,13 @@ describe("User", () => {
 
   it("has a username, email and password", () => {
     const user = new User({
-      username: "person1",
-      email: "person1@email.co.uk",
+      username: "user1",
+      email: "user1@email.co.uk",
       password: "password"
     });
     
-    expect(user.username).toEqual("person1");
-    expect(user.email).toEqual("person1@email.co.uk");
+    expect(user.username).toEqual("user1");
+    expect(user.email).toEqual("user1@email.co.uk");
     expect(user.password).toEqual("password");
   });
 });
