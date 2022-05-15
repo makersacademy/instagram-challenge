@@ -1,41 +1,66 @@
 Instagram Challenge
 ===================
 
-## Instructions
-
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-## Task
-
-Build Instagram: Simple huh!
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
-
-## How to start
-
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-group :development, :test do
-  gem 'rubocop', '1.20', require: false
-  gem 'rubocop-rails'
-end
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+──▄█████████████████████████▄──
+▄█▀░█░█░█░░░░░░░░░░░░░░░░░░░▀█▄
+█░░░█░█░█░░░░░░░░░░░░░░█████░░█
+█░░░█░█░█░░░░░░░░░░░░░░█████░░█
+█░░░█░█░█░░░░░░░░░░░░░░█████░░█
+█░░░░░░░░░▄▄▄█████▄▄▄░░░░░░░░░█
+███████████▀▀░░░░░▀▀███████████
+█░░░░░░░██░░▄█████▄░░██░░░░░░░█
+█░░░░░░░██░██▀░░░▀██░██░░░░░░░█
+█░░░░░░░██░██░░░░░██░██░░░░░░░█
+█░░░░░░░██░██▄░░░▄██░██░░░░░░░█
+█░░░░░░░██▄░▀█████▀░▄██░░░░░░░█
+█░░░░░░░░▀██▄▄░░░▄▄██▀░░░░░░░░█
+█░░░░░░░░░░▀▀█████▀▀░░░░░░░░░░█
+█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█
+█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█
+█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█
+▀█▄░░░░░░░░░░░░░░░░░░░░░░░░░▄█▀
+──▀█████████████████████████▀──
+```
+
+
+## Video of program
+
+[![Watch the video](https://imgur.com/yOaPxri.png)](https://www.youtube.com/watch?v=wIAwM5qhk1Y)
+
+## User Stories
+
+```
+As a user, 
+So that I can post as me, 
+I would like to be able to create an account
+
+As a user, 
+So that I can show people what I've been up to, 
+I would like to be able to post pictures to Instagram
+
+As a user, 
+So that I can show my friends some love, 
+I would like to be able to like a picture
+
+```
+
+## Functionality to be added
+
+As a user,
+So that I can reply to peoples pictures, 
+I would like to be able to post comments on peoples pictures
+
+
+## How to use
+
+- First you will want to start by cloning this repo to your local machine with `git clone https://github.com/JordanManu/instagram-challenge.git`
+
+- Run `npm install` to install dependencies
+- You can run the tests using the 'npm test' command in the terminal, be sure to have 'npm run start:test' running in a separate terminal.
+- To open the web app go to 'localhost:3000' and use `npm start` in the terminal.
+- You will need to create an account to be able to use the program and make posts
+- Once signed up, you'll be directed to the sign in page
+- After you're signed in you will be able to post photos with a caption.
+- Just click on the post icon in the top right corner, there you can enter a url of your image and add a caption.
