@@ -1,5 +1,5 @@
-describe("Delete", () => {
-  it("A user can delete a post made by them", () => {
+describe("Like", () => {
+  it("A user can like a post made by someone else", () => {
     cy.visit("/users/new");
     cy.get("#email").type("someone8@example.com");
     cy.get("#password").type("password");

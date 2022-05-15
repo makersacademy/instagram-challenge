@@ -60,5 +60,6 @@ used the above to upload and retrieve images in mongoDB - abandoned for now
 ## Functionality yet to be added
 - add CSS
 - add comment function
+- make it so each user can only like a post once
 - add filter function
 - add the ability to upload images onto the database rather than using a external image host

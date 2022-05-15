@@ -6,7 +6,7 @@ describe("Create post", () => {
     cy.get("#submit").click();
     cy.get(".newpost").click();
 
-    cy.get("#url").type("https://i.imgur.com/eQGmX4X.jpeg");
+    cy.get("#url").type("https://i.imgur.com/PpUyft2.jpeg");
     cy.get("#caption").type("this is a picture");
     cy.get(".createpost").click();
 
