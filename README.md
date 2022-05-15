@@ -26,8 +26,8 @@ In order to access for the website to function, you will need to run the server 
 You will be able to post pictures so make sure to clear the database every so often so that it does not take up too much space - to do this, open `mongo` in the terminal, use the command `use instagram` (or `use instagram_test` if you wish to access the test database, although that gets cleared every time tests are ran) to access the instagram database, then you can use `db.users.drop()` and `db.posts.drop()` to clear the database. Note: currently storing images inside the database is not working (currently storing urls of images) but you can still clear the database if you wish.\
 \
 Here are some images to show what it looks like:
-!Screenshot[https://i.imgur.com/h9QYDfg.png]
-!Screenshot[https://i.imgur.com/8AsVFYR.png]
+![Screenshot](https://i.imgur.com/h9QYDfg.png)
+![Screenshot](https://i.imgur.com/8AsVFYR.png)
 
 ## User Stories
 ```
