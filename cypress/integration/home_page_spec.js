@@ -1,6 +1,6 @@
 describe("Home page", () => {
-  it("has a title", () => {
+  it("has a sign in form", () => {
     cy.visit("/");
-    cy.get(".title").should("contain", "Acebook");
+    cy.get("#new-session-form").should("contain", "Log in");
   });
 });

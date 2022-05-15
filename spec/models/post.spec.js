@@ -10,9 +10,9 @@ describe("Post model", () => {
     });
   });
 
-  it("has a message", () => {
-    var post = new Post({ message: "some message" });
-    expect(post.message).toEqual("some message");
+  it("has a url", () => {
+    var post = new Post({ url: "https://imgur.com/eI35OFg", caption: "Test" });
+    expect(post.url).toEqual("https://imgur.com/eI35OFg");
   });
 
   it("can list all posts", (done) => {
@@ -24,7 +24,7 @@ describe("Post model", () => {
   });
 
   it("can save a post", (done) => {
-    var post = new Post({ message: "some message" });
+    var post = new Post({ url: "https://imgur.com/eI35OFg", caption: "Test" });
 
     post.save((err) => {
       expect(err).toBeNull();
@@ -32,7 +32,7 @@ describe("Post model", () => {
       Post.find((err, posts) => {
         expect(err).toBeNull();
 
-        expect(posts[0]).toMatchObject({ message: "some message" });
+        expect(posts[0]).toMatchObject({ caption: "Test" });
         done();
       });
     });

@@ -5,10 +5,8 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const session = require("express-session");
 const methodOverride = require("method-override");
-var bodyParser = require('body-parser');
 const flash = require("connect-flash");
-const GridFsStorage = require('multer-gridfs-storage');
-const Grid = require('gridfs-stream');
+
 
 const homeRouter = require("./routes/home");
 const postsRouter = require("./routes/posts");
@@ -27,10 +25,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(methodOverride("_method"));
-
-// image upload
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
 
 
 app.use(
