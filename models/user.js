@@ -3,7 +3,7 @@ bcrypt = require('bcrypt'),
 SALT_WORK_FACTOR = 10;
 
 const UserSchema = new mongoose.Schema({
-  email: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   username: { type: String, required: true },
 });
