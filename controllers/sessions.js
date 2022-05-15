@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 
 const SessionsController = {
   New: (req, res) => {
-    res.render("sessions/new", {});
+    res.render("sessions/new", { message: req.flash("message") });
   },
 
   Create: (req, res) => {

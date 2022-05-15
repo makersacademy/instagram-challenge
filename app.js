@@ -5,6 +5,9 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const session = require("express-session");
 const methodOverride = require("method-override");
+var bodyParser = require('body-parser');
+const flash = require("connect-flash");
+
 
 const homeRouter = require("./routes/home");
 const postsRouter = require("./routes/posts");
@@ -12,7 +15,7 @@ const sessionsRouter = require("./routes/sessions");
 const usersRouter = require("./routes/users");
 
 const app = express();
-
+app.use(flash());
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
@@ -23,6 +26,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(methodOverride("_method"));
+
+// image upload
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
 
 app.use(
   session({

@@ -1,9 +1,15 @@
 const mongoose = require("mongoose");
 
-const PostSchema = new mongoose.Schema({
-  message: String,
+const PhotoSchema = new mongoose.Schema({
+  name: String,
+  caption: String, 
+  img:
+  {
+    data: Buffer,
+    contentType: String
+  }
 });
 
-const Post = mongoose.model("Post", PostSchema);
+const Photo = mongoose.model("Photo", PhotoSchema);
 
-module.exports = Post;
+module.exports = Photo;
