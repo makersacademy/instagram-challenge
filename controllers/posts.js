@@ -1,7 +1,13 @@
 const Photo = require("../models/post");
-var fs = require('fs');
+const fs = require('fs');
 require('dotenv/config');
 const multer = require('multer');
+const path = require('path');
+const {GridFsStorage} = require('multer-gridfs-storage');
+const Grid = require('gridfs-stream');
+const crypto = require('crypto');
+const mongoose = require('mongoose');
+
 // const storage = multer.diskStorage({
 //   destination: (req, file, cb) => {
 //     cb(null, 'uploads')
@@ -12,58 +18,145 @@ const multer = require('multer');
 // })
 // const upload = multer({ storage: storage })
 
-function middleware(req, res, next) {
+// function middleware(req, res, next) {
 
-  var imageName;
+//   var imageName;
 
-  var uploadStorage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, './uploads');
-    },
-    filename: function (req, file, cb) {
-      imageName = file.originalname;
-      //imageName += "_randomstring"
-      cb(null, imageName);
-    }
-  });
+//   var uploadStorage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//       cb(null, './new');
+//     },
+//     filename: function (req, file, cb) {
+//       imageName = file.originalname;
+//       //imageName += "_randomstring"
+//       cb(null, imageName);
+//     }
+//   });
 
-  var upload = multer({ storage: uploadStorage });
+//   var upload = multer({ storage: uploadStorage });
 
-  var uploadFile = upload.single('file');
+//   var uploadFile = upload.single('file');
 
-  uploadFile(req, res, function (err) {
-    req.imageName = imageName;
-    req.uploadError = err;
-    next();
-  })
-};
+//   uploadFile(req, res, function (err) {
+//     req.imageName = imageName;
+//     req.uploadError = err;
+//     next();
+//   })
+// };
+  
+// const storage = multer.diskStorage({
+//     destination: (req, file, cb) => {
+//         cb(null, 'uploads')
+//     },
+//     filename: (req, file, cb) => {
+//         cb(null, file.fieldname + '-' + Date.now())
+//     }
+// });
+const conn = mongoose.createConnection("mongodb://0.0.0.0/jordangram");
 
-  const PostsController = {
-    Index: (req, res) => {
-      Photo.find((err, photos) => {
+let gfs;
+
+conn.once('open', () => {
+  // Init stream
+  gfs = Grid(conn.db, mongoose.mongo);
+  gfs.collection('photos');
+});
+
+const storage = new GridFsStorage({
+  url: "mongodb://0.0.0.0/jordangram",
+  file: (req, file) => {
+    return new Promise((resolve, reject) => {
+      crypto.randomBytes(16, (err, buf) => {
         if (err) {
-          throw err;
+          return reject(err);
         }
-        else {
-          res.render("posts/index", { photos: photos });
-        }
+        const filename = buf.toString('hex') + path.extname(file.originalname);
+        const fileInfo = {
+          filename: filename,
+          bucketName: 'uploads'
+        };
+        resolve(fileInfo);
       });
-    },
-    New: (req, res) => {
-      res.render("posts/new", {});
-    },
-    Create: (req, res) => {
-      middleware
-      const photo = new Photo(req.body)
-      photo.save((err) => {
+    })
+  }
+});
+
+const upload = multer({ storage: storage });
+
+const PostsController = {
+  Index: (req, res) => {
+    gfs.files.find().toArray((err, files) => {
+      // Check if files
+      if (!files || files.length === 0) {
+        res.render('posts/index', { files: false });
+      } else {
+        files.map(file => {
+          if (
+            file.contentType === 'image/jpeg' ||
+            file.contentType === 'image/png'
+          ) {
+            file.isImage = true;
+          } else {
+            file.isImage = false;
+          }
+        });
+        res.render('posts/index', { files: files });
+      }
+    });
+  },
+  //   Photo.find({}, (err, photos) => {
+  //     if (err) {
+  //       throw err;
+  //     }
+  //     else {
+  //       res.render("posts/index", { photos: photos });
+  //     }
+  //   });
+  // },
+  New: (req, res) => {
+    res.render("posts/new", {});
+  },
+    
+    
+  Create: (upload.single('file'), (req, res) => {
+    res.json({file: req.file})
+    // res.redirect('/posts')
+    // const obj = {
+    //   name: req.body.name,
+    //   caption: req.body.caption,
+    //   img: {
+    //     data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.body.name)),
+    //     contentType: 'image/png'
+    //   }
+    // }
+    // Photo.create(obj, (err, item) => {
+    //   if (err) {
+    //     console.log(err);
+    //   }
+    //   else {
+    //     item.save();
+    //     res.redirect('/posts');
+    //   }
+    // });
+  }),
+  UpdateLikes: (req, res) => {
+    console.log("Update likes in controller");
+    console.log(req.params.id);
+    const action = req.body.action;
+    const counter = (action === "Like" ? 1 : -1);
+    Photo.updateOne(
+      { _id: req.params.id },
+      { $inc: { likes: counter } },
+      {},
+      (err, number) => {
         if (err) {
           throw err;
         }
-        res.redirect('/posts')
-      })
-    }
-  }
-
+        res.send(number);
+      }
+    );
+  },
+}
     
 module.exports = PostsController;
 

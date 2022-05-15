@@ -7,7 +7,8 @@ const session = require("express-session");
 const methodOverride = require("method-override");
 var bodyParser = require('body-parser');
 const flash = require("connect-flash");
-
+const GridFsStorage = require('multer-gridfs-storage');
+const Grid = require('gridfs-stream');
 
 const homeRouter = require("./routes/home");
 const postsRouter = require("./routes/posts");
