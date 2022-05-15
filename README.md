@@ -66,9 +66,10 @@ All tests can be ran together at once by simply entering `npm test` into the ter
 
 Had I had more time, I would have liked to implement the following functionality:
 
-1. Users cannot sign up with existing emails and passwords would be encrypted
-2. Posts would be linked with the user who posted it via a foreign key.
-3. Image files could be uploaded to the site instead of having to enter the URL for an existing photo on the internet.
-4. Photos can be liked and commented on.
-5. Posts can be deleted.
-6. Bonus: add filters to posts.
+1. Users are automatically logged in after registering.
+2. Users cannot sign up with existing emails and passwords would be encrypted
+3. Posts would be linked with the user who posted it via a foreign key.
+4. Image files could be uploaded to the site instead of having to enter the URL for an existing photo on the internet.
+5. Photos can be liked and commented on.
+6. Posts can be deleted.
+7. Bonus: add filters to posts.
