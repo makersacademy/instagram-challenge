@@ -13,12 +13,32 @@ liked by {{post.likes}} people
     </div>
   </form>
 {{else}}
-  <form action='/posts/{{post.id}}' method='POST'>
+  <form action='/posts/{{post.id}}/like' method='POST'>
     <div class="btn-text-right">
       <button class="likebtn"> <i class="fa fa-thumbs-up"></i> </button>
     </div>
   </form>
 {{/if}}
+<br>
+{{#each comments}}
+{{this.user.email}}: {{this.message}} 
+<br>
+{{formatDate comment.createdAt}}
+<br>
+{{/each}}
+<br>
+Write comment: 
+<div>
+  <form id="comment-form" action='/posts/{{post.id}}' method="POST">
+    <div>
+      <label for="comment">Comment</label>
+      <input type="text" id="comment" name="comment" placeholder="write comment" required>
+    </div>
+    <div>
+      <button class ='createcomment'>Comment</button>
+    </div>
+  </form>
+</div>
 <br>
 <form action = '/posts'>
   <button class = "back">back</button>

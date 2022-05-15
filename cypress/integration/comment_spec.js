@@ -8,9 +8,9 @@ describe("Comment", () => {
     // already existing image from previous unit test
     cy.get('div[class="posts"]').first().find(".postimage").click()
     cy.get("#comment").type("heyyy");
-    cy.get("#postcomment").click();
+    cy.get(".createcomment").click();
 
     // length 1 to see if the post made in this current test has been deleted
-    cy.get(".post").find(".comment").should("contain", "heyyy");
+    cy.contains("heyyy");
   });
 });

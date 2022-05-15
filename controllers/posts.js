@@ -1,6 +1,7 @@
 const { Schema } = require("mongoose");
 const { post } = require("../app");
 const Post = require("../models/post");
+const Comment = require("../models/comment");
 const mongoose = require('mongoose');
 
 const PostsController = {
@@ -36,7 +37,10 @@ const PostsController = {
   PostInfo: (req, res) => {
     Post.findById(req.params.id).populate({path: "user", select: "email"}).exec((err, post) => {
       if (err) res.json(err);
-      else res.render("posts/id", { post: post, user: req.session.user })
+      else Comment.find({ "post": post.id }).populate({ path: "user", select: "email" }).exec((err, comments) => {
+        if (err) res.json(err);
+        else res.render("posts/id", { post: post, comments: comments, user: req.session.user })
+      })
     })
   },
   Likes: (req, res) => {
@@ -44,6 +48,20 @@ const PostsController = {
       if (err) res.json(err);
       else res.status(201).redirect(`/posts/${req.params.id}`);
     })
+  },
+  Comment: (req, res) => {
+    var commentInfo = {
+      message: req.body.comment,
+      post: req.params.id,
+      user: req.session.user._id
+    }
+    const comment = new Comment(commentInfo);
+    comment.save((err) => {
+      if (err) {
+        throw err;
+      }
+      res.status(201).redirect(`/posts/${req.params.id}`);
+    });
   },
   Delete: (req, res) => {
     Post.findByIdAndRemove(req.params.id, 
