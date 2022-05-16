@@ -5,6 +5,8 @@ const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const session = require('express-session')
 const methodOverride = require('method-override')
+var multer = require('multer')
+const fs = require('fs');
 
 const homeRouter = require('./routes/home')
 const postsRouter = require('./routes/posts')
@@ -52,6 +54,18 @@ const sessionChecker = (req, res, next) => {
     next()
   }
 }
+
+var storage = multer.diskStorage({
+  destination: (req,file, cb) => {
+    cb(null, 'uploads')
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.fieldname + '-' + Date.now())
+  }
+});
+
+var upload = multer({ storage: storage});
+
 
 // route setup
 app.use('/', homeRouter)

@@ -1,4 +1,5 @@
 const Post = require("../models/post");
+const fs = require('fs');
 
 const PostsController = {
   Index: (req, res) => {
@@ -14,7 +15,15 @@ const PostsController = {
     res.render("posts/new", {});
   },
   Create: (req, res) => {
-    const post = new Post(req.body);
+    var obj = {
+      message: req.body,
+      img:
+      {
+        data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+        contentType: 'image/png'
+      }
+    }
+    const post = new Post(obj);
     post.save((err) => {
       if (err) {
         throw err;
