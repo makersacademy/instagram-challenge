@@ -1,0 +1,24 @@
+<h1><%= @gallery.name %></h1>
+<% if user_signed_in? && current_user.id == @gallery.user_id%>
+  <strong><%= link_to "Edit name", edit_gallery_path(@gallery) %></strong>
+  <strong><%= link_to "Delete Gallery", gallery_path(@gallery), method: :delete %></strong>
+  <p><strong><%= link_to "Add Picture", "/galleries/#{@gallery.id}/pictures/new" %></strong>
+<% end %>
+
+<h2>Photos will display here.</h2>
+<p><%= link_to "Back to Galleries listing", galleries_path %></p>
+
+<% @gallery.pictures.each do |picture| %>
+  <span id = "picture-holder">
+    <div id = "title">
+      <strong><%= picture.title %></strong>
+    </div>
+      <% if user_signed_in? && current_user.id == @gallery.user_id%>
+        <%= link_to "Edit Picture", "/galleries/#{@gallery.id}/pictures/#{picture.id}/edit" %>
+        <%= link_to "Delete Picture", "/galleries/#{@gallery.id}/pictures/#{picture.id}", method: :delete %>
+      <% end %>
+      <div id = "picture">
+        <%= image_tag picture.image.url(:medium) %>
+      </div>
+  </span><br>
+<% end %>

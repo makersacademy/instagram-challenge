@@ -1,0 +1,25 @@
+<h1>Edit picture</h1>
+<h3><a href = "/galleries/<%= @gallery.id %>">Back to Gallery "<%= @gallery.name %>"</a></h3>
+
+<!-- Fudged! Had to use flash here - see "flash[:error] = @picture.errors" on pictures controller-->
+<% if !flash.empty? %>
+hello
+  <section id="errors" >
+    <h2> <%= pluralize(flash.count, "error") %> prohibited the edits for this picture
+      from being saved: </h2>
+    <ul>
+      <% flash.each do |message| %>
+        <% message[1].each do |key, value| %>
+          <%= "#{key.to_s.capitalize} #{value.join}" %>
+        <% end %>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
+<br>
+
+<%= form_for [@gallery, @picture] do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.submit "Save Picture Edits" %>
+<% end %>
