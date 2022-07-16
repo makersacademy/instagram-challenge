@@ -16,6 +16,61 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 
 Bonus if you can add filters!
 
+## User Stories
+
+Users
+
+As an amateur photographer
+So that I am remembered on the site
+I would like to be able to sign up
+
+As an amateur photographer
+So that I can access my accounts
+I would like to be able to sign in
+
+As an amateur photographer
+So that people cannot post photos as me
+I would like to be able to log out
+
+Posts
+
+As an amateur photographer
+So that I can share my work
+I would like to be able to post an image on instagram
+
+As an amateur photographer
+So that I get credit for my photos
+I would like my username to appear next to my photo
+
+As an amateur photographer
+So that I can avoid being embarrassed by old work
+I would like to be able to delete my photos
+
+As a photography fan
+So that I can see what is happening now
+I would like to see the most recent post first
+
+
+Comments
+
+As an amateur photographer
+So that I can get feedback
+I would like people to be able to comment on my work
+
+As an amateur photographer
+So that I get fewer rude comments
+I would like to see the username of the person who posts a comment
+
+Likes:
+
+As a photography fan
+So that I can show my appreciation
+I would like to be able to like a photo
+
+As a photography fan
+So that I know what is truly popular
+I want users to only be able to like a photo once
+
 ## How to start
 
 1. Produce some stories, break them down into tasks, and estimate
