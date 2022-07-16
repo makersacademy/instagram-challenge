@@ -71,6 +71,18 @@ As a photography fan
 So that I know what is truly popular
 I want users to only be able to like a photo once
 
+## Things I might use
+
+It uses:
+
+- [Express](https://expressjs.com/) web framework for Node.js.
+- [Nodemon](https://nodemon.io/) to reload the server automatically.
+- [Handlebars](https://handlebarsjs.com/) to render view templates.
+- [Mongoose](https://mongoosejs.com) to model objects in MongoDB.
+- [ESLint](https://eslint.org) for linting.
+- [Jest](https://jestjs.io/) for testing.
+- [Cypress](https://www.cypress.io/) for end-to-end testing.
+
 ## How to start
 
 1. Produce some stories, break them down into tasks, and estimate
