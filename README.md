@@ -1,41 +1,75 @@
 Instagram Challenge
 ===================
 
-## Instructions
+This app is a copy of instagram written in Javascript. Express was used to create the server and routes, Mongodb is the database where the data is stored and mongoose was used to connect the two together.
 
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+All the necessary files for this app have been separated into appropriate folders. The [views](https://github.com/jmcnally17/instagram-challenge/tree/main/views) folder contains the HBS files that contain the HTML code for each page. The [routes](https://github.com/jmcnally17/instagram-challenge/tree/main/routes) folder contains the defined routes for each group of objects that govern HTTP requests throughout the app, with help from the [controllers](https://github.com/jmcnally17/instagram-challenge/tree/main/controllers) folder. Finally, the object classes are defined in the [models](https://github.com/jmcnally17/instagram-challenge/tree/main/models) folder, which use Mongoose to create the necessary Schema which define the classes themselves. These Schema also determine what information gets stored in the database.
 
-## Task
+So far, the functionality is limited due to not having a lot of time to work on this project.
 
-Build Instagram: Simple huh!
+## Getting Started
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+If you haven't already, install nvm using homebrew:
 
-Bonus if you can add filters!
-
-## How to start
-
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-group :development, :test do
-  gem 'rubocop', '1.20', require: false
-  gem 'rubocop-rails'
-end
+```
+brew install nvm
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+Then, open a new terminal and install Node.js:
+
+```
+nvm install node
+```
+
+Now you can clone this repository and install the necessary dependencies:
+
+```
+git clone https://github.com/jmcnally17/instagram-challenge
+npm install
+```
+
+Mongodb needs to be installed and started as well:
+
+```
+brew tap mongodb/brew
+brew install mongodb-community@5.0
+brew services start mongodb-community@5.0
+```
+
+## How To Use
+
+To start using the app, start by running the server using:
+
+```
+npm start
+```
+
+Then, in your browser, enter `localhost:3000` in the address bar to visit the site. There, you can sign up, log in, log out and post image URLs that will be rendered on the posts page, which you can only visit when you are signed in.
+
+## Testing
+
+Jest was used for unit tests which applied to the models, while Cypress carried out integration tests to mimic user input in order to see the correct results were displayed on the pages. To run the unit tests, simply enter `jest` or `npm run test:unit` into the terminal. In order to run the integration tests, first the test server needs to be run by entering:
+
+```
+npm run start:test
+```
+
+Then the integration tests can be initiated by entering:
+
+```
+npm run test:integration
+```
+
+All tests can be ran together at once by simply entering `npm test` into the terminal *(remember the integration tests will need the test server to be runnning in order for them to pass)*.
+
+## Improvements
+
+Had I had more time, I would have liked to implement the following functionality:
+
+1. Users are automatically logged in after registering.
+2. Users cannot sign up with existing emails and passwords would be encrypted
+3. Posts would be linked with the user who posted it via a foreign key.
+4. Image files could be uploaded to the site instead of having to enter the URL for an existing photo on the internet.
+5. Photos can be liked and commented on.
+6. Posts can be deleted.
+7. Bonus: add filters to posts.
