@@ -10,6 +10,7 @@ require('dotenv/config');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var newPostRouter = require('./routes/newPost');
 
 var app = express();
 
@@ -23,8 +24,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+//route setup
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+// app.use('/newPost', newPostRouter);
+
+app.get('/newPost', (req, res, next) => {
+    console.log('we got to the router')
+    res.render('newPost');
+  });
 
 
 // catch 404 and forward to error handler
@@ -59,39 +68,39 @@ const upload = multer({ storage: storage });
 
 // image handler
 
-app.get('/', (req, res) => {
-  imgModel.find({}, (err, items) => {
-      if (err) {
-          console.log(err);
-          res.status(500).send('An error occurred', err);
-      }
-      else {
-          res.render('imagesPage', { items: items });
-      }
-  });
-});
+// app.get('/', (req, res) => {
+//   imgModel.find({}, (err, items) => {
+//       if (err) {
+//           console.log(err);
+//           res.status(500).send('An error occurred', err);
+//       }
+//       else {
+//           res.render('imagesPage', { items: items });
+//       }
+//   });
+// });
 
 // image uploader
 
-app.post('/', upload.single('image'), (req, res, next) => {
+// app.post('/', upload.single('image'), (req, res, next) => {
   
-  var obj = {
-      name: req.body.name,
-      desc: req.body.desc,
-      img: {
-          data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
-          contentType: 'image/png'
-      }
-  }
-  imgModel.create(obj, (err, item) => {
-      if (err) {
-          console.log(err);
-      }
-      else {
-          // item.save();
-          res.redirect('/');
-      }
-  });
-});
+//   var obj = {
+//       name: req.body.name,
+//       desc: req.body.desc,
+//       img: {
+//           data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+//           contentType: 'image/png'
+//       }
+//   }
+//   imgModel.create(obj, (err, item) => {
+//       if (err) {
+//           console.log(err);
+//       }
+//       else {
+//           // item.save();
+//           res.redirect('/');
+//       }
+//   });
+// });
 
 module.exports = app;
