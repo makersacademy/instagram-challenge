@@ -31,6 +31,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
+// process image when form is submitted and redirect to the homepage
 router.post('/', upload.single('image'), (req, res, next) => {
   var obj = {
       name: req.body.name,

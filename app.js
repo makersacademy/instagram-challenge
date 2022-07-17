@@ -66,6 +66,4 @@ const storage = multer.diskStorage({
   
 const upload = multer({ storage: storage });
 
-// image handler
-
 module.exports = app;
