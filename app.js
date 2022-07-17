@@ -28,12 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //route setup
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-// app.use('/newPost', newPostRouter);
-
-app.get('/newPost', (req, res, next) => {
-    console.log('we got to the router')
-    res.render('newPost');
-  });
+app.use('/newPost', newPostRouter);
 
 
 // catch 404 and forward to error handler
@@ -51,19 +46,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-// set up use of multer to store uploads
-const multer = require('multer');
-  
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads')
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now())
-    }
-});
-  
-const upload = multer({ storage: storage });
 
 module.exports = app;
