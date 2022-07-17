@@ -3,6 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var bodyParser = require('body-parser');
+var mongoose = require('mongoose')
+var fs = require('fs');
+require('dotenv/config');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -22,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -36,6 +41,57 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+// set up use of multer to store uploads
+const multer = require('multer');
+  
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now())
+    }
+});
+  
+const upload = multer({ storage: storage });
+
+// image handler
+
+app.get('/', (req, res) => {
+  imgModel.find({}, (err, items) => {
+      if (err) {
+          console.log(err);
+          res.status(500).send('An error occurred', err);
+      }
+      else {
+          res.render('imagesPage', { items: items });
+      }
+  });
+});
+
+// image uploader
+
+app.post('/', upload.single('image'), (req, res, next) => {
+  
+  var obj = {
+      name: req.body.name,
+      desc: req.body.desc,
+      img: {
+          data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+          contentType: 'image/png'
+      }
+  }
+  imgModel.create(obj, (err, item) => {
+      if (err) {
+          console.log(err);
+      }
+      else {
+          // item.save();
+          res.redirect('/');
+      }
+  });
 });
 
 module.exports = app;
