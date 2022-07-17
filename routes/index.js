@@ -25,7 +25,6 @@ router.get('/', function(req, res, next) {
         res.status(500).send('An error occurred', err);
     }
     else {
-        console.log(items);
         res.render('index', { title: 'Instagram', items: items });
     }
   });
