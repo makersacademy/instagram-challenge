@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const imgModel = require('../models/images');
+const Image = require('../models/images');
 const fs = require('fs')
 var path = require('path');
 
@@ -19,7 +19,7 @@ const upload = multer({ storage: storage });
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  imgModel.find({}, (err, items) => {
+  Image.find({}, (err, items) => {
     if (err) {
         console.log(err);
         res.status(500).send('An error occurred', err);
@@ -41,7 +41,7 @@ router.post('/', upload.single('image'), (req, res, next) => {
           contentType: 'image/png'
       }
   }
-  imgModel.create(obj, (err, item) => {
+  Image.create(obj, (err, item) => {
       if (err) {
           console.log(err);
       }
