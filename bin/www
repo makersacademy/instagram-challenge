@@ -52,10 +52,11 @@ function normalizePort(val) {
 
 // connect to database
 
-mongoose.connect(process.env.MONGO_URL,
-  { useNewUrlParser: true, useUnifiedTopology: true }, err => {
-      console.log('connected')
-  });
+var mongoDbUrl = process.env.MONGODB_URL || "mongodb://0.0.0.0/acebook";
+mongoose.connect(mongoDbUrl, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 /**
  * Event listener for HTTP server "error" event.

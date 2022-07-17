@@ -1,3 +1,5 @@
+require('cypress-file-upload');
+
 describe('user can add post',() => {
   it('shows the user a form to upload an image',() => {
     cy.visit('/')
@@ -13,9 +15,10 @@ describe('user can add post',() => {
     cy.get('#add-post-button').click()
     cy.get('#name').type('Fake photo');
     cy.get('#desc').type('A lovely photo');
+    cy.get('input[type=file]').attachFile('../test-image/image-for-test.png');
     cy.get('button').click();
     cy.get('#title').should('contain', 'Instagram');
-    cy.get('div.image').first().should('contain', 'Fake Photo');
+    cy.get('.image-name').last().should('contain', 'Fake photo');
     // fails because you have to upload a photo for it to work
   })
 
