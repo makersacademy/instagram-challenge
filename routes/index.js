@@ -1,9 +1,54 @@
 var express = require('express');
 var router = express.Router();
+const imgModel = require('../models/images');
+const fs = require('fs')
+var path = require('path');
+
+const multer = require('multer');
+  
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now())
+    }
+});
+  
+const upload = multer({ storage: storage });
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Instagram' });
+  imgModel.find({}, (err, items) => {
+    if (err) {
+        console.log(err);
+        res.status(500).send('An error occurred', err);
+    }
+    else {
+        console.log(items);
+        res.render('index', { title: 'Instagram', items: items });
+    }
+  });
+});
+
+router.post('/', upload.single('image'), (req, res, next) => {
+  var obj = {
+      name: req.body.name,
+      desc: req.body.desc,
+      img: {
+          data: fs.readFileSync(path.join(__dirname, '..' + '/uploads/' + req.file.filename)),
+          contentType: 'image/png'
+      }
+  }
+  imgModel.create(obj, (err, item) => {
+      if (err) {
+          console.log(err);
+      }
+      else {
+          item.save();
+          res.redirect('/');
+      }
+  });
 });
 
 module.exports = router;

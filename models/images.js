@@ -11,5 +11,7 @@ const imageSchema = new mongoose.Schema({
 });
   
 //Image is a model which has a schema imageSchema
+
+const Image = mongoose.model('Image', imageSchema);
   
-module.exports = new mongoose.model('Image', imageSchema);
+module.exports = Image;
