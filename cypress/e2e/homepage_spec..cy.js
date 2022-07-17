@@ -8,4 +8,10 @@ describe('Homepage', () => {
     cy.visit('/')
     cy.get('#login-button').should('contain', 'Login');
   })
+
+  it('has a sign up button',() => {
+    cy.visit('/')
+    cy.get('#signup-button').should('contain', 'Sign Up');
+    // unclear why this is failing
+  })
 })
