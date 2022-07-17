@@ -12,6 +12,10 @@ describe('Homepage', () => {
   it('has a sign up button',() => {
     cy.visit('/')
     cy.get('#signup-button').should('contain', 'Sign Up');
-    // unclear why this is failing
+  })
+
+  it('has an add post button',() => {
+    cy.visit('/')
+    cy.get('#add-post-button').should('contain', 'Add Post');
   })
 })
