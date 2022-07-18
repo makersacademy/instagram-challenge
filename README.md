@@ -8,11 +8,11 @@ It uses:
 
 - [Express](https://expressjs.com/) web framework for Node.js.
 - [Nodemon](https://nodemon.io/) to reload the server automatically.
-- [Jade](https://handlebarsjs.com/) to render view templates.
+- [Jade](https://https://jade-lang.com/) to render view templates.
 - [Mongoose](https://mongoosejs.com) to model objects in MongoDB.
 - [Jest](https://jestjs.io/) for testing.
 - [Cypress](https://www.cypress.io/) for end-to-end testing.
-- [Mutlter] for file storage.
+- [Multer](https://www.npmjs.com/package/multer/) for file storage.
 
 ## Examples of Use
 
