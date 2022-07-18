@@ -30,54 +30,54 @@ Bonus if you can add filters!
 
 Users
 
-As an amateur photographer
-So that I am remembered on the site
+As an amateur photographer \
+So that I am remembered on the site \
 I would like to be able to sign up
 
-As an amateur photographer
-So that I can access my accounts
+As an amateur photographer \
+So that I can access my accounts \
 I would like to be able to sign in
 
-As an amateur photographer
-So that people cannot post photos as me
+As an amateur photographer \
+So that people cannot post photos as me \
 I would like to be able to log out
 
 Posts
 
-As an amateur photographer
-So that I can share my work
+As an amateur photographer \
+So that I can share my work \
 I would like to be able to post an image on instagram
 
-As an amateur photographer
-So that I get credit for my photos
+As an amateur photographer \
+So that I get credit for my photos \
 I would like my username to appear next to my photo
 
-As an amateur photographer
-So that I can avoid being embarrassed by old work
+As an amateur photographer \
+So that I can avoid being embarrassed by old work \
 I would like to be able to delete my photos
 
-As a photography fan
-So that I can see what is happening now
+As a photography fan \
+So that I can see what is happening now \
 I would like to see the most recent post first
 
 Comments
 
-As an amateur photographer
-So that I can get feedback
+As an amateur photographer \
+So that I can get feedback \
 I would like people to be able to comment on my work
 
-As an amateur photographer
-So that I get fewer rude comments
+As an amateur photographer \
+So that I get fewer rude comments \
 I would like to see the username of the person who posts a comment
 
 Likes:
 
-As a photography fan
-So that I can show my appreciation
+As a photography fan \
+So that I can show my appreciation \
 I would like to be able to like a photo
 
-As a photography fan
-So that I know what is truly popular
+As a photography fan \
+So that I know what is truly popular \
 I want users to only be able to like a photo once
 
 ## To use the program
