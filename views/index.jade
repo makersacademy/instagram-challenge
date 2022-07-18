@@ -1,0 +1,15 @@
+extends layout 
+
+block content 
+  h1(id='title') #{title} 
+  h3(class='subdheading') Share what you love
+  button(id='login-button' class='button') Login
+  button(id='signup-button' class='button') Sign Up
+  a(id='add-post-button' class='button' href='/newPost') Add Post
+
+  div 
+    each image in items
+      div(class='image')
+        img(src="data:image/#{image.img.contentType};base64, #{image.img.data.toString('base64')}")
+        h5(class='image-name') #{image.name}
+        p(class='image-description') #{image.desc}
