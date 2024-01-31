@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pictagram</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <!--Navigation Bar-->
+    <nav class="navbar navbar-light bg-light d-flex"> 
+      <div class="container">
+        <div class="logo">
+          <a class="navbar-brand" href="#">
+          <i class="fa fa-camera"></i>
+            Pictagram
+          </a>
+        </div>
+        <div class="m-auto">
+          <form class="form-inline search-form">
+            <input class="form-control mr-sm-2" type="search" placeholder="@search" aria-label="Search">
+          </form>
+        </div>
+        <div class="user-section">
+  
+          <% if user_signed_in? %>  <!--DEVISE checks if user is signed in-->
+          <%= current_user.username %>
+          <a><i class="fa fa-compass"></i></a>
+          <a><i class="fa fa-heart"></i></a>
+
+            <a href= "<%= user_path(current_user)%>" > <!--goes to user profile page-->
+            <i class="fa fa-user"></i>
+            </a>
+            <a href="<%= destroy_user_session_path%>" data-method="delete"> <!--SIGN OUT Path-->
+            Sign Out
+            <%# <i class='fas fa-sign-out-alt'></i> %>
+            </a>
+          <% else %>
+           <a><i class="fa fa-compass"></i></a>
+           <a><i class="fa fa-heart"></i></a>
+            <a href="<%= new_user_session_path%>"> <!--SIGN IN Path-->
+            Sign in
+            <%# <i class="fas fa-sign-in-alt"></i> %>
+            </a>
+          <% end %>
+        </div>
+      </div>
+    </nav>
+
+    <!--Main content-->
+    <main class="container" style="min-height: 500px;">
+      <%= yield %>
+    </main>
+
+    <!--Footer-->
+<nav class="navbar fixed-bottom navbar-light bg-light d-flex">
+      <div class="container">
+          <a class="navbar-brand" href="#">
+            About Us
+          </a>
+
+          <a class="navbar-brand" href="#">
+            Support
+          </a>
+
+           <a class="navbar-brand" href="#">
+            Profiles
+          </a>
+
+    
+      </div>
+    </nav>
